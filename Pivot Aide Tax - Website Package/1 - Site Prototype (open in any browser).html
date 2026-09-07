@@ -1,0 +1,2912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Pivot Aide Tax — prototype of the restructured site: year-round tax strategy, The Standing File, filing in all fifty states, business accounting, the Uncle Pat audit &amp; resolution division, and The File Room client app.">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Uncle Pat at Pivot Aide Tax</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&family=Poppins:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+/* ============================================================
+   PIVOT AIDE TAX — site prototype
+   Day / night: filing lives in daylight, resolution lives at night.
+   ============================================================ */
+
+:root{
+  --brand:#019FFF;
+  --blue:#0A6BA8;
+  --blue-dk:#08557F;
+  --gold:#EAE42F;
+  --gold-dp:#B9B31C;
+
+  --ground:#F5F8FB;
+  --surface:#FFFFFF;
+  --surface-2:#EDF4F9;
+  --ink:#0C1D28;
+  --ink-2:#3F5A6B;
+  --ink-3:#6E8797;
+  --line:#D3E0E9;
+  --line-2:#E5EDF3;
+
+  /* night band — constant across themes, it is a place not a mode */
+  --night:#07202E;
+  --night-2:#0B2C3E;
+  --night-line:rgba(255,255,255,.16);
+  --night-ink:#DCEBF3;
+  --night-ink-2:#9FBECF;
+
+  --ok:#1F8A54;
+  --warn:#B45309;
+
+  --shell:1120px;
+  --r:4px;
+  --f-display:'Fraunces', Georgia, 'Times New Roman', serif;
+  --f-body:'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono:'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A2029;
+    --surface:#0F2B38;
+    --surface-2:#153545;
+    --ink:#E6F1F7;
+    --ink-2:#A8C3D2;
+    --ink-3:#7B9AAB;
+    --line:#204558;
+    --line-2:#1A3948;
+    --blue:#3FB4FF;
+    --blue-dk:#7CCBFF;
+    --gold-dp:#EAE42F;
+    --night:#03121A;
+    --night-2:#0A2431;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A2029;
+  --surface:#0F2B38;
+  --surface-2:#153545;
+  --ink:#E6F1F7;
+  --ink-2:#A8C3D2;
+  --ink-3:#7B9AAB;
+  --line:#204558;
+  --line-2:#1A3948;
+  --blue:#3FB4FF;
+  --blue-dk:#7CCBFF;
+  --gold-dp:#EAE42F;
+  --night:#03121A;
+  --night-2:#0A2431;
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--f-body); font-weight:300; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; }
+a{ color:inherit; }
+
+.shell{ width:100%; max-width:var(--shell); margin:0 auto; padding:0 24px; }
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{ font-family:var(--f-display); font-weight:600; margin:0; text-wrap:balance;
+  letter-spacing:-.015em; line-height:1.08; font-variation-settings:'SOFT' 20; }
+h1{ font-size:clamp(2.2rem, 4.7vw, 3.5rem); font-weight:300; }
+h2{ font-size:clamp(1.75rem, 3.4vw, 2.6rem); font-weight:400; }
+h3{ font-size:1.16rem; font-weight:600; letter-spacing:-.005em; line-height:1.25; }
+h4{ font-size:1rem; font-weight:600; }
+p{ margin:0; }
+.lede{ font-size:clamp(1.02rem,1.6vw,1.18rem); line-height:1.62; color:var(--ink-2); max-width:62ch; }
+.eyebrow{
+  display:inline-block; align-self:flex-start;
+  font-family:var(--f-mono); font-size:.66rem; letter-spacing:.19em; text-transform:uppercase;
+  color:var(--blue); font-weight:500;
+}
+.eyebrow.dim{ color:var(--ink-3); }
+.eyebrow.night{ color:var(--gold); }
+.small{ font-size:.83rem; line-height:1.55; color:var(--ink-3); }
+.num{ font-family:var(--f-mono); font-variant-numeric:tabular-nums; }
+
+/* ---------- nav ---------- */
+.topbar{
+  position:sticky; top:0; z-index:50; background:var(--surface);
+  border-bottom:1px solid var(--line);
+}
+.topbar .in{ display:flex; align-items:center; gap:14px; height:66px; }
+.brand{ display:flex; align-items:center; gap:10px; flex:none; }
+.brand .mark{ width:34px; height:34px; }
+.brand .wm{ font-family:var(--f-display); font-weight:600; font-size:1.02rem; letter-spacing:-.02em; }
+.brand .wm span{ color:var(--blue); font-weight:400; }
+nav.tabs{ display:flex; gap:0; flex:1; flex-wrap:wrap; }
+nav.tabs button{
+  font-family:var(--f-body); font-size:.79rem; font-weight:400; color:var(--ink-2);
+  background:none; border:0; border-bottom:2px solid transparent;
+  padding:8px 5px; cursor:pointer; border-radius:2px 2px 0 0; white-space:nowrap;
+}
+nav.tabs button:hover{ color:var(--ink); background:var(--surface-2); }
+nav.tabs button[aria-current="true"]{ color:var(--ink); font-weight:500; border-bottom-color:var(--gold); }
+nav.tabs button.hot[aria-current="true"]{ border-bottom-color:var(--brand); }
+.topbar .tel{
+  font-family:var(--f-mono); font-size:.78rem; color:var(--ink-2); text-decoration:none; flex:none;
+}
+.topbar .tel:hover{ color:var(--blue); }
+:focus-visible{ outline:2px solid var(--brand); outline-offset:2px; }
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:9px; font-family:var(--f-body);
+  font-size:.86rem; font-weight:500; letter-spacing:.005em;
+  padding:13px 22px; border-radius:var(--r); border:1px solid transparent;
+  cursor:pointer; text-decoration:none; transition:transform .12s ease, background .16s ease;
+}
+.btn:active{ transform:translateY(1px); }
+.btn-p{ background:var(--blue); color:#fff; }
+.btn-p:hover{ background:var(--blue-dk); }
+.btn-g{ background:var(--gold); color:#1A1A05; }
+.btn-g:hover{ background:#F5EF3E; }
+.btn-o{ background:transparent; color:var(--ink); border-color:var(--line); }
+.btn-o:hover{ border-color:var(--blue); color:var(--blue); }
+.btn-w{ background:transparent; color:var(--night-ink); border-color:var(--night-line); }
+.btn-w:hover{ border-color:var(--gold); color:var(--gold); }
+.btn .px{ font-family:var(--f-mono); font-size:.8rem; opacity:.82; }
+
+/* ---------- sections ---------- */
+section{ padding:76px 0; }
+section.tight{ padding:56px 0; }
+.sechead{ display:flex; flex-direction:column; gap:12px; margin-bottom:38px; max-width:66ch; }
+
+/* ---------- hero ---------- */
+.hero{ background:var(--night); color:var(--night-ink); padding:0; overflow:hidden; position:relative; }
+.hero:before{
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(62% 78% at 78% 36%,
+    rgba(1,159,255,.22) 0%, rgba(1,159,255,.10) 44%, rgba(1,159,255,0) 74%);
+  pointer-events:none;
+}
+.hero .in{
+  position:relative; display:grid; grid-template-columns:1.4fr 1fr; gap:40px;
+  align-items:center; padding:74px 24px 78px;
+}
+.hero .in > div{ min-width:0; }
+.hero h1{ color:#fff; }
+.hero h1 em{ font-style:normal; color:var(--gold); font-weight:400; }
+.hero .sub{ color:var(--night-ink-2); font-size:1.06rem; line-height:1.65; max-width:52ch; margin-top:22px; }
+.hero .acts{ display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+.hero .strip{
+  display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:34px; padding-top:20px;
+  border-top:1px solid var(--night-line);
+  font-family:var(--f-mono); font-size:.7rem; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--night-ink-2);
+}
+.hero .strip b{ color:var(--gold); font-weight:500; }
+.hero-owl{ position:relative; display:flex; align-items:center; justify-content:flex-end; gap:20px; }
+.hero-owl svg{ width:100%; max-width:205px; flex:none; filter:drop-shadow(0 18px 40px rgba(0,0,0,.45)); }
+.owlmeet{ display:flex; flex-direction:column; align-items:flex-start; gap:10px; flex:none; max-width:186px; }
+.owlmeet .meet{
+  font-family:var(--f-display); font-weight:400; font-size:1.16rem; line-height:1.15;
+  color:#fff; text-decoration:none; letter-spacing:-.01em;
+  border-bottom:2px solid var(--gold); padding-bottom:5px; white-space:nowrap;
+}
+.owlmeet .meet:hover{ color:var(--gold); }
+.owlmeet .meet i{ font-style:normal; color:var(--gold); }
+.ph{
+  display:inline-block; margin-top:14px; font-family:var(--f-mono); font-size:.62rem;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--night-ink-2);
+  border:1px dashed var(--night-line); padding:5px 9px; border-radius:2px;
+}
+
+/* ---------- door cards ---------- */
+.doors{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+  border:1px solid var(--line); }
+.door{
+  background:var(--surface); padding:26px 22px 24px; display:flex; flex-direction:column; gap:9px;
+  cursor:pointer; text-align:left; border:0; font-family:var(--f-body); color:var(--ink);
+  transition:background .16s ease;
+}
+.door:hover{ background:var(--surface-2); }
+.door .n{ font-family:var(--f-mono); font-size:.66rem; letter-spacing:.16em; color:var(--blue); }
+.door h3{ font-size:1.08rem; }
+.door p{ font-size:.85rem; color:var(--ink-2); line-height:1.55; flex:1; }
+.door .pz{ font-family:var(--f-mono); font-size:.78rem; color:var(--ink); padding-top:9px;
+  border-top:1px solid var(--line-2); }
+.door .pz i{ font-style:normal; color:var(--ink-3); }
+
+/* ---------- price table ---------- */
+.ptab{ width:100%; border-collapse:collapse; }
+.ptab caption{
+  text-align:left; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.19em;
+  text-transform:uppercase; color:var(--blue); padding:26px 0 9px;
+  border-bottom:2px solid var(--ink); font-weight:500;
+}
+.ptab tr{ border-bottom:1px solid var(--line-2); }
+.ptab td{ padding:15px 14px 15px 0; vertical-align:top; }
+.ptab td.n{ width:10.5rem; font-weight:500; font-size:.96rem; color:var(--ink); }
+.ptab td.d{ font-size:.87rem; color:var(--ink-2); line-height:1.55; }
+.ptab td.p{
+  width:8.5rem; text-align:right; padding-right:0;
+  font-family:var(--f-mono); font-variant-numeric:tabular-nums;
+  font-size:1.06rem; font-weight:500; color:var(--blue-dk); white-space:nowrap;
+}
+.ptab td.p small{
+  display:block; font-family:var(--f-mono); font-size:.6rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:400; margin-top:3px;
+}
+.twrap{ overflow-x:auto; }
+
+/* ---------- generic card grid ---------- */
+.grid{ display:grid; gap:1px; background:var(--line); border:1px solid var(--line); }
+.g2{ grid-template-columns:repeat(2,1fr); }
+.g3{ grid-template-columns:repeat(3,1fr); }
+.g4{ grid-template-columns:repeat(4,1fr); }
+.card{ background:var(--surface); padding:24px 22px; display:flex; flex-direction:column; gap:8px; }
+.card p{ font-size:.87rem; color:var(--ink-2); line-height:1.56; }
+.card .tag{ font-family:var(--f-mono); font-size:.64rem; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--ink-3); }
+.card .tag b{ color:var(--blue); font-weight:500; }
+
+/* ---------- night block ---------- */
+.night{ background:var(--night); color:var(--night-ink); }
+.night h2,.night h3{ color:#fff; }
+.night .lede{ color:var(--night-ink-2); }
+.night .grid{ background:var(--night-line); border-color:var(--night-line); }
+.night .card{ background:var(--night-2); }
+.night .card p{ color:var(--night-ink-2); }
+.night .card .tag{ color:var(--night-ink-2); }
+.night .card .tag b{ color:var(--gold); }
+.night .ptab caption{ color:var(--gold); border-bottom-color:var(--night-line); }
+.night .ptab tr{ border-bottom-color:var(--night-line); }
+.night .ptab td.n{ color:#fff; }
+.night .ptab td.d{ color:var(--night-ink-2); }
+.night .ptab td.p{ color:var(--gold); }
+.night .ptab td.p small{ color:var(--night-ink-2); }
+.night .small{ color:var(--night-ink-2); }
+
+/* ---------- tier blocks ---------- */
+.tiers{ display:flex; flex-direction:column; }
+.tier{
+  display:grid; grid-template-columns:3.4rem 1fr 10rem; gap:24px; align-items:start;
+  padding:24px 0; border-top:1px solid var(--night-line);
+}
+.tier:last-child{ border-bottom:1px solid var(--night-line); }
+.tier .k{ font-family:var(--f-display); font-weight:300; font-size:2.1rem; color:var(--gold); line-height:.9; }
+.tier p{ color:var(--night-ink-2); font-size:.9rem; line-height:1.6; margin-top:6px; }
+.tier .pz{ font-family:var(--f-mono); font-size:.85rem; color:#fff; text-align:right; padding-top:5px; }
+.tier .pz i{ display:block; font-style:normal; font-size:.63rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--night-ink-2); margin-top:4px; }
+
+/* ---------- lists ---------- */
+ul.ticks{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+ul.ticks li{
+  font-size:.88rem; line-height:1.55; color:var(--ink-2);
+  padding:10px 0 10px 20px; border-bottom:1px solid var(--line-2); position:relative;
+}
+ul.ticks li:first-child{ border-top:1px solid var(--line-2); }
+ul.ticks li:before{
+  content:''; position:absolute; left:0; top:18px; width:9px; height:2px; background:var(--blue);
+}
+ul.ticks li b{ color:var(--ink); font-weight:500; }
+.night ul.ticks li{ color:var(--night-ink-2); border-bottom-color:var(--night-line); }
+.night ul.ticks li:first-child{ border-top-color:var(--night-line); }
+.night ul.ticks li:before{ background:var(--gold); }
+.night ul.ticks li b{ color:#fff; }
+
+/* ---------- quote / callout ---------- */
+.callout{
+  border-left:3px solid var(--gold); background:var(--surface-2);
+  padding:18px 22px; display:flex; flex-direction:column; gap:6px;
+}
+.callout .h{ font-family:var(--f-mono); font-size:.65rem; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--blue-dk); }
+.callout p{ font-size:.9rem; color:var(--ink-2); line-height:1.6; }
+.night .callout{ background:rgba(255,255,255,.055); border-left-color:var(--gold); }
+.night .callout .h{ color:var(--gold); }
+.night .callout p{ color:var(--night-ink-2); }
+
+.patsays{
+  display:grid; grid-template-columns:64px 1fr; gap:18px; align-items:start;
+  padding:22px 24px; background:var(--surface-2); border-left:3px solid var(--brand);
+}
+.patsays svg{ width:64px; height:64px; }
+.patsays q{
+  font-family:var(--f-display); font-weight:300; font-size:1.24rem; line-height:1.4;
+  color:var(--ink); quotes:none; display:block;
+}
+.patsays .who{ font-family:var(--f-mono); font-size:.64rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3); margin-top:9px; }
+.night .patsays{ background:rgba(255,255,255,.055); }
+.night .patsays q{ color:#fff; }
+.night .patsays .who{ color:var(--night-ink-2); }
+
+/* ---------- split ---------- */
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; }
+.split.wide{ grid-template-columns:1.15fr .85fr; }
+
+/* ---------- bridge ---------- */
+.bridge{
+  border:1px solid var(--line); background:var(--surface);
+  padding:34px 32px; display:grid; grid-template-columns:1fr auto; gap:28px; align-items:center;
+}
+.bridge h3{ font-size:1.5rem; font-weight:400; }
+.bridge p{ font-size:.92rem; color:var(--ink-2); margin-top:8px; max-width:56ch; }
+
+/* ---------- footer ---------- */
+footer{ background:var(--night); color:var(--night-ink-2); padding:52px 0 40px; }
+footer .cols{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; }
+footer h4{ font-family:var(--f-mono); font-size:.65rem; letter-spacing:.17em; text-transform:uppercase;
+  color:var(--gold); font-weight:500; margin-bottom:12px; }
+footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px; }
+footer li{ font-size:.83rem; }
+footer .fine{
+  margin-top:38px; padding-top:20px; border-top:1px solid var(--night-line);
+  font-size:.73rem; line-height:1.65; color:var(--night-ink-2); max-width:88ch;
+}
+footer .wm{ font-family:var(--f-display); font-size:1.05rem; color:#fff; font-weight:600; }
+
+/* ---------- prototype banner ---------- */
+.protobar{
+  background:var(--gold); color:#1A1A05; font-family:var(--f-mono);
+  font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; padding:8px 0;
+}
+.protobar .in{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:space-between; }
+
+/* ---------- views ---------- */
+.view{ animation:fade .28s ease both; }
+@keyframes fade{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+[hidden]{ display:none !important; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero .in{ grid-template-columns:1fr; padding:52px 24px 56px; }
+  .hero-owl{ justify-content:flex-start; }
+  .hero-owl svg{ max-width:190px; }
+  .doors,.g4{ grid-template-columns:repeat(2,1fr); }
+  .g3{ grid-template-columns:repeat(2,1fr); }
+  .split,.split.wide{ grid-template-columns:1fr; gap:32px; }
+  .bridge{ grid-template-columns:1fr; }
+  footer .cols{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:620px){
+  section{ padding:52px 0; }
+  .hero-owl{ flex-direction:column; align-items:flex-start; gap:14px; }
+  .owlmeet{ align-items:flex-start; }
+  .doors,.g4,.g3,.g2{ grid-template-columns:1fr; }
+  .tier{ grid-template-columns:2.6rem 1fr; }
+  .tier .pz{ grid-column:2; text-align:left; padding-top:10px; }
+  .topbar .in{ height:auto; padding:10px 0; flex-wrap:wrap; gap:10px 18px; }
+  .topbar .tel{ display:none; }
+  .patsays{ grid-template-columns:1fr; }
+}
+
+/* ---------- thesis: Pat vs Sam ---------- */
+.versus{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--night-line);
+  border:1px solid var(--night-line); }
+.versus > div{ background:var(--night-2); padding:30px 28px; display:flex; flex-direction:column; gap:11px; }
+.versus > div.pat{ background:rgba(1,159,255,.15); }
+.versus .who{ font-family:var(--f-mono); font-size:.64rem; letter-spacing:.17em;
+  text-transform:uppercase; color:var(--night-ink-2); }
+.versus .pat .who{ color:var(--gold); }
+.versus h3{ font-size:1.5rem; font-weight:400; }
+.versus p{ font-size:.9rem; line-height:1.6; color:var(--night-ink-2); }
+.versus .job{ font-family:var(--f-mono); font-size:.72rem; letter-spacing:.06em;
+  color:#fff; padding-top:11px; border-top:1px solid var(--night-line); margin-top:auto; }
+
+/* ---------- year-round calendar ---------- */
+.cal{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+  border:1px solid var(--line); }
+.cal > div{ background:var(--surface); padding:24px 20px; display:flex; flex-direction:column; gap:10px; }
+.cal .mo{ font-family:var(--f-mono); font-size:.66rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--blue); }
+.cal h3{ font-size:1.14rem; }
+.cal .say{ font-size:.86rem; color:var(--ink-2); line-height:1.55; }
+.cal ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px;
+  padding-top:11px; border-top:1px solid var(--line-2); margin-top:auto; }
+.cal li{ font-size:.79rem; color:var(--ink-3); line-height:1.45; padding-left:13px; position:relative; }
+.cal li:before{ content:''; position:absolute; left:0; top:8px; width:6px; height:1.5px; background:var(--gold-dp); }
+.cal .peak{ background:var(--surface-2); }
+.cal .peak .mo{ color:var(--gold-dp); }
+
+/* ---------- packages ---------- */
+.pkgs{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+  border:1px solid var(--line); }
+.pkgs.biz{ grid-template-columns:repeat(2,1fr); }
+.pkg{ background:var(--surface); padding:26px 22px 24px; display:flex; flex-direction:column; gap:6px;
+  position:relative; }
+.pkg .nm{ font-family:var(--f-display); font-weight:600; font-size:1.12rem; letter-spacing:-.01em; }
+.pkg .for{ font-family:var(--f-mono); font-size:.62rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); line-height:1.5; min-height:2.1em; }
+.pkg .fig{ font-family:var(--f-mono); font-size:2rem; font-weight:500; color:var(--blue-dk);
+  letter-spacing:-.02em; margin:8px 0 2px; font-variant-numeric:tabular-nums; }
+.pkg .fig sup{ font-size:.9rem; vertical-align:.75em; font-weight:400; }
+.pkg ul{ list-style:none; margin:10px 0 0; padding:14px 0 0; border-top:1px solid var(--line-2);
+  display:flex; flex-direction:column; gap:6px; flex:1; }
+.pkg li{ font-size:.8rem; line-height:1.45; color:var(--ink-2); padding-left:14px; position:relative; }
+.pkg li:before{ content:''; position:absolute; left:0; top:8px; width:7px; height:1.5px; background:var(--blue); }
+.pkg li.no{ color:var(--ink-3); }
+.pkg li.no:before{ background:var(--ink-3); opacity:.5; }
+.pkg .btn{ margin-top:18px; justify-content:center; }
+.pkg.flag{ background:var(--surface-2); }
+.pkg .badge{ position:absolute; top:16px; right:16px;
+  font-family:var(--f-mono); font-size:.58rem; letter-spacing:.15em; text-transform:uppercase;
+  color:#1A1A05; background:var(--gold); padding:3px 7px; border-radius:2px; }
+
+/* ---------- steps ---------- */
+.steps{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line);
+  border:1px solid var(--line); }
+.steps > div{ background:var(--surface); padding:22px 18px; display:flex; flex-direction:column; gap:8px; }
+.steps .k{ font-family:var(--f-display); font-weight:300; font-size:1.9rem; color:var(--blue); line-height:.9; }
+.steps.s3{ grid-template-columns:repeat(3,1fr); }
+.steps h3{ font-size:.98rem; color:var(--ink); }
+.steps p{ font-size:.81rem; color:var(--ink-2); line-height:1.5; }
+
+/* ---------- testimonials ---------- */
+.quotes{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.quotes figure{ margin:0; padding:24px 22px; background:var(--surface); border:1px solid var(--line);
+  display:flex; flex-direction:column; gap:14px; }
+.quotes blockquote{ margin:0; font-family:var(--f-display); font-weight:300; font-size:1.05rem;
+  line-height:1.45; color:var(--ink); }
+.quotes figcaption{ font-family:var(--f-mono); font-size:.66rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3); margin-top:auto; }
+
+/* ---------- map / states ---------- */
+.states{ display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background:var(--night-line);
+  border:1px solid var(--night-line); }
+.states span{ background:var(--night-2); padding:9px 4px; text-align:center;
+  font-family:var(--f-mono); font-size:.66rem; letter-spacing:.08em; color:var(--night-ink-2); }
+.states span.home{ background:rgba(234,228,47,.14); color:var(--gold); }
+.states span:empty{ background:var(--night-2); }
+.states span:empty:before{ content:'\00a0'; }
+
+/* ---------- faq ---------- */
+.faq{ display:flex; flex-direction:column; }
+.faq > div{ padding:18px 0; border-bottom:1px solid var(--line-2); }
+.faq > div:first-child{ border-top:1px solid var(--line-2); }
+.faq dt{ font-weight:500; font-size:.98rem; color:var(--ink); }
+.faq dd{ margin:6px 0 0; font-size:.89rem; color:var(--ink-2); line-height:1.6; }
+
+@media (max-width:980px){
+  .versus{ grid-template-columns:1fr; }
+  .cal,.pkgs,.pkgs.biz{ grid-template-columns:repeat(2,1fr); }
+  .steps{ grid-template-columns:repeat(2,1fr); }
+  .quotes{ grid-template-columns:1fr; }
+  .states{ grid-template-columns:repeat(4,1fr); }
+}
+@media (max-width:620px){
+  .cal,.pkgs,.pkgs.biz,.steps{ grid-template-columns:1fr; }
+  .states{ grid-template-columns:repeat(3,1fr); }
+}
+
+/* ---------- date list ---------- */
+.dates{ display:flex; flex-direction:column; }
+.dates .d{
+  display:grid; grid-template-columns:9rem 1fr 8.5rem; gap:22px; padding:15px 0 15px 14px;
+  border-top:1px solid var(--night-line); align-items:baseline;
+  border-left:3px solid transparent;
+}
+.dates .d:last-child{ border-bottom:1px solid var(--night-line); }
+.dates .d.soon{ border-left-color:var(--gold); background:rgba(234,228,47,.06); }
+.dates .dt{ font-family:var(--f-mono); font-size:.84rem; color:var(--night-ink); white-space:nowrap; }
+.dates .d.soon .dt{ color:var(--gold); }
+.dates .dt i{ display:block; font-style:normal; font-size:.6rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--night-ink-2); margin-top:4px; }
+.dates h3{ font-size:1rem; }
+.dates .dw p{ font-size:.85rem; color:var(--night-ink-2); line-height:1.5; margin-top:4px; }
+.dates .who{ font-family:var(--f-mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--night-ink-2); text-align:right; line-height:1.6; }
+
+/* ---------- reference figures ---------- */
+.figcols{ display:grid; grid-template-columns:1fr 1fr; gap:0 48px; }
+.figs{ width:100%; border-collapse:collapse; }
+.figs caption{
+  text-align:left; font-family:var(--f-mono); font-size:.66rem; letter-spacing:.19em;
+  text-transform:uppercase; color:var(--blue); padding:26px 0 8px; font-weight:500;
+  border-bottom:2px solid var(--ink);
+}
+.figs tr{ border-bottom:1px solid var(--line-2); }
+.figs th{ text-align:left; font-weight:400; font-size:.86rem; color:var(--ink-2);
+  padding:11px 16px 11px 0; line-height:1.45; }
+.figs th small{ display:block; font-size:.72rem; color:var(--ink-3); margin-top:2px; }
+.figs td{
+  text-align:right; padding:11px 0; white-space:nowrap; vertical-align:top;
+  font-family:var(--f-mono); font-variant-numeric:tabular-nums;
+  font-size:.92rem; font-weight:500; color:var(--blue-dk);
+}
+.figs td small{ display:block; font-family:var(--f-body); font-size:.68rem;
+  color:var(--ink-3); font-weight:300; margin-top:2px; white-space:normal; }
+
+/* ---------- resource links ---------- */
+.res{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); }
+.res a{ background:var(--surface); padding:16px 18px; text-decoration:none;
+  display:flex; flex-direction:column; gap:3px; transition:background .16s ease; }
+.res a:hover{ background:var(--surface-2); }
+.res .t{ font-weight:500; font-size:.92rem; color:var(--ink); }
+.res .u{ font-family:var(--f-mono); font-size:.68rem; color:var(--blue); word-break:break-all; }
+.res p{ font-size:.8rem; color:var(--ink-2); line-height:1.5; }
+
+/* ---------- appointment cards ---------- */
+.card .meta{ font-family:var(--f-mono); font-size:.68rem; color:var(--ink); padding-top:9px;
+  margin-top:auto; border-top:1px solid var(--line-2); }
+.card .meta b{ color:var(--blue-dk); font-weight:500; }
+.night .card .meta{ color:#fff; border-top-color:var(--night-line); }
+.night .card .meta b{ color:var(--gold); }
+
+/* ---------- embed placeholder ---------- */
+.embed{
+  border:1px dashed var(--line); background:var(--surface-2); border-radius:var(--r);
+  padding:44px 28px; text-align:center; display:flex; flex-direction:column; gap:8px;
+  align-items:center; justify-content:center; min-height:250px;
+}
+.embed .k{ font-family:var(--f-mono); font-size:.66rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3); }
+.embed h3{ font-size:1.2rem; }
+.embed p{ font-size:.87rem; color:var(--ink-2); max-width:44ch; line-height:1.55; }
+
+@media (max-width:980px){
+  .figcols{ grid-template-columns:1fr; }
+  .res{ grid-template-columns:1fr; }
+  .dates .d{ grid-template-columns:8rem 1fr; }
+  .dates .who{ grid-column:2; text-align:left; padding-top:6px; }
+}
+@media (max-width:620px){
+  .dates .d{ grid-template-columns:1fr; gap:6px; }
+  .dates .who{ grid-column:1; }
+}
+
+/* ---------- file cards (echo of the engagement-file format) ---------- */
+.filecards{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.filecard{ border:1px solid var(--line); background:var(--surface);
+  display:flex; flex-direction:column; }
+.filecard .fh{
+  background:var(--ink); color:#fff; padding:12px 20px;
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+}
+.filecard .fh span{ font-family:var(--f-mono); font-size:.63rem; letter-spacing:.19em;
+  text-transform:uppercase; color:var(--gold); }
+.filecard .fh b{ font-family:var(--f-display); font-size:1.12rem; font-weight:600;
+  letter-spacing:-.01em; }
+.filecard .fb{ padding:20px 20px 22px; display:flex; flex-direction:column; gap:12px; }
+.filecard .fb > p{ font-size:.88rem; color:var(--ink-2); line-height:1.55; }
+.filecard.dark-fc{ background:var(--night-2); border-color:var(--night-line); }
+.filecard.dark-fc .fh{ background:rgba(0,0,0,.3); }
+.filecard.dark-fc .fb > p{ color:var(--night-ink-2); }
+.filecard.dark-fc .small{ color:var(--night-ink-2); }
+
+ul.ticks.tight li{ font-size:.83rem; padding:8px 0 8px 18px; line-height:1.5; }
+ul.ticks.tight li:before{ top:15px; width:8px; }
+ul.ticks.lime li:before{ background:var(--gold-dp); }
+
+.colhead-n{
+  font-family:var(--f-mono); font-size:.66rem; letter-spacing:.19em; text-transform:uppercase;
+  padding-bottom:8px; margin-bottom:14px; border-bottom:2px solid var(--gold); color:var(--gold);
+}
+.callout.w-note{ background:rgba(255,255,255,.055); border-left-color:var(--gold); }
+.callout.w-note .h{ color:var(--gold); }
+.callout.w-note p{ color:var(--night-ink-2); }
+
+.night .cal.night-cal{ background:var(--night-line); border-color:var(--night-line); }
+.night .cal.night-cal > div{ background:var(--night-2); }
+.night .cal.night-cal h3{ color:#fff; }
+.night .cal.night-cal .mo{ color:var(--gold); }
+.night .cal.night-cal .say{ color:var(--night-ink-2); }
+.night .cal.night-cal ul{ border-top-color:var(--night-line); }
+.night .cal.night-cal li{ color:var(--night-ink-2); }
+.night .cal.night-cal li:before{ background:var(--gold); }
+
+@media (max-width:1210px){ .topbar .tel{ display:none; } }
+@media (max-width:980px){ .filecards{ grid-template-columns:1fr; } }
+
+/* ---------- problem cards ---------- */
+.probs{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); }
+.prob{ background:var(--surface); padding:26px 22px 22px; display:flex; flex-direction:column; gap:10px; }
+.prob h3{ font-size:1.12rem; color:var(--blue-dk); }
+.prob p{ font-size:.87rem; color:var(--ink-2); line-height:1.56; flex:1; }
+.prob a{
+  font-family:var(--f-mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink); text-decoration:none; padding-top:11px; margin-top:auto;
+  border-top:1px solid var(--line-2); display:inline-flex; align-items:center; gap:7px;
+}
+.prob a i{ font-style:normal; color:var(--gold-dp); }
+.prob a:hover{ color:var(--blue); }
+
+/* ---------- service categories ---------- */
+.svcs{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
+  background:var(--night-line); border:1px solid var(--night-line); }
+.svc{ background:var(--night-2); padding:26px 20px 22px; display:flex; flex-direction:column; gap:9px; }
+.svc .k{ font-family:var(--f-mono); font-size:.62rem; letter-spacing:.17em;
+  text-transform:uppercase; color:var(--gold); }
+.svc h3{ font-size:1.1rem; color:#fff; }
+.svc p{ font-size:.83rem; color:var(--night-ink-2); line-height:1.55; flex:1; }
+.svc a{
+  font-family:var(--f-body); font-size:.79rem; font-weight:500; color:#fff; text-decoration:none;
+  padding-top:12px; margin-top:auto; border-top:1px solid var(--night-line);
+  display:inline-flex; align-items:center; gap:7px;
+}
+.svc a i{ font-style:normal; color:var(--gold); }
+.svc a:hover{ color:var(--gold); }
+
+/* ---------- audience journeys ---------- */
+.auds{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line); }
+.aud{ background:var(--surface); padding:24px 20px; display:flex; flex-direction:column; gap:9px; }
+.aud .k{ font-family:var(--f-mono); font-size:.62rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--blue); }
+.aud h3{ font-size:1.06rem; }
+.aud ul{ list-style:none; margin:4px 0 0; padding:11px 0 0; border-top:1px solid var(--line-2);
+  display:flex; flex-direction:column; gap:5px; }
+.aud li{ font-size:.79rem; color:var(--ink-2); line-height:1.45; padding-left:13px; position:relative; }
+.aud li:before{ content:''; position:absolute; left:0; top:8px; width:6px; height:1.5px; background:var(--blue); }
+.aud.flag{ background:var(--surface-2); }
+.aud.flag .k{ color:var(--gold-dp); }
+
+/* ---------- prep vs planning banner ---------- */
+.wait{
+  display:flex; align-items:center; justify-content:space-between; gap:26px; flex-wrap:wrap;
+  border-top:1px solid var(--night-line); margin-top:26px; padding-top:24px;
+}
+.wait p{ font-family:var(--f-display); font-weight:300; font-size:1.42rem; line-height:1.25;
+  color:#fff; max-width:34ch; }
+
+@media (max-width:980px){
+  .probs{ grid-template-columns:repeat(2,1fr); }
+  .svcs{ grid-template-columns:repeat(2,1fr); }
+  .auds{ grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:620px){
+  .probs,.svcs,.auds{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= OWL SYMBOL ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="pat" viewBox="0 0 200 220">
+  <!-- torso -->
+  <path d="M100 128 C140 128 172 150 184 186 C188 198 190 209 190 220 L10 220 C10 209 12 198 16 186 C28 150 60 128 100 128 Z" fill="#1D3D51"/>
+  <path d="M46 170 C32 184 21 200 16 220 L10 220 C10 209 12 198 16 186 C22 168 33 152 47 141 Z" fill="#163344"/>
+  <path d="M154 170 C168 184 179 200 184 220 L190 220 C190 209 188 198 184 186 C178 168 167 152 153 141 Z" fill="#163344"/>
+  <!-- shirt behind the collar -->
+  <path d="M66 128 L134 128 L100 184 Z" fill="#FFFFFF"/>
+  <!-- collar flaps -->
+  <path d="M63 141 L100 170 L79 199 L43 161 Z" fill="#FFFFFF"/>
+  <path d="M137 141 L100 170 L121 199 L157 161 Z" fill="#FFFFFF"/>
+  <path d="M137 141 L100 170 L121 199 L157 161 Z" fill="#E3ECF3" opacity=".3"/>
+  <!-- tie -->
+  <path d="M89 150 L111 150 L116 178 L84 178 Z" fill="#CFC922"/>
+  <path d="M84 178 L116 178 L110 202 L100 214 L90 202 Z" fill="#EAE42F"/>
+  <path d="M84 178 L116 178 L100 188 Z" fill="#B4AE18" opacity=".5"/>
+  <!-- ear tufts -->
+  <path d="M52 46 L46 10 L88 34 Z" fill="#16303F"/>
+  <path d="M148 46 L154 10 L112 34 Z" fill="#16303F"/>
+  <!-- head -->
+  <ellipse cx="100" cy="88" rx="69" ry="67" fill="#1D3D51"/>
+  <!-- facial disc -->
+  <ellipse cx="100" cy="90" rx="59" ry="55" fill="#2C5169"/>
+  <!-- brow -->
+  <path d="M100 44 C132 44 152 60 156 82 C146 66 126 57 100 57 C74 57 54 66 44 82 C48 60 68 44 100 44 Z" fill="#24455B"/>
+  <!-- eyes -->
+  <circle cx="73" cy="90" r="26" fill="#F2F8FC"/>
+  <circle cx="127" cy="90" r="26" fill="#F2F8FC"/>
+  <circle cx="73" cy="90" r="16" fill="#019FFF"/>
+  <circle cx="127" cy="90" r="16" fill="#019FFF"/>
+  <circle cx="73" cy="90" r="7.5" fill="#06202D"/>
+  <circle cx="127" cy="90" r="7.5" fill="#06202D"/>
+  <circle cx="67" cy="83" r="3.4" fill="#FFFFFF" opacity=".92"/>
+  <circle cx="121" cy="83" r="3.4" fill="#FFFFFF" opacity=".92"/>
+  <!-- beak -->
+  <path d="M100 103 L110 121 L100 131 L90 121 Z" fill="#EAE42F"/>
+  <path d="M100 121 L110 121 L100 131 Z" fill="#B4AE18" opacity=".45"/>
+</symbol>
+  <symbol id="pat-av" viewBox="22 4 156 172">
+  <!-- torso -->
+  <path d="M100 128 C140 128 172 150 184 186 C188 198 190 209 190 220 L10 220 C10 209 12 198 16 186 C28 150 60 128 100 128 Z" fill="#1D3D51"/>
+  
+  <!-- shirt behind the collar -->
+  <path d="M66 128 L134 128 L100 184 Z" fill="#FFFFFF"/>
+  <!-- collar flaps -->
+  <path d="M63 141 L100 170 L79 199 L43 161 Z" fill="#FFFFFF"/>
+  <path d="M137 141 L100 170 L121 199 L157 161 Z" fill="#FFFFFF"/>
+  
+  <!-- tie -->
+  <path d="M89 150 L111 150 L116 178 L84 178 Z" fill="#CFC922"/>
+  <path d="M84 178 L116 178 L110 202 L100 214 L90 202 Z" fill="#EAE42F"/>
+  
+  <!-- ear tufts -->
+  <path d="M52 46 L46 10 L88 34 Z" fill="#16303F"/>
+  <path d="M148 46 L154 10 L112 34 Z" fill="#16303F"/>
+  <!-- head -->
+  <ellipse cx="100" cy="88" rx="69" ry="67" fill="#1D3D51"/>
+  <!-- facial disc -->
+  <ellipse cx="100" cy="90" rx="59" ry="55" fill="#2C5169"/>
+  <!-- brow -->
+  <path d="M100 44 C132 44 152 60 156 82 C146 66 126 57 100 57 C74 57 54 66 44 82 C48 60 68 44 100 44 Z" fill="#24455B"/>
+  <!-- eyes -->
+  <circle cx="73" cy="90" r="26" fill="#F2F8FC"/>
+  <circle cx="127" cy="90" r="26" fill="#F2F8FC"/>
+  <circle cx="73" cy="90" r="16" fill="#019FFF"/>
+  <circle cx="127" cy="90" r="16" fill="#019FFF"/>
+  <circle cx="73" cy="90" r="7.5" fill="#06202D"/>
+  <circle cx="127" cy="90" r="7.5" fill="#06202D"/>
+  
+  <!-- beak -->
+  <path d="M100 103 L110 121 L100 131 L90 121 Z" fill="#EAE42F"/>
+  
+</symbol>
+</svg>
+
+<div class="protobar"><div class="shell in">
+  <span>Prototype · not the live site</span>
+  <span>Positioning: year-round strategy · all 50 states</span>
+</div></div>
+
+<!-- ================= NAV ================= -->
+<header class="topbar"><div class="shell in">
+  <div class="brand">
+    <svg class="mark" viewBox="22 4 156 172" aria-hidden="true"><use href="#pat-av"></use></svg>
+    <span class="wm">Pivot Aide <span>Tax</span></span>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Sections">
+    <button data-v="home" aria-current="true">Home</button>
+    <button data-v="file">File Taxes</button>
+    <button data-v="strat" class="hot">Tax Strategy</button>
+    <button data-v="audit">Audit &amp; Resolution</button>
+    <button data-v="biz">Business</button>
+    <button data-v="free">Free Help</button>
+    <button data-v="res">Resources</button>
+    <button data-v="appt">Appointments</button>
+    <button data-v="app">File Room</button>
+    <button data-v="pat">Uncle Pat</button>
+  </nav>
+  <a class="tel" href="tel:+15714703754">1 (571) 470-3754</a>
+</div></header>
+
+<main id="main">
+
+<!-- ============================================================ HOME -->
+<div class="view" id="v-home">
+
+  <div class="hero"><div class="shell in">
+    <div>
+      <div class="eyebrow night">Tax strategy, year-round · All 50 states</div>
+      <h1 style="margin-top:20px;text-wrap:initial">Uncle&nbsp;Sam looks out<br>for the government.<br><em>Uncle&nbsp;Pat looks out<br>for you.</em></h1>
+      <p class="sub">He wants the forms filed and the amount paid. We want the amount to be right —
+      and as small as the law allows. That takes twelve months of work, not one afternoon in April.
+      All fifty states, all year long.</p>
+      <div class="acts">
+        <a class="btn btn-g" href="#" data-go="appt">Schedule a consultation</a>
+        <a class="btn btn-w" href="#" data-go="file">Explore our services <span class="px">from $200</span></a>
+      </div>
+      <div class="strip">
+        <span><b>All 50 states</b> — multi-state filing</span>
+        <span>Secure portal &amp; e-signature</span>
+        <span>Upfront pricing, no surprises</span>
+        <span>IRS acceptance monitored</span>
+        <span><b>Year-round</b> — not just April</span>
+      </div>
+    </div>
+    <div class="hero-owl">
+      <svg viewBox="0 0 200 220" role="img" aria-label="Uncle Pat, the Pivot Aide Tax owl"><use href="#pat"></use></svg>
+      <div class="owlmeet">
+        <a class="meet" href="#" data-go="pat">Meet Uncle&nbsp;Pat <i>&rarr;</i></a>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- ---------- THESIS ---------- -->
+  <section class="night"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">Two different jobs</span>
+      <h2>April doesn&rsquo;t decide your tax bill.<br>The eleven months before it do.</h2>
+      <p class="lede">Most firms sell you one day of work and call it tax service. Filing season
+      isn&rsquo;t where the outcome is created — it&rsquo;s where it gets reported. By the time the
+      forms arrive, the decisions that mattered have already been made.</p>
+    </div>
+    <div class="versus">
+      <div>
+        <span class="who">Uncle Sam</span>
+        <h3>Compliance</h3>
+        <p>The forms, the deadlines, the arithmetic, the amount due. It is not negotiable and it is
+        not creative. It looks backwards at a year that has already closed and asks one question:
+        did you report it correctly?</p>
+        <span class="job">His job · getting it right</span>
+      </div>
+      <div class="pat">
+        <span class="who">Uncle Pat</span>
+        <h3>Strategy</h3>
+        <p>Entity choice, owner compensation, the timing of income and equipment, retirement
+        contributions, where you register, what you elect and when. Every one of these is decided
+        <em>before</em> the year closes — and every one of them changes the number Uncle Sam
+        calculates.</p>
+        <span class="job">His job · getting there first</span>
+      </div>
+    </div>
+    <div class="patsays" style="margin-top:26px;border-left-color:var(--gold)">
+      <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+      <div>
+        <q>Tax season shows how much you prepared. It isn&rsquo;t where the preparing happens.</q>
+        <div class="who">Uncle Pat</div>
+      </div>
+    </div>
+    <div class="wait">
+      <p>Stop waiting until tax season to think about taxes.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-g" href="#" data-go="strat">See how planning works</a>
+        <a class="btn btn-w" href="#" data-go="appt">Book a consultation</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- THE YEAR ---------- -->
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">The Pivot Aide year</span>
+      <h2>For us, tax season lasts twelve months.</h2>
+      <p class="lede">Here is what a year with us actually looks like. Note where filing sits — at
+      the end, as the report on work already done.</p>
+    </div>
+    <div class="cal">
+      <div class="peak">
+        <span class="mo">Jan – Apr</span>
+        <h3>Filing season</h3>
+        <p class="say">The year&rsquo;s decisions become a number. If we did the other nine months
+        properly, nothing here is a surprise.</p>
+        <ul>
+          <li>Returns prepared and e-filed</li>
+          <li>Extensions where documents are late</li>
+          <li>Prior-year catch-up and amendments</li>
+          <li>K-1s chased before they hold you up</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">May – Jul</span>
+        <h3>The reset</h3>
+        <p class="say">The quietest quarter and the most valuable one. Everything structural is
+        cheaper to change now than in December.</p>
+        <ul>
+          <li>Entity and S-corp election review</li>
+          <li>Reasonable compensation set</li>
+          <li>W-4 and quarterly estimates tuned</li>
+          <li>Books cleaned and brought current</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">Aug – Oct</span>
+        <h3>Projection</h3>
+        <p class="say">We run your year forward and tell you the number before it is final, while
+        there is still time to move it.</p>
+        <ul>
+          <li>Mid-year projection with a written figure</li>
+          <li>Retirement plan design and funding</li>
+          <li>Equipment and depreciation timing</li>
+          <li>Multi-state nexus review</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">Nov – Dec</span>
+        <h3>The closing window</h3>
+        <p class="say">The last moves that still count. After 31 December almost every lever is
+        gone, whoever you hire in March.</p>
+        <ul>
+          <li>Income and expense timing</li>
+          <li>Retirement and HSA contributions</li>
+          <li>Charitable and loss harvesting</li>
+          <li>Payroll, bonuses and distributions set</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:22px">
+      <span class="h">Why this matters</span>
+      <p>By January, most of your tax bill is already decided. A preparer who meets you in February
+      can only report what happened. That is a real service, and we do it well — but it is the last
+      step, not the whole job.</p>
+    </div>
+  </div></section>
+
+  <!-- ---------- PROBLEMS ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Sound familiar?</span>
+      <h2>Start with the thing that&rsquo;s bothering you.</h2>
+      <p class="lede">Most people don&rsquo;t arrive knowing whether they need cleanup, planning or
+      representation. They arrive with a problem. Find yours.</p>
+    </div>
+    <div class="probs">
+      <div class="prob">
+        <h3>Behind on your bookkeeping?</h3>
+        <p>Months of unreconciled accounts, and a return you can&rsquo;t file until they&rsquo;re
+        clean. We reconstruct the books, reconcile every account, and put a monthly process in place
+        so it doesn&rsquo;t happen again.</p>
+        <a href="#" data-go="biz">Fix my books <i>&rarr;</i></a>
+      </div>
+      <div class="prob">
+        <h3>Paying tax but you have no strategy?</h3>
+        <p>A return reports what already happened. Planning changes what happens next — entity
+        choice, owner pay, the timing of income and equipment, retirement. All decided before the
+        year closes.</p>
+        <a href="#" data-go="strat">Schedule tax planning <i>&rarr;</i></a>
+      </div>
+      <div class="prob">
+        <h3>A letter arrived from the IRS or a state?</h3>
+        <p>Most of them are wrong about something. Send it over and we&rsquo;ll tell you what it
+        actually says, what the real deadline is, and what it costs to handle — free, inside two
+        business days.</p>
+        <a href="#" data-go="audit">Have it read free <i>&rarr;</i></a>
+      </div>
+      <div class="prob">
+        <h3>Haven&rsquo;t filed in years?</h3>
+        <p>Three years or ten. Transcripts pulled, substitute assessments reversed, records
+        reconstructed and compliance restored — so you can borrow, bid, or just stop thinking about
+        it.</p>
+        <a href="#" data-go="audit">Get current <i>&rarr;</i></a>
+      </div>
+      <div class="prob">
+        <h3>Don&rsquo;t trust the numbers you&rsquo;re filing on?</h3>
+        <p>If the P&amp;L is wrong, the return is wrong. We find the errors, reconcile the accounts,
+        and rebuild reporting you can actually make decisions from.</p>
+        <a href="#" data-go="biz">Clean it up <i>&rarr;</i></a>
+      </div>
+      <div class="prob">
+        <h3>Deadline in front of you?</h3>
+        <p>Upfront price before you start, secure upload, e-signature, filed and confirmed to IRS
+        acceptance. No mystery invoice at the end of it.</p>
+        <a href="#" data-go="file">Start my return <i>&rarr;</i></a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- SERVICES ---------- -->
+  <section class="night tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">What we do</span>
+      <h2>Know your numbers. Plan your taxes.<br>Grow with confidence.</h2>
+      <p class="lede">Five things, done properly, all year. Everything here is income tax and the
+      work immediately around it — that focus is the point.</p>
+    </div>
+    <div class="svcs">
+      <div class="svc">
+        <span class="k">01</span>
+        <h3>Tax Preparation</h3>
+        <p>Individual and business returns in all fifty states, with accuracy, compliance and a
+        filing process that tells you where you stand.</p>
+        <a href="#" data-go="file">Start your tax return <i>&rarr;</i></a>
+      </div>
+      <div class="svc">
+        <span class="k">02</span>
+        <h3>Tax Planning</h3>
+        <p>Proactive strategy through the year, so decisions are made before they harden into tax
+        consequences. The Standing File sits at the top of it.</p>
+        <a href="#" data-go="strat">Schedule tax planning <i>&rarr;</i></a>
+      </div>
+      <div class="svc">
+        <span class="k">03</span>
+        <h3>Business Accounting</h3>
+        <p>Monthly bookkeeping, bank reconciliation, financial statements, payroll and sales tax —
+        the ledger the return is built on.</p>
+        <a href="#" data-go="biz">Improve your books <i>&rarr;</i></a>
+      </div>
+      <div class="svc">
+        <span class="k">04</span>
+        <h3>Accounting Cleanup</h3>
+        <p>For books that are months behind, unreconciled, or simply wrong. We reconstruct, reconcile
+        and hand back something you can file and borrow against.</p>
+        <a href="#" data-go="biz">Fix my books <i>&rarr;</i></a>
+      </div>
+      <div class="svc">
+        <span class="k">05</span>
+        <h3>Audit &amp; Resolution</h3>
+        <p>Notices, examinations, balances owed, liens and unfiled years — federal and all fifty
+        state agencies.</p>
+        <a href="#" data-go="audit">Get help with a notice <i>&rarr;</i></a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- AUDIENCES ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Who we help</span>
+      <h2>Four situations, four different jobs.</h2>
+      <p class="lede">The work is not the same for a household with three W-2s and a rental as it is
+      for a six-entity group. Find the one that reads like you.</p>
+    </div>
+    <div class="auds">
+      <div class="aud">
+        <span class="k">Individuals</span>
+        <h3>Households and employees</h3>
+        <ul>
+          <li>Federal and multi-state returns</li>
+          <li>Investment and rental income</li>
+          <li>Self-employment and 1099 work</li>
+          <li>Prior-year returns and amendments</li>
+          <li>IRS and state correspondence</li>
+          <li>Withholding and planning</li>
+        </ul>
+      </div>
+      <div class="aud">
+        <span class="k">Small business</span>
+        <h3>Owner-operated companies</h3>
+        <ul>
+          <li>Monthly bookkeeping and reconciliation</li>
+          <li>Financial statements you can use</li>
+          <li>Payroll and employment tax</li>
+          <li>AP and AR support</li>
+          <li>Business returns and K-1s</li>
+          <li>Catch-up and cleanup</li>
+        </ul>
+      </div>
+      <div class="aud flag">
+        <span class="k">Growing businesses</span>
+        <h3>Outgrowing basic filing</h3>
+        <ul>
+          <li>Entity structure and elections</li>
+          <li>Owner compensation and distributions</li>
+          <li>Multi-state nexus and apportionment</li>
+          <li>Retirement plan design</li>
+          <li>Succession and exit, planned early</li>
+          <li>Served by <b>The Standing File</b></li>
+        </ul>
+      </div>
+      <div class="aud">
+        <span class="k">Real estate</span>
+        <h3>Property investors</h3>
+        <ul>
+          <li>Rental bookkeeping, property by property</li>
+          <li>Schedule E and passive loss rules</li>
+          <li>Fixed assets and depreciation tracking</li>
+          <li>Entity and multi-property accounting</li>
+          <li>Cost segregation coordination</li>
+          <li>Basis tracking through to sale</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- PACKAGES ---------- -->
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Packages &amp; pricing</span>
+      <h2>Only pay for the tax work you need.</h2>
+      <p class="lede">Get it right the first time — and feel confident about it. Every package
+      includes the secure portal, e-signature, e-file confirmation, and IRS acceptance monitoring.</p>
+    </div>
+
+    <div class="eyebrow dim" style="margin-bottom:14px">Individual tax filing · Form 1040</div>
+    <div class="pkgs">
+      <div class="pkg">
+        <span class="nm">Basic</span>
+        <span class="for">For simple returns</span>
+        <span class="fig"><sup>$</sup>200</span>
+        <ul>
+          <li>W-2 income</li>
+          <li>Unemployment (1099-G)</li>
+          <li>Standard credits &amp; deductions</li>
+          <li>E-file + e-signature portal</li>
+          <li>One state included</li>
+          <li class="no">No Schedule C or E</li>
+        </ul>
+        <a class="btn btn-o" href="#">Select plan</a>
+      </div>
+      <div class="pkg">
+        <span class="nm">Standard</span>
+        <span class="for">For most employees and families</span>
+        <span class="fig"><sup>$</sup>350</span>
+        <ul>
+          <li>Everything in Basic, plus:</li>
+          <li>Multiple W-2s</li>
+          <li>HSA (Form 8889)</li>
+          <li>Schedule A — itemised deductions</li>
+          <li>Retirement distributions (1099-R)</li>
+          <li>Live expert Q&amp;A</li>
+          <li>Document review checklist</li>
+        </ul>
+        <a class="btn btn-o" href="#">Select plan</a>
+      </div>
+      <div class="pkg flag">
+        <span class="badge">Best value</span>
+        <span class="nm">Premium</span>
+        <span class="for">For mixed income</span>
+        <span class="fig"><sup>$</sup>450</span>
+        <ul>
+          <li>Everything in Standard, plus:</li>
+          <li>Investments — 1099-DIV / INT / B</li>
+          <li>1099-B consolidated statements</li>
+          <li>Capital gains, Schedule B and D</li>
+          <li>Schedule E — one rental property</li>
+          <li>Rental &amp; investment deduction support</li>
+          <li>Priority support and final review</li>
+        </ul>
+        <a class="btn btn-p" href="#">Select plan</a>
+      </div>
+      <div class="pkg">
+        <span class="nm">Self-Employed</span>
+        <span class="for">For 1099 and Schedule C filers</span>
+        <span class="fig"><sup>$</sup>550</span>
+        <ul>
+          <li>Everything in Premium, plus:</li>
+          <li>Schedule C — sole proprietor</li>
+          <li>Home office and vehicle</li>
+          <li>Depreciation and asset schedule</li>
+          <li>Self-employment tax</li>
+          <li>Next year&rsquo;s quarterly estimates set up</li>
+        </ul>
+        <a class="btn btn-o" href="#">Select plan</a>
+      </div>
+    </div>
+
+    <div class="eyebrow dim" style="margin:34px 0 14px">Business tax filing · 1065 / 1120 / 1120-S</div>
+    <div class="pkgs biz">
+      <div class="pkg">
+        <span class="nm">Business</span>
+        <span class="for">For entities and business owners</span>
+        <span class="fig"><sup>$</sup>750</span>
+        <ul>
+          <li>1065, 1120, or 1120-S return</li>
+          <li>Owner / officer W-2 support</li>
+          <li>Schedule C or E as applicable</li>
+          <li>Up to 3 basic K-1s included</li>
+          <li>Year-end entity compliance checklist</li>
+          <li>One state included</li>
+        </ul>
+        <a class="btn btn-o" href="#">Select plan</a>
+      </div>
+      <div class="pkg">
+        <span class="nm">Business Pro</span>
+        <span class="for">For complex and multi-state entities</span>
+        <span class="fig"><sup>$</sup>1,250</span>
+        <ul>
+          <li>Everything in Business, plus:</li>
+          <li>Multi-state apportionment</li>
+          <li>More than 3 K-1s, complex allocations</li>
+          <li>Schedule D — covered, non-covered and PTP transactions</li>
+          <li>FBAR and foreign form reporting</li>
+          <li>Virtual currency transactions</li>
+          <li>Hedge fund reporting and complex / HNI returns</li>
+        </ul>
+        <a class="btn btn-o" href="#">Select plan</a>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:34px">
+      <div>
+        <div class="eyebrow dim" style="margin-bottom:12px">Helpful add-ons</div>
+        <p class="small" style="margin-bottom:10px">Priced after a quick scope check.</p>
+        <ul class="ticks">
+          <li>Extra state returns &middot; multi-state filings &mdash; <b>$75 per state</b></li>
+          <li>Additional or complex K-1s &middot; foreign income</li>
+          <li>Amended returns &mdash; <b>$250</b> &middot; prior-year catch-up</li>
+          <li>Bookkeeping cleanup &middot; payroll and 1099 filing</li>
+          <li>In-season rush, inside 72 hours &mdash; <b>$150</b></li>
+          <li>Audit Shield on the return you file &mdash; <b>$75 a year</b></li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow dim" style="margin-bottom:12px">File an extension &mdash; $100</div>
+        <p class="small" style="margin-bottom:10px">For anyone still waiting on a W-2, 1099 or K-1,
+        or who simply needs more time.</p>
+        <ul class="ticks">
+          <li>Preparation and electronic filing of your extension request</li>
+          <li>Confirmation once submitted</li>
+          <li>Portal checklist for the remaining items</li>
+          <li><b>Important:</b> an extension gives you more time to file, not more time to pay. If you may owe, we estimate and advise a payment with the extension.</li>
+        </ul>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-g" href="#">File an extension</a>
+          <a class="btn btn-o" href="#" data-go="appt">Not sure which plan?</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:26px">Prototype note — business return pricing above is the
+    proposed correction (the live site currently shows $550 for both Business and Business&nbsp;Pro).
+    Individual pricing is unchanged apart from the new Self-Employed tier.</p>
+  </div></section>
+
+  <!-- ---------- HOW IT WORKS ---------- -->
+  <section class="night tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">How it works</span>
+      <h2>Five steps, and a person at every one.</h2>
+      <p class="lede">We guide you through the whole filing process in our secure portal, because
+      you deserve accurate, stress-free filing and support you can actually reach.</p>
+    </div>
+    <div class="steps">
+      <div><span class="k">1</span><h3>Choose your package</h3><p>Pick the package that matches your documents and situation. Not sure? Book the free consultation and we&rsquo;ll confirm it.</p></div>
+      <div><span class="k">2</span><h3>Check out and share details</h3><p>Pay online, then enter your name, email and phone so we can set up your account.</p></div>
+      <div><span class="k">3</span><h3>Get your portal link</h3><p>You&rsquo;ll receive an email with access to our secure client portal.</p></div>
+      <div><span class="k">4</span><h3>Upload, sign and track</h3><p>Upload your documents, e-sign the required forms, and follow your return&rsquo;s status from start to finish.</p></div>
+      <div><span class="k">5</span><h3>A professional guides you</h3><p>A dedicated tax professional reviews everything, requests anything missing, answers questions, and stays with the return until it&rsquo;s filed.</p></div>
+    </div>
+  </div></section>
+
+  <!-- ---------- ALL 50 STATES ---------- -->
+  <section class="night tight" style="padding-top:0"><div class="shell">
+    <div class="split wide" style="align-items:center">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span class="eyebrow night">Every state, every year</span>
+        <h2>We file in all fifty states.</h2>
+        <p class="lede">Remote work, a rental in another state, an owner who moved, a business
+        selling across state lines — multi-state is normal now, and it is where most preparers quietly
+        get it wrong. We handle resident, non-resident and part-year returns nationwide, plus the
+        nexus and apportionment questions underneath them.</p>
+        <ul class="ticks" style="max-width:62ch">
+          <li>Resident, non-resident and part-year returns in any state</li>
+          <li>Multi-state apportionment for entities</li>
+          <li>Economic nexus review for remote sellers and service businesses</li>
+          <li>State registrations, withholding and sales tax accounts</li>
+          <li>State notices and assessments — see Audit &amp; Resolution</li>
+        </ul>
+      </div>
+      <div>
+        <div class="states" aria-label="All fifty states plus the District of Columbia">
+          <span>AL</span><span>AK</span><span>AZ</span><span>AR</span><span>CA</span><span>CO</span>
+          <span>CT</span><span>DE</span><span class="home">DC</span><span>FL</span><span>GA</span><span>HI</span>
+          <span>ID</span><span>IL</span><span>IN</span><span>IA</span><span>KS</span><span>KY</span>
+          <span>LA</span><span>ME</span><span class="home">MD</span><span>MA</span><span>MI</span><span>MN</span>
+          <span>MS</span><span>MO</span><span>MT</span><span>NE</span><span>NV</span><span>NH</span>
+          <span>NJ</span><span>NM</span><span>NY</span><span>NC</span><span>ND</span><span>OH</span>
+          <span>OK</span><span>OR</span><span>PA</span><span>RI</span><span>SC</span><span>SD</span>
+          <span>TN</span><span>TX</span><span>UT</span><span>VT</span><span class="home">VA</span><span>WA</span>
+          <span>WV</span><span>WI</span><span>WY</span>
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </div>
+        <p class="small" style="margin-top:12px;color:var(--night-ink-2)">Home offices in Maryland,
+        Virginia and DC — highlighted. Clients everywhere else.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- WHY US ---------- -->
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Why us</span>
+      <h2>Four differences you can actually check.</h2>
+      <p class="lede">Not &ldquo;excellent customer service.&rdquo; Things that are either true of a
+      firm or they aren&rsquo;t.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card">
+        <span class="tag">01</span>
+        <h3>Year-round, not seasonal</h3>
+        <p>Your relationship with your accountant shouldn&rsquo;t disappear in April. Quarterly
+        contact, a mid-year projection, and a year-end window worked in November — not a phone number
+        that stops answering in May.</p>
+      </div>
+      <div class="card">
+        <span class="tag">02</span>
+        <h3>Business and tax together</h3>
+        <p>Accounting decisions and tax decisions are the same decisions viewed twice. We look at
+        both, which is why the bookkeeping and the return are done by people who talk to each
+        other.</p>
+      </div>
+      <div class="card">
+        <span class="tag">03</span>
+        <h3>Technology-driven, not paper-driven</h3>
+        <p>Secure portal, document vault, e-signature, e-filing and IRS acceptance monitoring.
+        Nothing arrives by fax, and nothing gets lost between an inbox and a filing cabinet.</p>
+      </div>
+      <div class="card">
+        <span class="tag">04</span>
+        <h3>Tax is all we do</h3>
+        <p>No audits of other people&rsquo;s companies, no software resales, no side business. Income
+        tax and the work immediately around it, which is why answers come back the same week.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- TESTIMONIALS ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead"><span class="eyebrow">What clients say</span><h2>Real support from real tax experts.</h2></div>
+    <div class="quotes">
+      <figure><blockquote>I was honestly stressed about filing, but they made the whole process really easy. Everything was explained clearly and I never felt lost.</blockquote><figcaption>Herman Miller</figcaption></figure>
+      <figure><blockquote>It was super straightforward from start to finish. I uploaded my docs, asked a few questions, and they handled the rest.</blockquote><figcaption>Loretta Smith</figcaption></figure>
+      <figure><blockquote>Pivot Aide Tax caught credits I would&rsquo;ve missed on my own and kept me updated the whole time. Definitely using them again.</blockquote><figcaption>Jeremy Girard</figcaption></figure>
+    </div>
+  </div></section>
+
+  <!-- ---------- FREE HELP ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="split">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span class="eyebrow">Free, and actually free</span>
+        <h2>Six things that cost you nothing.</h2>
+        <p class="lede">Not a trial and not a teaser. If we can answer it in twenty minutes, we
+        answer it.</p>
+        <ul class="ticks">
+          <li><b>Second Look</b> — we review your last three filed returns for what was missed.</li>
+          <li><b>Notice Triage</b> — send the IRS or state letter, get a plain-English read.</li>
+          <li><b>Entity Fit Check</b> — should you be an S-corp yet? With your actual breakeven.</li>
+          <li><b>Withholding Checkup</b> — stop lending the government money every year.</li>
+          <li><b>Deduction checklists</b> — by trade, not a generic list.</li>
+          <li><b>One hour with a human</b> — no charge, no obligation.</li>
+        </ul>
+        <div><a class="btn btn-o" href="#" data-go="free" style="margin-top:6px">All free services</a></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span class="eyebrow">Quick FAQs</span>
+        <h2>Three we get every week.</h2>
+        <dl class="faq">
+          <div>
+            <dt>Do I need Self-Employed if I have a small 1099 side gig?</dt>
+            <dd>Yes — any self-employment income on Schedule C falls under Self-Employed. Rental
+            income on Schedule E starts at Premium. We&rsquo;ll confirm before you pay.</dd>
+          </div>
+          <div>
+            <dt>What counts as a &ldquo;basic&rdquo; K-1?</dt>
+            <dd>A straightforward partnership or S-corp K-1 without special allocations, multi-state
+            apportionment, or complex basis tracking. We flag anything complex upfront, before it
+            changes your price.</dd>
+          </div>
+          <div>
+            <dt>Can I add state returns or fix an old one?</dt>
+            <dd>Absolutely — we file in all fifty states, and we can file past years or amend
+            returns if needed, priced after a quick scope check.</dd>
+          </div>
+        </dl>
+        <div><a class="btn btn-o" href="tel:+15714703754" style="margin-top:6px">Call 1 (571) 470-3754</a></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- FOCUS ---------- -->
+  <section class="night tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">What we do</span>
+      <h2>Tax isn&rsquo;t a department here.<br>It&rsquo;s the whole firm.</h2>
+      <p class="lede">Some firms do a bit of tax alongside everything else. We do income tax and the
+      work that surrounds it — nothing else, in every month of the year. That is why the answers come
+      back faster and the returns come back right.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><span class="tag">Income tax</span><h3>Individual returns</h3><p>W-2, 1099, self-employment, investments, rentals, retirement income, multi-state, prior years and amendments.</p></div>
+      <div class="card"><span class="tag">Income tax</span><h3>Business returns</h3><p>1065, 1120 and 1120-S. K-1s, owner compensation, apportionment, foreign reporting, virtual currency.</p></div>
+      <div class="card"><span class="tag">Planning</span><h3>Tax strategy</h3><p>Mid-year projections, entity and S-corp elections, owner pay, retirement and depreciation timing, year-end moves. Our flagship engagement is <b>The Standing File</b>.</p></div>
+      <div class="card"><span class="tag">Compliance</span><h3>Payroll &amp; employment tax</h3><p>Payroll filings, W-2 and 1099 issuance, new-hire reporting, worker classification, multi-state withholding.</p></div>
+      <div class="card"><span class="tag">Compliance</span><h3>Sales &amp; use tax</h3><p>Nexus monitoring, registrations, return filing and remittance in every state you sell into.</p></div>
+      <div class="card"><span class="tag">Resolution</span><h3>IRS &amp; state matters</h3><p>Notices, examinations, back taxes, liens and levies, unfiled years — federal and all fifty state agencies.</p></div>
+    </div>
+    <div class="callout" style="margin-top:24px;background:rgba(255,255,255,.055);border-left-color:var(--gold)">
+      <span class="h" style="color:var(--gold)">And the books behind them</span>
+      <p style="color:var(--night-ink-2)">We keep bookkeeping on the menu for one reason: a return is
+      only as good as the ledger under it, and a strategy you can&rsquo;t measure isn&rsquo;t a
+      strategy. Clean books are a tax service here, not a separate business.</p>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============================================================ FILE -->
+<div class="view" id="v-file" hidden>
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">File your taxes</span>
+      <h2>Every price, before you start.</h2>
+      <p class="lede">Pick the row that sounds like your year. All fifty states, resident and
+      non-resident. If none of the rows fit, use QuickPrepare and we&rsquo;ll tell you which one
+      you&rsquo;re in before you owe us anything beyond the deposit.</p>
+    </div>
+
+    <div class="twrap">
+      <table class="ptab">
+        <caption>Individual returns · Form 1040</caption>
+        <tbody>
+          <tr><td class="n">Simple</td><td class="d">Up to two W-2s, standard deduction, one state. Tracked through to IRS acceptance.</td><td class="p">$200</td></tr>
+          <tr><td class="n">Standard</td><td class="d">Multiple W-2s, itemised deductions (Sch. A), dependants and credits, one state.</td><td class="p">$350</td></tr>
+          <tr><td class="n">Premium</td><td class="d">1099 and investment income, Sch. B and D, one rental (Sch. E), HSA, education credits.</td><td class="p">$450</td></tr>
+          <tr><td class="n">Self-Employed</td><td class="d">Schedule C, home office, vehicle, depreciation, self-employment tax — and next year&rsquo;s quarterly estimates set up before you leave.</td><td class="p">$550</td></tr>
+        </tbody>
+      </table>
+
+      <table class="ptab">
+        <caption>Business returns · 1065 / 1120-S / 1120</caption>
+        <tbody>
+          <tr><td class="n">Business</td><td class="d">Single owner or up to three K-1s, one state, books delivered reconciled.</td><td class="p">$750</td></tr>
+          <tr><td class="n">Business Pro</td><td class="d">Multi-member, multi-state apportionment, foreign income and FBAR, virtual currency, fixed-asset schedules, more than three K-1s.</td><td class="p">$1,250</td></tr>
+        </tbody>
+      </table>
+
+      <table class="ptab">
+        <caption>Add-ons</caption>
+        <tbody>
+          <tr><td class="n">Extension</td><td class="d">Filed the same day. Credited in full against your return when you file with us.</td><td class="p">$100</td></tr>
+          <tr><td class="n">Additional state</td><td class="d">Per state, per year. Resident, non-resident or part-year, in any of the fifty states.</td><td class="p">$75</td></tr>
+          <tr><td class="n">Prior-year return</td><td class="d">Priced at its own tier, per year. Behind on several? See Audit &amp; Resolution.</td><td class="p">tier</td></tr>
+          <tr><td class="n">Amended · 1040-X</td><td class="d">Waived if the error was ours.</td><td class="p">$250</td></tr>
+          <tr><td class="n">In-season rush</td><td class="d">Completed inside 72 hours, February through April.</td><td class="p">$150</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div></section>
+
+  <section class="night tight"><div class="shell">
+    <div class="split wide" style="align-items:center">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span class="eyebrow night">QuickPrepare</span>
+        <h2>Not sure which row you&rsquo;re in?</h2>
+        <p class="lede">Pay $200, fill in the intake, and upload what you have. We read the whole
+        file, tell you exactly which package you need and what it costs, and wait for your yes before
+        we prepare anything. The $200 comes off the final invoice.</p>
+        <ul class="ticks" style="max-width:60ch">
+          <li>Secure upload link with a checklist — we chase the missing pieces</li>
+          <li>Your package and total price emailed for approval before any work</li>
+          <li>E-signature, e-filing, and confirmation of IRS acceptance</li>
+        </ul>
+        <div><a class="btn btn-g" href="#" style="margin-top:6px">Pay $200 and start</a></div>
+      </div>
+      <div class="callout">
+        <span class="h">Who this is for</span>
+        <p>Anyone with more than a couple of forms, self-employment income, a first year of rental
+        property, or a year that simply didn&rsquo;t look like the last one. Which, most years, is
+        most people.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="tight"><div class="shell">
+    <div class="sechead"><span class="eyebrow">Also here</span><h2>Two things worth knowing.</h2></div>
+    <div class="grid g2">
+      <div class="card">
+        <span class="tag">Add on · <b>$75 a year</b></span>
+        <h3>Audit Shield</h3>
+        <p>If a return we prepared gets examined, notice response and examination representation on
+        that return are included. Add it at checkout, forget about it, and hope you never need it.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Bookkeeping clients · <b>half price</b></span>
+        <h3>Your entity return, at fifty percent</h3>
+        <p>Every client on a monthly bookkeeping plan gets their business return at half the price
+        above. The books arrive clean, so the return takes half the time. You should get that back.</p>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============================================================ TAX STRATEGY -->
+<div class="view" id="v-strat" hidden>
+  <div class="night">
+    <section><div class="shell">
+      <div class="split wide" style="align-items:center">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <span class="eyebrow night">Tax strategy &middot; by engagement</span>
+          <h2 style="font-size:clamp(2.2rem,4.8vw,3.5rem);font-weight:300;line-height:1.05">The Standing&nbsp;File</h2>
+          <p class="lede" style="font-size:1.16rem">Most firms open your file in February and close
+          it in April. This one never closes.</p>
+          <p class="lede">A year-round tax strategy engagement for high-income individuals and for
+          business owners — a named advisor who knows your situation, quarterly counsel, every
+          return and every notice handled, and someone to call <em>before</em> you do the thing,
+          not after.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
+            <a class="btn btn-g" href="#" data-go="appt">Request a scoping call</a>
+            <a class="btn btn-w" href="tel:+15714703754">1 (571) 470-3754</a>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <svg viewBox="0 0 200 220" style="width:200px" role="img" aria-label="Uncle Pat"><use href="#pat"></use></svg>
+        </div>
+      </div>
+    </div></section>
+  </div>
+
+  <!-- ---------- THREE PILLARS ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">What the engagement is</span>
+      <h2>Three things you are actually buying.</h2>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag">01</span>
+        <h3>A dedicated tax advisor</h3>
+        <p>One named person, not a queue and not whoever is free. They hold your file, they know
+        what you did last year and why, and their number is in your phone. You will not explain your
+        situation from scratch again.</p>
+      </div>
+      <div class="card">
+        <span class="tag">02</span>
+        <h3>Counsel across the whole year</h3>
+        <p>A quarterly session on the calendar, a written strategy plan, a mid-year projection, and
+        a year-end review — plus unlimited questions in between. The point is to reach every
+        decision before it hardens into a filing.</p>
+      </div>
+      <div class="card">
+        <span class="tag">03</span>
+        <h3>Everything filed and handled</h3>
+        <p>Your returns, your estimates, your notices. Included, not billed. When an envelope
+        arrives from the IRS or a state, you forward it and stop thinking about it — that is the
+        service.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- TWO TRACKS ---------- -->
+  <section class="tight" style="padding-top:0"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Two tracks</span>
+      <h2>Built for the two situations that need it.</h2>
+      <p class="lede">Same spine — named advisor, quarterly counsel, everything filed. What changes
+      is the work underneath, because a high W-2 and equity package is a different animal from an
+      operating business.</p>
+    </div>
+    <div class="filecards">
+      <div class="filecard">
+        <div class="fh"><span>Track A</span><b>High-income individuals</b></div>
+        <div class="fb">
+          <p>Large W-2 or professional income, equity compensation, investment and rental portfolios,
+          a liquidity event on the horizon.</p>
+          <ul class="ticks tight">
+            <li>Equity compensation — RSU vesting, ISO and NSO exercise timing, 83(b) decisions</li>
+            <li>Capital gains planning, loss harvesting and holding-period management</li>
+            <li>Alternative minimum tax exposure modelled before it lands</li>
+            <li>Net investment income tax and the additional Medicare tax</li>
+            <li>Charitable strategy — bunching, donor-advised funds, appreciated stock</li>
+            <li>Backdoor and mega-backdoor Roth mechanics, done correctly</li>
+            <li>Rental and real estate positions, including passive loss rules</li>
+            <li>State residency and part-year planning for moves and second homes</li>
+            <li>Annual gift exclusion use and coordination with your estate attorney</li>
+          </ul>
+        </div>
+      </div>
+      <div class="filecard">
+        <div class="fh"><span>Track B</span><b>Business owners &amp; entities</b></div>
+        <div class="fb">
+          <p>An operating company, or several. Partnerships, S-corps and C-corps, single-state or
+          spread across the country.</p>
+          <ul class="ticks tight">
+            <li>Entity structure and elections, reviewed every year rather than once</li>
+            <li>Owner compensation, distributions and basis tracking</li>
+            <li>Accountable plan, home office, vehicle and reimbursement policy</li>
+            <li>Retirement plan design — Solo 401(k), SEP, SIMPLE, cash balance</li>
+            <li>Qualified business income treatment and how to protect it</li>
+            <li>Depreciation strategy, bonus versus §179, cost segregation coordination</li>
+            <li>Multi-state nexus, apportionment and registration monitoring</li>
+            <li>R&amp;D credit qualification and study coordination</li>
+            <li>Succession, basis and exit planning well ahead of a sale</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- WHAT'S INCLUDED ---------- -->
+  <section class="night"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">Included in the engagement</span>
+      <h2>No line items. No surprise invoices.</h2>
+      <p class="lede">Everything below is inside the annual fee. The reason is simple: a client who
+      hesitates before calling their tax advisor is a client who calls too late.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="colhead-n">Advice &amp; planning</div>
+        <ul class="ticks">
+          <li><b>Quarterly strategy sessions</b> — four a year, scheduled, with an agenda and notes</li>
+          <li><b>Written annual strategy plan</b> — quantified, with an implementation calendar</li>
+          <li><b>Mid-year projection</b> — your year run forward while it can still be changed</li>
+          <li><b>Year-end review</b> — the closing window, worked properly in November</li>
+          <li><b>Transaction support</b> — call before the purchase, the sale or the exercise</li>
+          <li><b>Unlimited questions</b> — email or phone, no clock running</li>
+          <li><b>Second Look on prior years</b> — three filed returns reviewed at onboarding</li>
+          <li><b>Coordination with your other advisors</b> — attorney, wealth manager, lender</li>
+        </ul>
+      </div>
+      <div>
+        <div class="colhead-n">Filing &amp; compliance</div>
+        <ul class="ticks">
+          <li><b>All personal returns</b> — federal and every state you touch</li>
+          <li><b>All entity returns</b> — 1065, 1120-S or 1120, on Track B</li>
+          <li><b>Quarterly estimates managed</b> — recalculated, vouchers issued, safe harbour tracked</li>
+          <li><b>Extensions</b> — filed with a payment estimate, not a guess</li>
+          <li><b>Notice handling</b> — any IRS or state letter, answered, at no separate fee</li>
+          <li><b>Examination representation</b> — on returns we prepared</li>
+          <li><b>Amendments</b> — where they are worth filing</li>
+          <li><b>Document vault</b> — permanent, and yours whether or not you stay</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout w-note" style="margin-top:26px">
+      <span class="h">One boundary, stated plainly</span>
+      <p>Representation before the IRS is provided only by practitioners authorised under Circular
+      230, and outcomes in any examination or collection matter depend on your circumstances and on
+      the agency&rsquo;s determination. Nothing in this engagement is a guarantee of a particular
+      tax result — what it guarantees is that someone competent is looking, all year.</p>
+    </div>
+  </div></section>
+
+  <!-- ---------- PREMIUM SUPPORT ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Premium support</span>
+      <h2>What &ldquo;dedicated&rdquo; actually means here.</h2>
+      <p class="lede">Most firms use the word. These are the commitments behind it, and they are in
+      the engagement letter, not just on this page.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card">
+        <span class="tag">Response</span>
+        <h3>One business day</h3>
+        <p>Every question gets a substantive answer within one business day — not an acknowledgement,
+        an answer. If it needs research, you get the timeline that day.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Access</span>
+        <h3>Direct line, no gate</h3>
+        <p>Your advisor&rsquo;s direct number and email. No ticket queue, no general inbox, no
+        re-explaining your situation to whoever picks up.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Urgency</span>
+        <h3>Deadline triage same day</h3>
+        <p>Anything with a date on it — a notice, a closing, an exercise window — is read and
+        answered the day it arrives.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Continuity</span>
+        <h3>A second who knows you</h3>
+        <p>A named backup advisor reads your file too, so holidays, illness and filing season never
+        leave you starting over.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- THE YEAR ---------- -->
+  <section class="night tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">How the year runs</span>
+      <h2>Four quarters, four conversations.</h2>
+      <p class="lede">The engagement has a rhythm, and it is the opposite of the usual one — the
+      heavy thinking happens in the quiet months and April is mostly paperwork.</p>
+    </div>
+    <div class="cal night-cal">
+      <div>
+        <span class="mo">Q1 &middot; Jan – Apr</span>
+        <h3>Filing</h3>
+        <p class="say">Returns prepared and filed. If the other three quarters were done properly,
+        nothing here is news.</p>
+        <ul>
+          <li>All returns, federal and state</li>
+          <li>K-1s chased on your behalf</li>
+          <li>Q1 estimate set</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">Q2 &middot; May – Jul</span>
+        <h3>Structure</h3>
+        <p class="say">The quiet quarter, and the one that moves the number most. Everything
+        structural is cheapest to change now.</p>
+        <ul>
+          <li>Entity and election review</li>
+          <li>Compensation reset</li>
+          <li>Retirement plan design</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">Q3 &middot; Aug – Oct</span>
+        <h3>Projection</h3>
+        <p class="say">Your year run forward to a written figure, with the levers still available
+        listed against it.</p>
+        <ul>
+          <li>Mid-year projection issued</li>
+          <li>Estimates re-cut</li>
+          <li>Equipment and gains timing</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">Q4 &middot; Nov – Dec</span>
+        <h3>Execution</h3>
+        <p class="say">The closing window. Everything agreed in Q3 gets done before the year shuts,
+        with a checklist and a deadline each.</p>
+        <ul>
+          <li>Contributions funded</li>
+          <li>Income and expense timing</li>
+          <li>Distributions and bonuses set</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- FIT ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Fit</span>
+      <h2>Worth being honest about.</h2>
+      <p class="lede">This is a significant annual commitment and it is not right for everyone. We
+      would rather tell you that on the first call than in the second year.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="colhead blue">It earns its fee when</div>
+        <ul class="ticks">
+          <li>Your income is high enough that timing and structure move real money</li>
+          <li>You own a business, or several, and the entity questions are live</li>
+          <li>Equity compensation, real estate or investments make the year complicated</li>
+          <li>You operate or earn in more than one state</li>
+          <li>A sale, a purchase or a liquidity event is somewhere on the horizon</li>
+          <li>You have been surprised by a tax bill more than once</li>
+        </ul>
+      </div>
+      <div>
+        <div class="colhead lime">It does not, yet, when</div>
+        <ul class="ticks lime">
+          <li>A straightforward return is genuinely all you need — take a filing package</li>
+          <li>The business is new and not yet profitable — start with books and estimates</li>
+          <li>You want a return prepared and no conversation. That is a fair thing to want.</li>
+          <li>The main problem is a balance owed or unfiled years — start with Audit &amp; Resolution</li>
+        </ul>
+        <p class="small" style="margin-top:14px">If any of these is you, we will say so and point you
+        at the right thing. It costs us a sale and saves you a year.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- PRICING & CTA ---------- -->
+  <section class="night"><div class="shell">
+    <div class="split wide" style="align-items:center">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span class="eyebrow night">Fee</span>
+        <h2>Scoped, not listed.</h2>
+        <p class="lede">The Standing File is an annual engagement, quoted after a scoping call,
+        because the work genuinely differs — a two-state consultant and a six-entity group are not
+        the same year. What we can promise is that the number is fixed for the term, agreed in
+        writing before anything starts, and does not move because you called too often.</p>
+        <ul class="ticks" style="max-width:60ch">
+          <li>Annual engagement, billed monthly or annually — your choice</li>
+          <li>Fixed for the term. No hourly billing, no per-question charges</li>
+          <li>Scope, deliverables and dates set out in a written engagement letter</li>
+          <li>Includes the returns, so compare it against what you pay today in total</li>
+        </ul>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+          <a class="btn btn-g" href="#" data-go="appt">Request a scoping call</a>
+          <a class="btn btn-w" href="tel:+15714703754">Call 1 (571) 470-3754</a>
+        </div>
+      </div>
+      <div class="filecard dark-fc">
+        <div class="fh"><span>How it starts</span><b>Four steps</b></div>
+        <div class="fb">
+          <ul class="ticks tight">
+            <li><b>1 &middot; Scoping call</b> — 45 minutes, no charge. Your situation, honestly assessed.</li>
+            <li><b>2 &middot; Second Look</b> — we read your last three returns before quoting anything.</li>
+            <li><b>3 &middot; Written proposal</b> — scope, deliverables, named advisor and a fixed fee.</li>
+            <li><b>4 &middot; Onboarding</b> — file built, calendar set, first strategy session booked.</li>
+          </ul>
+          <p class="small" style="margin-top:14px">Nothing is billed until step three is signed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="patsays" style="margin-top:30px;border-left-color:var(--gold)">
+      <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+      <div>
+        <q>Call me before you sign it. Afterwards I&rsquo;m just a witness.</q>
+        <div class="who">Uncle Pat</div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============================================================ AUDIT -->
+<div class="view" id="v-audit" hidden>
+  <div class="night">
+    <section><div class="shell">
+      <div class="split wide" style="align-items:center">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <span class="eyebrow night">Audit &amp; resolution</span>
+          <h2 style="font-size:clamp(2rem,4.2vw,3.1rem);font-weight:300">This is the part Uncle&nbsp;Pat does.</h2>
+          <p class="lede">A notice, an examination, a balance you can&rsquo;t pay, four years you
+          never filed. None of it is the end of anything, and all of it has a process. Federal and
+          state — every state agency in the country.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
+            <a class="btn btn-g" href="tel:+15714703754">Call 1 (571) 470-3754</a>
+            <a class="btn btn-w" href="#" data-go="free">Have us read it free</a>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <svg viewBox="0 0 200 220" style="width:200px" role="img" aria-label="Uncle Pat"><use href="#pat"></use></svg>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="tight"><div class="shell">
+      <div class="sechead"><span class="eyebrow night">Four tiers</span><h2>Where your situation lands.</h2></div>
+      <div class="tiers">
+        <div class="tier">
+          <div class="k">01</div>
+          <div>
+            <h3>Notice response</h3>
+            <p>CP2000, CP14, CP501/503/504, LT11, and their state equivalents. We read it, check
+            whether the agency is actually right — often it isn&rsquo;t — draft and file the
+            response, and track it to closure. Most letters end here and never become anything
+            larger.</p>
+          </div>
+          <div class="pz">$450<i>per notice</i></div>
+        </div>
+        <div class="tier">
+          <div class="k">02</div>
+          <div>
+            <h3>Examination representation</h3>
+            <p>We file a power of attorney and deal with the examiner directly. Correspondence,
+            office, or field audit. Document production, responses to information requests, written
+            position memos, and appeal where the position is worth defending. You don&rsquo;t attend.</p>
+          </div>
+          <div class="pz">from $2,500<i>scoped after review</i></div>
+        </div>
+        <div class="tier">
+          <div class="k">03</div>
+          <div>
+            <h3>Collections &amp; resolution</h3>
+            <p>Balances owed, liens, levies, wage garnishment. We pull and read your transcripts
+            first, always. Then the right instrument: an installment agreement, currently-not-collectible
+            status, penalty abatement on first-time or reasonable-cause grounds, or an offer in
+            compromise if you genuinely qualify for one.</p>
+          </div>
+          <div class="pz">from $1,500<i>scoped after review</i></div>
+        </div>
+        <div class="tier">
+          <div class="k">04</div>
+          <div>
+            <h3>Back years &amp; unfiled returns</h3>
+            <p>Three years or ten. We pull wage-and-income transcripts, reverse substitute-for-return
+            assessments where they exist, reconstruct what&rsquo;s missing, and get you back to
+            compliant — so you can borrow, bid, or just stop thinking about it.</p>
+          </div>
+          <div class="pz">$350 / year<i>+ $500 reconstruction</i></div>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="tight"><div class="shell">
+      <div class="split">
+        <div>
+          <div class="sechead" style="margin-bottom:20px"><span class="eyebrow night">The state desk</span><h2>All fifty state agencies.</h2></div>
+          <p class="lede" style="margin-bottom:16px">Most tax-relief firms only handle the IRS. State
+          agencies move faster and are less forgiving, and they are where multi-state clients get
+          caught out. We work all of them — with the deepest bench in Maryland, Virginia and DC.</p>
+          <ul class="ticks">
+            <li>Any state department of revenue or taxation</li>
+            <li>Comptroller of Maryland &middot; Virginia Dept. of Taxation &middot; DC OTR</li>
+            <li>Multi-state assessments and apportionment disputes</li>
+            <li>Sales and use tax audits</li>
+            <li>Withholding and employer assessments</li>
+            <li>Nexus assessments for remote sellers</li>
+            <li>State liens, levies and payment plans</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sechead" style="margin-bottom:20px"><span class="eyebrow night">Specialty matters</span><h2>The harder ones.</h2></div>
+          <p class="lede" style="margin-bottom:16px">Situations that need someone who has seen the
+          situation before, not someone reading the instructions for the first time.</p>
+          <ul class="ticks">
+            <li>Innocent spouse and injured spouse relief</li>
+            <li>Identity-theft returns and IP PIN recovery</li>
+            <li>Employee Retention Credit examinations</li>
+            <li>Worker classification — 1099 versus W-2</li>
+            <li>Trust fund recovery penalty</li>
+            <li>First-time and reasonable-cause abatement</li>
+            <li>Transcript analysis and account reconstruction</li>
+          </ul>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="tight"><div class="shell">
+      <div class="grid g2">
+        <div class="card">
+          <span class="tag">On every return · <b>$75 a year</b></span>
+          <h3>Audit Shield</h3>
+          <p>Add it when you file. If that return is ever examined, notice response and examination
+          representation on it are covered — no separate engagement, no new fee.</p>
+        </div>
+        <div class="card">
+          <span class="tag">How we work</span>
+          <h3>What you can expect</h3>
+          <p>One number to call. We read your letter within two business days and tell you the
+          deadline on it. No countdown timers, no red banners, no promises about outcomes — just
+          what the process is and what it costs.</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:22px">
+        <span class="h">Plainly</span>
+        <p>Resolution outcomes depend on your financial circumstances and on the agency&rsquo;s own
+        determination. No firm can promise a specific result, a reduced balance, or a percentage —
+        and anyone who does is selling you something. We&rsquo;ll tell you honestly what your
+        options look like before you engage us.</p>
+      </div>
+    </div></section>
+  </div>
+</div>
+
+<!-- ============================================================ FREE -->
+<div class="view" id="v-free" hidden>
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Free help</span>
+      <h2>Eight things you can have for nothing.</h2>
+      <p class="lede">Every firm says the first consultation is free. This is a longer list than
+      that. Each one has a real limit printed next to it, because an offer with a hidden catch
+      isn&rsquo;t worth much.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <span class="tag">Limit · <b>three returns, once</b></span>
+        <h3>Second Look</h3>
+        <p>Send us your last three filed returns. We read them for missed credits, the wrong filing
+        status, unclaimed depreciation, and the deductions your trade usually forgets. If we find
+        something, we&rsquo;ll tell you what amending it is worth before you decide anything.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Limit · <b>one letter per household</b></span>
+        <h3>Notice Triage</h3>
+        <p>Send the IRS or state letter. Within two business days you get a plain-English read: what
+        it is, what it wants, what the deadline actually is, and what it would cost to handle.
+        Whether or not you hire us.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Limit · <b>one hour</b></span>
+        <h3>Consultation</h3>
+        <p>An hour with a person who does this for a living, on the phone, on video, or in person.
+        Bring the messy question — that&rsquo;s the one worth the hour.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Limit · <b>once a year</b></span>
+        <h3>Withholding Checkup</h3>
+        <p>We tune your W-4 so you stop lending the government money interest-free, or stop owing
+        every April. Fifteen minutes, and it changes every paycheque for a year.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Limit · <b>one page, one answer</b></span>
+        <h3>Entity Fit Check</h3>
+        <p>Should you be an S-corp yet? You get one page with the actual breakeven number for your
+        income — not a general rule of thumb, and not a yes because we&rsquo;d like to sell you the
+        election.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Download</span>
+        <h3>Deduction checklists by trade</h3>
+        <p>Separate lists for realtors, contractors, truckers, home-care agencies, salon owners, and
+        rideshare drivers. Written for that trade, not a generic list with the word
+        &ldquo;business&rdquo; in front of everything.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Clients · <b>one a month</b></span>
+        <h3>Ask Uncle Pat</h3>
+        <p>On any paid plan, one tax question a month, answered properly. Not a chatbot and not a
+        knowledge base — an actual answer from an actual preparer.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Always</span>
+        <h3>Document vault</h3>
+        <p>A secure portal and a permanent archive of everything we&rsquo;ve filed for you. It stays
+        reachable whether or not you&rsquo;re still a client. Your returns are yours.</p>
+      </div>
+    </div>
+
+    <div class="patsays" style="margin-top:30px">
+      <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+      <div>
+        <q>That letter has a deadline on it. Send it over. We&rsquo;ll read it today.</q>
+        <div class="who">Uncle Pat</div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============================================================ BUSINESS -->
+<div class="view" id="v-biz" hidden>
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Business tax services</span>
+      <h2>The work that happens the other eleven months.</h2>
+      <p class="lede">Filing is the last step. This is everything before it — clean books, current
+      payroll, estimates that don&rsquo;t surprise you, and a planning retainer that keeps someone
+      looking at your year while you can still change it. Priced on volume, not on hours, so you
+      know the number before the month starts. Month to month — no annual contract.</p>
+    </div>
+
+    <div class="twrap">
+      <table class="ptab">
+        <caption>Monthly bookkeeping · tiered by expense volume</caption>
+        <tbody>
+          <tr><td class="n">Ledger</td><td class="d">Up to 2 accounts, under $25K monthly expenses. Monthly P&amp;L and balance sheet.</td><td class="p">$350<small>per month</small></td></tr>
+          <tr><td class="n">Ledger Plus</td><td class="d">Up to 5 accounts, under $75K monthly. AP and AR tracking, full monthly close package.</td><td class="p">$650<small>per month</small></td></tr>
+          <tr><td class="n">Controller</td><td class="d">Unlimited accounts, class and department tracking, cash forecast, monthly review call.</td><td class="p">$1,200<small>per month</small></td></tr>
+        </tbody>
+      </table>
+
+      <table class="ptab">
+        <caption>Compliance operations</caption>
+        <tbody>
+          <tr><td class="n">Payroll</td><td class="d">Base plus $12 per employee per month. Filings, W-2 and 1099 year-end, new-hire reporting. Add $50 per additional state.</td><td class="p">$125<small>+ per head</small></td></tr>
+          <tr><td class="n">Sales &amp; use tax</td><td class="d">Per state. Nexus monitoring, return filing, remittance calendar.</td><td class="p">$150<small>per month</small></td></tr>
+          <tr><td class="n">Quarterly estimates</td><td class="d">Four recalculations a year, vouchers issued, safe-harbour tracking.</td><td class="p">$600<small>per year</small></td></tr>
+          <tr><td class="n">Catch-up books</td><td class="d">Per month of books reconstructed, three-month minimum.</td><td class="p">$400<small>per month</small></td></tr>
+          <tr><td class="n">Planning retainer</td><td class="d">Mid-year projection, entity and compensation review, a strategy session each quarter, unlimited notice review.</td><td class="p">$250<small>per month</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:26px">
+      <span class="h">Worth doing the arithmetic on</span>
+      <p>Bookkeeping clients get their entity return at half the price on the filing page. On the
+      Ledger plan that&rsquo;s $375 back on a $750 return — more than a month of bookkeeping, returned
+      to you for handing us clean books.</p>
+    </div>
+  </div></section>
+
+  <section class="night tight"><div class="shell">
+    <div class="sechead"><span class="eyebrow night">Advanced advisory</span><h2>For owners, not filers.</h2>
+      <p class="lede">Scoped in a conversation and quoted properly. The figures below are where
+      these engagements usually start.</p>
+    </div>
+    <div class="twrap">
+      <table class="ptab">
+        <caption>Structure &amp; compensation</caption>
+        <tbody>
+          <tr><td class="n">S-corp election</td><td class="d">Form 2553, reasonable-compensation benchmark memo, payroll set-up, accountable plan adopted.</td><td class="p">$1,500</td></tr>
+          <tr><td class="n">Owner comp plan</td><td class="d">Salary and distribution split, basis tracking, loan versus distribution treatment.</td><td class="p">$1,200</td></tr>
+          <tr><td class="n">Entity structure</td><td class="d">Holding company, related-party flows, multi-entity design, state footprint.</td><td class="p">$3,500+</td></tr>
+          <tr><td class="n">Retirement design</td><td class="d">Solo 401(k), SEP, SIMPLE; cash-balance modelling for high earners.</td><td class="p">$1,500</td></tr>
+        </tbody>
+      </table>
+      <table class="ptab">
+        <caption>Planning &amp; positions</caption>
+        <tbody>
+          <tr><td class="n">Annual strategy plan</td><td class="d">Written and quantified, with a projected saving and an implementation calendar you can hold us to.</td><td class="p">$2,500+</td></tr>
+          <tr><td class="n">Multi-state nexus</td><td class="d">Economic nexus review, apportionment, registration and unwind plan.</td><td class="p">$2,000</td></tr>
+          <tr><td class="n">Depreciation strategy</td><td class="d">Bonus versus §179, cost-recovery timing across the fixed asset register.</td><td class="p">$1,000</td></tr>
+          <tr><td class="n">Exam readiness</td><td class="d">Pre-examination review of positions, substantiation and records — before anyone is looking.</td><td class="p">$2,500</td></tr>
+          <tr><td class="n">Cost segregation</td><td class="d">Real estate. We manage the specialist study and book the result on your return.</td><td class="p">quoted</td></tr>
+          <tr><td class="n">R&amp;D credit</td><td class="d">Qualification review, study coordination, and the credit claimed and defended.</td><td class="p">quoted</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="bridge" style="margin-top:34px;background:var(--night-2);border-color:var(--night-line)">
+      <div>
+        <span class="eyebrow night">If you want all of it, all year</span>
+        <h3 style="margin-top:9px;color:#fff">The Standing File</h3>
+        <p style="color:var(--night-ink-2)">Everything above, plus your returns, your estimates and
+        your notices — with a dedicated advisor and quarterly counsel, for one annual fee. Our
+        year-round engagement for high-income individuals and business owners.</p>
+      </div>
+      <a class="btn btn-g" href="#" data-go="strat">See The Standing File</a>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============================================================ UNCLE ED -->
+<div class="view" id="v-pat" hidden>
+  <div class="night">
+    <section><div class="shell">
+      <div class="split wide" style="align-items:center">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <span class="eyebrow night">Meet Uncle Pat</span>
+          <h2 style="font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:300">Everybody&rsquo;s got an Uncle&nbsp;Sam.<br><span style="color:var(--gold);font-weight:400">Not everybody&rsquo;s got an Uncle&nbsp;Pat.</span></h2>
+          <p class="lede">Pat is an owl, and he has been doing this a long time. He has seen every
+          letter the agency sends and he is not impressed by any of them. He&rsquo;s the relative you
+          call before you call a lawyer — the one who reads the notice, puts it down, and says
+          <em>okay, here&rsquo;s what this actually is.</em></p>
+          <p class="lede">Owls see in the dark, hear what&rsquo;s hidden, and hunt without making a
+          sound. That&rsquo;s more or less the job: find what&rsquo;s buried in a return, spot the
+          risk before the agency does, and handle it quietly.</p>
+          <p class="lede">There&rsquo;s a division of labour here. <b style="color:#fff">Uncle Sam
+          looks out for the government</b> — the forms, the deadlines, the amount due on a year that
+          has already closed. <b style="color:var(--gold)">Uncle Pat looks out for you</b> — the
+          twelve months of decisions that determine what Sam ends up calculating. One of them looks
+          backwards. The other gets there first.</p>
+        </div>
+        <div style="text-align:center">
+          <svg viewBox="0 0 200 220" style="width:240px" role="img" aria-label="Uncle Pat"><use href="#pat"></use></svg>
+        </div>
+      </div>
+    </div></section>
+
+    <section class="tight"><div class="shell">
+      <div class="sechead"><span class="eyebrow night">How he talks</span><h2>Five rules, and one he won&rsquo;t break.</h2></div>
+      <div class="grid g3">
+        <div class="card"><span class="tag">Rule <b>01</b></span><h3>Calm first</h3><p>Pat never panics, and never makes you panic. Fear is the competition&rsquo;s instrument, not ours.</p></div>
+        <div class="card"><span class="tag">Rule <b>02</b></span><h3>Plain words</h3><p>&ldquo;The IRS thinks you left off $8,400 of income&rdquo; — not &ldquo;CP2000 underreporter inquiry.&rdquo;</p></div>
+        <div class="card"><span class="tag">Rule <b>03</b></span><h3>Short sentences</h3><p>He&rsquo;s talking to you. He isn&rsquo;t filing a brief.</p></div>
+        <div class="card"><span class="tag">Rule <b>04</b></span><h3>Honest about bad news</h3><p>If you owe it, he says so. There&rsquo;s no version of this where being told what you want to hear helps.</p></div>
+        <div class="card"><span class="tag">Rule <b>05</b></span><h3>Dry, never jokey</h3><p>One wry beat, then back to work. He&rsquo;s warm. He isn&rsquo;t the comic relief.</p></div>
+        <div class="card" style="background:rgba(234,228,47,.10)"><span class="tag"><b>The one he won&rsquo;t break</b></span><h3>He defends against the letter, not the government</h3><p>Uncle Sam is entitled to what he&rsquo;s owed. Our job is making sure the number is right and you&rsquo;re treated correctly. That&rsquo;s the whole posture.</p></div>
+      </div>
+    </div></section>
+
+    <section class="tight"><div class="shell">
+      <div class="split">
+        <div>
+          <div class="sechead" style="margin-bottom:18px"><span class="eyebrow night">Things Pat says</span><h2>In his own words.</h2></div>
+          <ul class="ticks">
+            <li>&ldquo;Uncle Sam isn&rsquo;t the enemy. He&rsquo;s just very organised. So are we.&rdquo;</li>
+            <li>&ldquo;He gets exactly what he&rsquo;s owed. Not a dollar more.&rdquo;</li>
+            <li>&ldquo;Most of these letters are wrong about something. Let&rsquo;s find out which part.&rdquo;</li>
+            <li>&ldquo;Four years unfiled. That&rsquo;s fixable. It&rsquo;s happened before.&rdquo;</li>
+            <li>&ldquo;Bring the messy question. That&rsquo;s the one worth the hour.&rdquo;</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sechead" style="margin-bottom:18px"><span class="eyebrow night">Things Pat doesn&rsquo;t say</span><h2>And won&rsquo;t.</h2></div>
+          <ul class="ticks">
+            <li>&ldquo;Beat the IRS&rdquo; or &ldquo;fight the government&rdquo;</li>
+            <li>Anything about pennies on the dollar</li>
+            <li>Anything a tax protester would nod along to</li>
+            <li>A promised outcome, figure, or percentage</li>
+            <li>A joke at a frightened person&rsquo;s expense</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:30px">
+        <span class="h">Behind the owl</span>
+        <p>Uncle Pat is the friendly face on a firm of accountants and preparers working out of
+        Hyattsville, Maryland and Northern Virginia. Real credentials, real licensing, listed on the
+        contact page. He&rsquo;s who greets you. They&rsquo;re who does the work.</p>
+      </div>
+    </div></section>
+  </div>
+</div>
+
+<!-- ============================================================ RESOURCES -->
+<div class="view" id="v-res" hidden>
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Tax resources</span>
+      <h2>The things people call us to ask.</h2>
+      <p class="lede">Deadlines, the numbers that actually changed this year, what to bring, and
+      plain-English answers to the questions that come up every week. Free to use, whether or not
+      you file with us.</p>
+    </div>
+  </div></section>
+
+  <!-- ---------- CALENDAR ---------- -->
+  <section class="night tight" style="padding-top:0"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">What&rsquo;s next</span>
+      <h2>The dates that are actually coming.</h2>
+      <p class="lede">Not a generic calendar starting in January — the deadlines ahead of you from
+      today. Anything marked in gold is inside the next ninety days.</p>
+    </div>
+    <div class="dates">
+      <div class="d soon">
+        <div class="dt">15 Sep 2026<i>Tuesday</i></div>
+        <div class="dw">
+          <h3>Q3 estimated tax &middot; extended partnership and S-corp returns</h3>
+          <p>Third-quarter estimate for the 2026 tax year, and the final deadline for 1065 and
+          1120-S returns that were extended in March.</p>
+        </div>
+        <div class="who">Self-employed<br>Partnerships<br>S-corps</div>
+      </div>
+      <div class="d soon">
+        <div class="dt">15 Oct 2026<i>Thursday</i></div>
+        <div class="dw">
+          <h3>Extended individual returns</h3>
+          <p>Last day for 2025 Form 1040 returns filed on extension. There is no further extension —
+          after this, late-filing penalties start accruing.</p>
+        </div>
+        <div class="who">Individuals<br>Sole proprietors</div>
+      </div>
+      <div class="d soon">
+        <div class="dt">Nov – Dec 2026<i>Planning window</i></div>
+        <div class="dw">
+          <h3>Year-end moves</h3>
+          <p>Retirement funding, equipment purchases, income and expense timing, charitable gifts,
+          bonuses and distributions. Almost every lever closes at midnight on 31 December.</p>
+        </div>
+        <div class="who">Everyone with<br>something to decide</div>
+      </div>
+      <div class="d">
+        <div class="dt">31 Dec 2026<i>Thursday</i></div>
+        <div class="dw">
+          <h3>The 2026 tax year closes</h3>
+          <p>Last day for most deductible actions. IRA contributions are the notable exception —
+          those run to the filing deadline.</p>
+        </div>
+        <div class="who">Everyone</div>
+      </div>
+      <div class="d">
+        <div class="dt">15 Jan 2027<i>Friday</i></div>
+        <div class="dw">
+          <h3>Q4 estimated tax</h3>
+          <p>Final 2026 estimate. Paying it on time is often what keeps the underpayment penalty
+          off the return.</p>
+        </div>
+        <div class="who">Self-employed<br>Investors</div>
+      </div>
+      <div class="d">
+        <div class="dt">1 Feb 2027<i>Monday</i></div>
+        <div class="dw">
+          <h3>W-2 and 1099 furnishing deadline</h3>
+          <p>Employers and payers must get W-2s and most 1099s to recipients and to the agencies.
+          The statutory date is 31 January, which falls on a Sunday, so it moves to the next
+          business day. If you pay contractors, this is your deadline, not theirs.</p>
+        </div>
+        <div class="who">Employers<br>Anyone issuing 1099s</div>
+      </div>
+      <div class="d">
+        <div class="dt">15 Mar 2027<i>Monday</i></div>
+        <div class="dw">
+          <h3>Partnership and S-corp returns</h3>
+          <p>Forms 1065 and 1120-S, or the extension to 15 September. K-1s flow from here, so a
+          late entity return holds up every owner&rsquo;s personal return.</p>
+        </div>
+        <div class="who">Partnerships<br>S-corps</div>
+      </div>
+      <div class="d">
+        <div class="dt">15 Apr 2027<i>Thursday</i></div>
+        <div class="dw">
+          <h3>Individual and C-corp returns &middot; Q1 estimate &middot; IRA deadline</h3>
+          <p>Form 1040 and Form 1120, or an extension. Also the first 2027 estimate, and the last
+          day to make a 2026 IRA or HSA contribution.</p>
+        </div>
+        <div class="who">Individuals<br>C-corps</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:26px">
+      <span class="h">On extensions</span>
+      <p>An extension gives you more time to <b>file</b>, never more time to <b>pay</b>. If you
+      expect to owe, the payment is still due on the original date — otherwise interest and the
+      failure-to-pay penalty run from that day, extension or not. We estimate the payment and file
+      the extension together.</p>
+    </div>
+  </div></section>
+
+  <!-- ---------- THE NUMBERS ---------- -->
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Tax year 2026</span>
+      <h2>The numbers that matter this year.</h2>
+      <p class="lede">Figures for the 2026 tax year — the year you are living in now, and the one
+      your planning decisions still affect. Sourced from the IRS; we update this page when the
+      agency does.</p>
+    </div>
+
+    <div class="figcols">
+      <div>
+        <table class="figs">
+          <caption>Standard deduction</caption>
+          <tbody>
+            <tr><th>Single or married filing separately</th><td>$16,100</td></tr>
+            <tr><th>Married filing jointly</th><td>$32,200</td></tr>
+            <tr><th>Head of household</th><td>$24,150</td></tr>
+            <tr><th>Additional deduction, age 65+ <small>Temporary, 2025–2028. Phases out above $75,000 MAGI ($150,000 joint).</small></th><td>$6,000<small>per eligible person</small></td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Marginal rates · taxable income</caption>
+          <tbody>
+            <tr><th>10% <small>Single / married filing jointly</small></th><td>to $12,400<small>to $24,800</small></td></tr>
+            <tr><th>12%</th><td>over $12,400<small>over $24,800</small></td></tr>
+            <tr><th>22%</th><td>over $50,400<small>over $100,800</small></td></tr>
+            <tr><th>24%</th><td>over $105,700<small>over $211,400</small></td></tr>
+            <tr><th>32%</th><td>over $201,775<small>over $403,550</small></td></tr>
+            <tr><th>35%</th><td>over $256,225<small>over $512,450</small></td></tr>
+            <tr><th>37%</th><td>over $640,600<small>over $768,700</small></td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Health &amp; benefits</caption>
+          <tbody>
+            <tr><th>HSA contribution — self-only</th><td>$4,400</td></tr>
+            <tr><th>HSA contribution — family</th><td>$8,750</td></tr>
+            <tr><th>HSA catch-up, age 55+</th><td>$1,000</td></tr>
+            <tr><th>HDHP minimum deductible <small>Self-only / family</small></th><td>$1,700<small>$3,400</small></td></tr>
+            <tr><th>HDHP out-of-pocket maximum <small>Self-only / family</small></th><td>$8,500<small>$17,000</small></td></tr>
+            <tr><th>Health FSA salary reduction</th><td>$3,400</td></tr>
+            <tr><th>Qualified transportation benefit</th><td>$340<small>per month</small></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <table class="figs">
+          <caption>Retirement contributions</caption>
+          <tbody>
+            <tr><th>401(k), 403(b), 457, TSP deferral</th><td>$24,500</td></tr>
+            <tr><th>Catch-up, age 50+</th><td>$8,000</td></tr>
+            <tr><th>Higher catch-up, ages 60–63</th><td>$11,250</td></tr>
+            <tr><th>IRA contribution</th><td>$7,500</td></tr>
+            <tr><th>IRA catch-up, age 50+</th><td>$1,100</td></tr>
+            <tr><th>SIMPLE plan deferral <small>Higher limit for applicable plans: $18,100</small></th><td>$17,000</td></tr>
+            <tr><th>SIMPLE catch-up, 50+ / 60–63</th><td>$4,000<small>$5,250</small></td></tr>
+            <tr><th>Roth IRA phase-out <small>Single or head of household / joint</small></th><td>$153k–$168k<small>$242k–$252k</small></td></tr>
+            <tr><th>Traditional IRA deductibility <small>If covered by a workplace plan. Single / joint.</small></th><td>$81k–$91k<small>$129k–$149k</small></td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Business &amp; mileage</caption>
+          <tbody>
+            <tr><th>Standard mileage — business</th><td>72.5&cent;<small>per mile</small></td></tr>
+            <tr><th>Standard mileage — medical or moving</th><td>20.5&cent;<small>per mile</small></td></tr>
+            <tr><th>Standard mileage — charitable</th><td>14&cent;<small>per mile</small></td></tr>
+            <tr><th>State and local tax cap <small>Phases down above roughly $505,000 MAGI, floor $10,000.</small></th><td>$40,400</td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Temporary deductions · 2025 – 2028</caption>
+          <tbody>
+            <tr><th>Qualified tips <small>Phases out above $150,000 ($300,000 joint).</small></th><td>up to $25,000</td></tr>
+            <tr><th>Qualified overtime <small>$25,000 joint. Same phase-out.</small></th><td>up to $12,500</td></tr>
+            <tr><th>Car loan interest <small>Loans originated after 31 Dec 2024. Phases out above $100,000 ($200,000 joint).</small></th><td>up to $10,000</td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Transfers &amp; AMT</caption>
+          <tbody>
+            <tr><th>Annual gift tax exclusion</th><td>$19,000<small>per recipient</small></td></tr>
+            <tr><th>Estate tax basic exclusion</th><td>$15,000,000</td></tr>
+            <tr><th>AMT exemption <small>Unmarried / married filing jointly</small></th><td>$90,100<small>$140,200</small></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:26px">Figures are for tax year 2026 and come from IRS
+    Revenue Procedure 2025-32, IRS Notice IR-2025-111, Revenue Procedure 2025-19 and the 2026
+    standard mileage rate announcement. Reference only — your situation decides which of these
+    apply, and several phase out with income.</p>
+  </div></section>
+
+  <!-- ---------- EXPLAINERS ---------- -->
+  <section class="night tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">Plain English</span>
+      <h2>Six things worth understanding.</h2>
+      <p class="lede">Written the way we would explain them on the phone, because that is where
+      most of these questions actually get asked.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag">Notices</span>
+        <h3>A CP2000 is not a bill</h3>
+        <p>It is a <em>proposed</em> change — the IRS matched a form it received against your return
+        and found a gap. You normally have 30 days to agree or disagree. A surprising share are
+        wrong, or right about the income and wrong about the basis. Never pay one before someone
+        reads it.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Estimates</span>
+        <h3>Why you owe every April</h3>
+        <p>Nothing withholds tax from self-employment, investment or rental income. The fix is
+        quarterly estimates. Pay the lesser of 90% of this year&rsquo;s tax or 100% of last
+        year&rsquo;s — 110% if last year&rsquo;s AGI topped $150,000 — and the underpayment penalty
+        goes away.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Entity</span>
+        <h3>When an S-corp starts to pay</h3>
+        <p>The saving is on self-employment tax, and it only exists once profit comfortably exceeds
+        a reasonable salary for your role. Below that, the payroll and filing costs eat it. The
+        salary is not optional and not a number you pick — it has to be defensible.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Records</span>
+        <h3>How long to keep things</h3>
+        <p>Three years is the general rule. Six if you omitted more than 25% of your gross income.
+        Employment tax records, four. Property records until three years after you sell it. If you
+        never filed, or filed fraudulently, there is no limit at all.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Multi-state</span>
+        <h3>Where you actually owe</h3>
+        <p>Your resident state taxes everything; other states tax what you earned there, and your
+        home state usually credits you for it. Remote work, a rental elsewhere, or a mid-year move
+        each create a return most people miss — and states are getting better at noticing.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Extensions</span>
+        <h3>An extension buys time to file</h3>
+        <p>Not time to pay. File one and you avoid the failure-to-file penalty, which is ten times
+        heavier than the failure-to-pay penalty. But interest and the smaller penalty still run from
+        the original date on anything unpaid.</p>
+      </div>
+    </div>
+    <div class="patsays" style="margin-top:26px;border-left-color:var(--gold)">
+      <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+      <div>
+        <q>None of this is complicated. It&rsquo;s just unfamiliar, and it arrives when you&rsquo;re busy.</q>
+        <div class="who">Uncle Pat</div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- CHECKLISTS ---------- -->
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Before you file</span>
+      <h2>What to have ready.</h2>
+      <p class="lede">The portal gives you a checklist built for your situation. This is the short
+      version, so you can start gathering before you book anything.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="eyebrow dim" style="margin-bottom:12px">Everyone</div>
+        <ul class="ticks">
+          <li>Last year&rsquo;s filed return</li>
+          <li>Photo ID and Social Security numbers for everyone on the return</li>
+          <li>W-2s, and 1099s of every letter — NEC, MISC, INT, DIV, B, R, G, K</li>
+          <li>1095-A if you had marketplace health coverage</li>
+          <li>1098 for mortgage interest, 1098-T for tuition, 1098-E for student loan interest</li>
+          <li>Bank routing and account number for the refund or payment</li>
+          <li>Any IRS or state letters received since your last filing</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow dim" style="margin-bottom:12px">Self-employed and business owners</div>
+        <ul class="ticks">
+          <li>Profit and loss and balance sheet, or the bookkeeping file</li>
+          <li>Bank and credit card statements for every business account</li>
+          <li>Mileage log, or total business and total miles for the year</li>
+          <li>Home office square footage and total home square footage</li>
+          <li>Asset purchases over $2,500 with dates and amounts</li>
+          <li>Payroll reports and copies of 1099s you issued</li>
+          <li>K-1s from any partnership or S-corp you hold</li>
+          <li>Estimated tax payments made, with dates</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- OFFICIAL TOOLS ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Official tools</span>
+      <h2>Straight to the source.</h2>
+      <p class="lede">Everything here is a government site. We link to them rather than reproducing
+      them, because these are the versions that stay current — and because nobody should take a tax
+      figure from a marketing page without being able to check it.</p>
+    </div>
+    <div class="res">
+      <a href="https://www.irs.gov/refunds" target="_blank" rel="noopener">
+        <span class="t">Where&rsquo;s My Refund</span>
+        <p>Refund status, updated daily. Available about 24 hours after an e-filed return is accepted.</p>
+        <span class="u">irs.gov/refunds</span>
+      </a>
+      <a href="https://www.irs.gov/payments/online-account" target="_blank" rel="noopener">
+        <span class="t">IRS Online Account</span>
+        <p>Your balance, payment history, notices and transcripts in one place. Worth setting up before you need it.</p>
+        <span class="u">irs.gov/payments/online-account</span>
+      </a>
+      <a href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">
+        <span class="t">Get Transcript</span>
+        <p>Wage and income transcripts — what the IRS was actually told about you. The first thing we pull on any back-year matter.</p>
+        <span class="u">irs.gov/individuals/get-transcript</span>
+      </a>
+      <a href="https://www.irs.gov/payments/direct-pay" target="_blank" rel="noopener">
+        <span class="t">IRS Direct Pay</span>
+        <p>Pay a balance or an estimate straight from a bank account, no fee. Keep the confirmation number.</p>
+        <span class="u">irs.gov/payments/direct-pay</span>
+      </a>
+      <a href="https://www.irs.gov/individuals/tax-withholding-estimator" target="_blank" rel="noopener">
+        <span class="t">Withholding Estimator</span>
+        <p>Check whether your W-4 is set right. Or let us do it — the Withholding Checkup is free.</p>
+        <span class="u">irs.gov/individuals/tax-withholding-estimator</span>
+      </a>
+      <a href="https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin" target="_blank" rel="noopener">
+        <span class="t">Identity Protection PIN</span>
+        <p>A six-digit code that stops anyone else filing a return under your Social Security number.</p>
+        <span class="u">irs.gov/identity-theft-fraud-scams</span>
+      </a>
+      <a href="https://www.marylandtaxes.gov" target="_blank" rel="noopener">
+        <span class="t">Comptroller of Maryland</span>
+        <p>Maryland returns, payments, notices and business tax accounts.</p>
+        <span class="u">marylandtaxes.gov</span>
+      </a>
+      <a href="https://www.tax.virginia.gov" target="_blank" rel="noopener">
+        <span class="t">Virginia Department of Taxation</span>
+        <p>Virginia individual and business filing, payments and correspondence.</p>
+        <span class="u">tax.virginia.gov</span>
+      </a>
+    </div>
+    <p class="small" style="margin-top:20px">Filing in another state? We work all fifty — ask and
+    we&rsquo;ll point you at the right agency, or just handle it.</p>
+
+    <div class="callout" style="margin-top:26px">
+      <span class="h">What this page is and isn&rsquo;t</span>
+      <p>General information, current as of September 2026, not advice about your situation. Tax
+      figures change every year and most of them phase out with income. Before you act on anything
+      here, let us look at your actual numbers — the consultation is free.</p>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============================================================ APPOINTMENTS -->
+<div class="view" id="v-appt" hidden>
+  <div class="night">
+    <section><div class="shell">
+      <div class="split wide" style="align-items:center">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <span class="eyebrow night">Appointments</span>
+          <h2 style="font-size:clamp(2rem,4.2vw,3.1rem);font-weight:300">Book time with a person.</h2>
+          <p class="lede">Not a form that disappears into an inbox. You pick a slot, you get a
+          confirmation the same business day, and a preparer who has read your file turns up to
+          it.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
+            <a class="btn btn-g" href="#" data-go="free">See what else is free</a>
+            <a class="btn btn-w" href="tel:+15714703754">Or call 1 (571) 470-3754</a>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <svg viewBox="0 0 200 220" style="width:180px" role="img" aria-label="Uncle Pat"><use href="#pat"></use></svg>
+        </div>
+      </div>
+    </div></section>
+  </div>
+
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">What you can book</span>
+      <h2>Seven kinds of appointment.</h2>
+      <p class="lede">Pick the one that matches your question. If you pick wrong we&rsquo;ll move
+      you, at no charge — we would rather you got the right hour than the tidy one.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag">Anyone</span>
+        <h3>Free consultation</h3>
+        <p>An hour to talk through whatever the situation is — a first filing, a business you just
+        started, a year that went sideways. Bring the messy question. That&rsquo;s the one worth the
+        hour.</p>
+        <span class="meta">60 minutes &middot; <b>No charge</b></span>
+      </div>
+      <div class="card">
+        <span class="tag">After you choose a package</span>
+        <h3>Filing kickoff</h3>
+        <p>We walk your document checklist together, confirm the package is the right one before any
+        work starts, and agree the timeline for your return.</p>
+        <span class="meta">30 minutes &middot; <b>Included</b></span>
+      </div>
+      <div class="card">
+        <span class="tag">Priority slots held daily</span>
+        <h3>Notice or audit intake</h3>
+        <p>You have a letter, an examination, a balance, or years you haven&rsquo;t filed. Bring the
+        notice. We read it, tell you the real deadline, and set out what handling it involves and
+        costs.</p>
+        <span class="meta">45 minutes &middot; <b>Triage free</b></span>
+      </div>
+      <div class="card">
+        <span class="tag">August – October</span>
+        <h3>Mid-year projection</h3>
+        <p>Your year run forward to a written number, while there is still time to change it.
+        Includes what to do about it and by when.</p>
+        <span class="meta">60 minutes &middot; <b>Included on retainer</b></span>
+      </div>
+      <div class="card">
+        <span class="tag">Any time</span>
+        <h3>Entity &amp; S-corp review</h3>
+        <p>Should you elect, and is this the year? We bring your actual breakeven, a reasonable
+        compensation range, and an honest answer if the answer is not yet.</p>
+        <span class="meta">45 minutes &middot; <b>Fit check free</b></span>
+      </div>
+      <div class="card">
+        <span class="tag">The Standing File</span>
+        <h3>Strategy scoping call</h3>
+        <p>For anyone considering the year-round engagement. We assess the situation honestly, tell
+        you whether it earns its fee, and quote only if it does.</p>
+        <span class="meta">45 minutes &middot; <b>No charge</b></span>
+      </div>
+      <div class="card">
+        <span class="tag">November – December only</span>
+        <h3>Year-end planning</h3>
+        <p>The last moves that still count for the closing tax year — retirement funding, equipment,
+        income timing, distributions. Booked out early; don&rsquo;t leave it to late December.</p>
+        <span class="meta">60 minutes &middot; <b>Included on retainer</b></span>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="tight"><div class="shell">
+    <div class="split wide">
+      <div class="embed">
+        <span class="k">Scheduler embeds here</span>
+        <h3>Pick a time that works</h3>
+        <p>Live availability, automatic confirmation and reminders, and a rescheduling link in every
+        email. Drop your booking tool&rsquo;s embed into this block.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:26px">
+        <div>
+          <div class="eyebrow dim" style="margin-bottom:12px">How we meet</div>
+          <ul class="ticks">
+            <li><b>Video</b> — the default. A link arrives with your confirmation.</li>
+            <li><b>Phone</b> — say so when you book and we&rsquo;ll call you.</li>
+            <li><b>In person</b> — Hyattsville, Maryland, by arrangement.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="eyebrow dim" style="margin-bottom:12px">What to have ready</div>
+          <ul class="ticks">
+            <li>Your most recent filed return</li>
+            <li>Any letters from the IRS or a state agency</li>
+            <li>A year-to-date P&amp;L or bank summary, if there&rsquo;s a business</li>
+            <li>The question you actually want answered — write it down first</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:34px">
+      <div class="card">
+        <span class="tag">Confirmation</span>
+        <h3>Same business day</h3>
+        <p>Every booking is confirmed by a person before the end of the business day, with the
+        preparer&rsquo;s name on it.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Urgent matters</span>
+        <h3>Two business days</h3>
+        <p>Anyone with a dated notice gets a slot within two business days. If the deadline is
+        tighter than that, call rather than book.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Changes</span>
+        <h3>Reschedule free</h3>
+        <p>Up to 24 hours before, from the link in your confirmation. No fee, no explanation
+        needed.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:26px">
+      <span class="h">Season note</span>
+      <p>From late January through April, appointments book two to three weeks ahead and the last
+      week before a deadline is usually gone. If you know you will need us in the spring, take a
+      slot in the autumn — it costs nothing to move it later.</p>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============================================================ THE FILE ROOM -->
+<div class="view" id="v-app" hidden>
+  <section class="night"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">The File Room &middot; in build</span>
+      <h2>Your file, open all year.<br>Now you can see inside it.</h2>
+      <p class="lede">One place to send documents, sign what needs signing, read your finished
+      return, ask the question you actually have, and pay &mdash; on the web and on your phone.
+      No more attachments, no more &ldquo;did you get my W-2?&rdquo;</p>
+    </div>
+
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag">Send</span>
+        <h3>Upload, don&rsquo;t email</h3>
+        <p>Photograph a W-2 at the kitchen table or drag a folder in from your desktop. We tell you
+        exactly what is still missing, by name &mdash; never &ldquo;please send your documents.&rdquo;</p>
+      </div>
+      <div class="card">
+        <span class="tag">Sign</span>
+        <h3>Sign from anywhere</h3>
+        <p>Read the return, verify it is you, sign, and we file. Four minutes. Both spouses sign
+        separately from wherever they happen to be.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Read</span>
+        <h3>See what changed</h3>
+        <p>Not just the number. Three plain sentences on what moved since last year and why &mdash;
+        the rental, the equipment, the new state.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Ask</span>
+        <h3>Ask where the papers are</h3>
+        <p>A question about a document, asked beside that document, answered by the person preparing
+        your return. Within one business day.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Know</span>
+        <h3>Deadlines that are yours</h3>
+        <p>Your estimated payment, your extension date, your state. Plus the rule changes that
+        actually move your number &mdash; and nothing else.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Pay</span>
+        <h3>Pay without a phone call</h3>
+        <p>Itemised invoice, bank transfer with no fee, card if you prefer with the fee shown before
+        you confirm. Payment history stays where you can find it.</p>
+      </div>
+    </div>
+
+    <div class="wait">
+      <p>Everything in one place, for the whole year &mdash; not just in April.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-g" href="#" data-go="appt">Ask about early access</a>
+        <a class="btn btn-w" href="#" data-go="file">See what we charge</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Getting in</span>
+      <h2>Three steps, and you are in it.</h2>
+    </div>
+
+    <div class="steps s3">
+      <div><span class="k">1</span>
+        <h3>We send you an invitation</h3>
+        <p>An email with a link, to the address already on your file. It expires, so use it while
+        it is fresh &mdash; and if it lapses, ask for another. We can always send one.</p>
+      </div>
+      <div><span class="k">2</span>
+        <h3>You set a password and a second step</h3>
+        <p>A code by text, or Face&nbsp;ID on the phone app. The second step is not us being
+        difficult: it is required for anyone holding taxpayer information, and it is the single
+        thing that stops a stolen password becoming a stolen identity.</p>
+      </div>
+      <div><span class="k">3</span>
+        <h3>Your file is already there</h3>
+        <p>Prior returns, this year&rsquo;s checklist, your invoices. Nothing to set up. If you have
+        filed with us before, it is populated before you arrive.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:26px">
+      <span class="h">You are not required to use it</span>
+      <p>Paper, post and an appointment in the office all still work, and always will. Some people
+      prefer to hand over a folder across a desk, and that is a perfectly good way to file a
+      return. The app is there for the people who would rather not drive across town in February.</p>
+    </div>
+  </div></section>
+
+  <section class="night"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">Why this and not email</span>
+      <h2>Emailing a W-2 is the riskiest thing<br>most people do with their tax data.</h2>
+      <p class="lede">Your Social Security number, your employer, your address and your income, all
+      in one attachment, sitting in two inboxes forever, forwarded through servers neither of us
+      controls. It is how identity theft starts, and it is completely normal, and that is the
+      problem.</p>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <h3>Encrypted going in and sitting still</h3>
+        <p>Documents are encrypted in transit and at rest, scanned for malware the moment they
+        arrive, and visible only to you and the staff assigned to your file.</p>
+      </div>
+      <div class="card">
+        <h3>Every access is logged</h3>
+        <p>Who opened what, and when. If you ever want to know who at the firm has seen a document,
+        that is a question with an answer.</p>
+      </div>
+      <div class="card">
+        <h3>Two steps to get in, always</h3>
+        <p>A password on its own is not enough to reach anything. That is not a setting we can turn
+        off for convenience, and we would not want to.</p>
+      </div>
+      <div class="card">
+        <h3>Card details never touch us</h3>
+        <p>Payments are handled on the processor&rsquo;s own secure page. Your card number is never
+        stored on, or passed through, a Pivot Aide system.</p>
+      </div>
+    </div>
+
+    <div class="patsays" style="margin-top:30px;border-left-color:var(--gold)">
+      <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+      <div>
+        <q>An attachment is a copy you can never get back. A file room is a room you can lock.</q>
+        <div class="who">Uncle Pat</div>
+      </div>
+    </div>
+  </div></section>
+
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Straight answers</span>
+      <h2>The questions people actually ask.</h2>
+    </div>
+
+    <div class="grid g2">
+      <div class="card">
+        <h3>Does it cost extra?</h3>
+        <p>No. It comes with the engagement, whatever you are with us for &mdash; a single return or
+        The Standing File.</p>
+      </div>
+      <div class="card">
+        <h3>What if I do not have a smartphone?</h3>
+        <p>It works in any browser on any computer. The phone app is the convenient version, not the
+        only version. And the office is still the office.</p>
+      </div>
+      <div class="card">
+        <h3>Do you keep my documents forever?</h3>
+        <p>We keep what the law requires us to keep, for as long as it requires. What is no longer
+        needed is disposed of properly rather than left lying around.</p>
+      </div>
+      <div class="card">
+        <h3>Can my spouse have their own login?</h3>
+        <p>Yes, and they should. Joint returns need two separate signatures, and each of you signs
+        as yourself.</p>
+      </div>
+      <div class="card">
+        <h3>Will it do my taxes for me?</h3>
+        <p>No, and it never will. Every number you see in it was put there by a person at this firm.
+        The app carries the paperwork; the return is prepared by a preparer.</p>
+      </div>
+      <div class="card">
+        <h3>What if I leave?</h3>
+        <p>Your returns are yours. You can download everything we have filed for you, and the
+        archive stays reachable whether or not you are still a client.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:26px">
+      <span class="h">Where it is</span>
+      <p>The File Room is being built now, web first, with the iPhone and Android apps to follow.
+      If you would like to be among the first clients in it, say so when you book &mdash; early
+      access goes out in small groups so we can fix what needs fixing before everyone arrives.</p>
+    </div>
+  </div></section>
+</div>
+
+</main>
+
+<footer><div class="shell">
+  <div class="cols">
+    <div>
+      <div class="brand" style="margin-bottom:14px">
+        <svg class="mark" viewBox="22 4 156 172" aria-hidden="true"><use href="#pat-av"></use></svg>
+        <span class="wm">Pivot Aide Tax</span>
+      </div>
+      <p class="small" style="color:var(--night-ink-2)">Income tax is all we do. Year-round strategy,
+      filing, compliance and IRS resolution for individuals and small businesses in all fifty states.</p>
+      <p class="small" style="color:var(--night-ink-2);margin-top:12px">
+        1 (571) 470-3754<br>6475 New Hampshire Ave, Hyattsville, MD 20783</p>
+    </div>
+    <div>
+      <h4>File</h4>
+      <ul><li>Individual &amp; self-employed</li><li>Business returns</li><li>QuickPrepare</li><li>Prior year &amp; amended</li><li>Pricing</li><li>The Standing File</li></ul>
+    </div>
+    <div>
+      <h4>Resolution</h4>
+      <ul><li>IRS notices</li><li>Audit representation</li><li>Back taxes &amp; collections</li><li>Unfiled returns</li><li>All fifty state agencies</li><li>Audit Shield</li></ul>
+    </div>
+    <div>
+      <h4>Resources &amp; booking</h4>
+      <ul><li>Tax calendar &amp; deadlines</li><li>2026 tax figures</li><li>What to bring</li><li>Official IRS tools</li><li>Book an appointment</li><li>Free help &amp; Second Look</li></ul>
+    </div>
+  </div>
+  <p class="fine">
+    Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal
+    Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this
+    site is a guarantee of any particular outcome; resolution results depend on individual financial
+    circumstances and on agency determination. &nbsp;·&nbsp; Privacy policy · Terms &amp; conditions ·
+    Payment policy · Security policy · Disclaimer · Service expectations
+  </p>
+</div></footer>
+
+<script>
+(function(){
+  var tabs = document.getElementById('tabs');
+  var buttons = Array.prototype.slice.call(tabs.querySelectorAll('button'));
+
+  function show(name){
+    buttons.forEach(function(b){
+      b.setAttribute('aria-current', b.dataset.v === name ? 'true' : 'false');
+    });
+    ['home','file','strat','audit','free','biz','res','appt','app','pat'].forEach(function(v){
+      var el = document.getElementById('v-' + v);
+      if (el) el.hidden = (v !== name);
+    });
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'auto' : 'auto' });
+  }
+
+  tabs.addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if (b) show(b.dataset.v);
+  });
+
+  document.addEventListener('click', function(e){
+    var g = e.target.closest('[data-go]');
+    if (g){ e.preventDefault(); show(g.dataset.go); }
+  });
+})();
+</script>
+
+
+</body>
+</html>

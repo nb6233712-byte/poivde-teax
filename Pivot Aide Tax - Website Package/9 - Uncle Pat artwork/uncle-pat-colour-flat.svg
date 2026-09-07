@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" role="img" aria-label="Uncle Pat, flat">
+  <title>Uncle Pat, flat</title>
+  <!-- torso -->
+  <path d="M100 128 C140 128 172 150 184 186 C188 198 190 209 190 220 L10 220 C10 209 12 198 16 186 C28 150 60 128 100 128 Z" fill="#1D3D51"/>
+  
+  <!-- shirt behind the collar -->
+  <path d="M66 128 L134 128 L100 184 Z" fill="#FFFFFF"/>
+  <!-- collar flaps -->
+  <path d="M63 141 L100 170 L79 199 L43 161 Z" fill="#FFFFFF"/>
+  <path d="M137 141 L100 170 L121 199 L157 161 Z" fill="#FFFFFF"/>
+  
+  <!-- tie -->
+  <path d="M89 150 L111 150 L116 178 L84 178 Z" fill="#CFC922"/>
+  <path d="M84 178 L116 178 L110 202 L100 214 L90 202 Z" fill="#EAE42F"/>
+  
+  <!-- ear tufts -->
+  <path d="M52 46 L46 10 L88 34 Z" fill="#16303F"/>
+  <path d="M148 46 L154 10 L112 34 Z" fill="#16303F"/>
+  <!-- head -->
+  <ellipse cx="100" cy="88" rx="69" ry="67" fill="#1D3D51"/>
+  <!-- facial disc -->
+  <ellipse cx="100" cy="90" rx="59" ry="55" fill="#2C5169"/>
+  <!-- brow -->
+  <path d="M100 44 C132 44 152 60 156 82 C146 66 126 57 100 57 C74 57 54 66 44 82 C48 60 68 44 100 44 Z" fill="#24455B"/>
+  <!-- eyes -->
+  <circle cx="73" cy="90" r="26" fill="#F2F8FC"/>
+  <circle cx="127" cy="90" r="26" fill="#F2F8FC"/>
+  <circle cx="73" cy="90" r="16" fill="#019FFF"/>
+  <circle cx="127" cy="90" r="16" fill="#019FFF"/>
+  <circle cx="73" cy="90" r="7.5" fill="#06202D"/>
+  <circle cx="127" cy="90" r="7.5" fill="#06202D"/>
+  
+  <!-- beak -->
+  <path d="M100 103 L110 121 L100 131 L90 121 Z" fill="#EAE42F"/>
+  
+</svg>

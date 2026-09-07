@@ -1,0 +1,96 @@
+/* ============================================================
+   PIVOT AIDE TAX — DESIGN TOKENS & VARIABLES
+   Core Palette:
+     Brand Blue: #019FFF (eyes, active accents)
+     Navy/Deep: #0A6BA8 & #08557F
+     Brand Gold: #EAE42F (tie, beak, highlights) & #B9B31C
+     Night Band: #07202E (resolution, brand defense, hero)
+   ============================================================ */
+
+:root {
+  /* Brand Palette */
+  --brand: #019FFF;
+  --blue: #0A6BA8;
+  --blue-dk: #08557F;
+  --blue-light: #EBF6FD;
+  --gold: #EAE42F;
+  --gold-dp: #B9B31C;
+  --gold-light: #FEFDE6;
+
+  /* Surfaces & Inks (Daylight / Light Theme) */
+  --ground: #F5F8FB;
+  --surface: #FFFFFF;
+  --surface-2: #EDF4F9;
+  --surface-hover: #E4EFF6;
+  --ink: #0C1D28;
+  --ink-2: #3F5A6B;
+  --ink-3: #6E8797;
+  --line: #D3E0E9;
+  --line-2: #E5EDF3;
+
+  /* Night Band — constant across themes (it represents a place/state, not just a mode) */
+  --night: #07202E;
+  --night-2: #0B2C3E;
+  --night-3: #11384E;
+  --night-line: rgba(255, 255, 255, 0.16);
+  --night-line-subtle: rgba(255, 255, 255, 0.08);
+  --night-ink: #DCEBF3;
+  --night-ink-2: #9FBECF;
+  --night-ink-3: #6C8E9F;
+
+  /* Status Colors */
+  --ok: #1F8A54;
+  --warn: #B45309;
+  --danger: #D9383A;
+
+  /* Dimensions & Shapes */
+  --shell: 1140px;
+  --r: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --transition-fast: 0.14s ease;
+  --transition-normal: 0.22s ease;
+
+  /* Typography */
+  --f-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --f-body: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0A2029;
+    --surface: #0F2B38;
+    --surface-2: #153545;
+    --surface-hover: #1A3E52;
+    --ink: #E6F1F7;
+    --ink-2: #A8C3D2;
+    --ink-3: #7B9AAB;
+    --line: #204558;
+    --line-2: #1A3948;
+    --blue: #3FB4FF;
+    --blue-dk: #7CCBFF;
+    --gold-dp: #EAE42F;
+    --night: #03121A;
+    --night-2: #0A2431;
+    --night-3: #0E2E3F;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground: #0A2029;
+  --surface: #0F2B38;
+  --surface-2: #153545;
+  --surface-hover: #1A3E52;
+  --ink: #E6F1F7;
+  --ink-2: #A8C3D2;
+  --ink-3: #7B9AAB;
+  --line: #204558;
+  --line-2: #1A3948;
+  --blue: #3FB4FF;
+  --blue-dk: #7CCBFF;
+  --gold-dp: #EAE42F;
+  --night: #03121A;
+  --night-2: #0A2431;
+  --night-3: #0E2E3F;
+}

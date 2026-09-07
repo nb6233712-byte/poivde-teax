@@ -1,0 +1,218 @@
+PIVOT AIDE TAX - WEBSITE, APP AND BRAND PACKAGE
+Updated 2 September 2026
+
+
+WHAT IS IN THIS FOLDER
+----------------------
+
+1 - Site Prototype (open in any browser).html
+    The working prototype of the restructured pivotaidetax.com.
+    Double-click it. It opens in Chrome, Safari, Edge or Firefox on
+    Windows, Mac or Linux. Nothing to install.
+
+    Ten sections across the top: Home, File Taxes, Tax Strategy,
+    Audit & Resolution, Business, Free Help, Resources, Appointments,
+    File Room, Meet Uncle Pat. Click between them.
+
+    Everything is inside this one file - no images folder, no
+    stylesheet, nothing to lose when you email or copy it.
+
+2 - Site Prototype (PDF version).pdf
+    The same ten sections as a PDF, one long page each, for anyone who
+    would rather not open an HTML file, or who wants to mark it up.
+
+3 - Service Architecture and Uncle Pat Brand File.pdf
+    The 13-page written strategy behind the site: what is wrong with
+    the current site, the four-layer offering model, pricing, the audit
+    and resolution tiers, the Uncle Pat persona and voice rules, the
+    revised navigation, and the decisions still open.
+
+4 - App Prototype - The File Room (open in any browser).html
+    The client app, clickable. Ten screens - sign in, your file,
+    documents, sign, your return, messages, services, billing, updates,
+    and the firm-side console. Two buttons at the top right switch
+    between the phone app and the web app; the same ten screens render
+    both ways.
+
+5 - App Prototype - The File Room (PDF version).pdf
+    The same ten screens as a PDF, one long page each.
+
+6 - App Build Plan - The File Room.pdf
+    The 13-page written plan: what the app does and refuses to do, the
+    client journey screen by screen, the signing requirements, what
+    running your own portal obligates you to, the architecture, three
+    build phases, what it costs to build and to run every year, what
+    changes when it goes in the app stores, and the nine decisions
+    needed before anything is built.
+
+
+7 - Uncle Pat Mark Sheet (open in any browser).html
+8 - Uncle Pat Mark Sheet (PDF version).pdf
+    The character mark, now drawn properly: Uncle Pat in a white collar
+    and a gold tie. Shows him on every ground he has to work on, the six
+    parts and what each is doing, the size ladder, the lockups, the
+    colour values, and eight handling rules.
+
+    The HTML version has a ground switcher in the hero - click the
+    coloured dots to drop him onto white, paper, night, page blue or
+    gold and see whether he holds.
+
+9 - Uncle Pat artwork/
+    The mark as files. Seven SVGs and six PNGs, all generated from one
+    source drawing, so a change to the geometry regenerates every file
+    rather than being redrawn by hand:
+
+      uncle-pat-colour.svg          full portrait, above 92px
+      uncle-pat-colour-flat.svg     same geometry, 64px and below
+      uncle-pat-avatar.svg          head and collar, square crop
+      uncle-pat-favicon.svg         avatar crop, flat, 16-32px
+      uncle-pat-mono-ink.svg        one colour, dark on light
+      uncle-pat-mono-reversed.svg   one colour, white on dark
+      uncle-pat-mono-on-gold.svg    one colour, on the gold band
+      PNGs                          1024, 512, 256, avatar, favicon
+
+
+THE APP, IN ONE PARAGRAPH
+-------------------------
+
+Working name: The File Room. Clients upload documents, sign Form 8879,
+read the finished return, ask questions where the documents already
+are, see their own deadlines, and pay. It does not compute tax and it
+does not generate advice - every number a client sees was put there by
+a person at the firm. Web first, then native iPhone and Android.
+
+
+READ EXHIBIT A OF THE BUILD PLAN FIRST
+--------------------------------------
+
+You asked for a custom app rather than a licensed platform, and the
+build plan takes that decision as made. But the first exhibit puts the
+cost side by side, because it is a large number and you should see it
+before anyone starts:
+
+  Custom build, year one          $175,000 - $400,000
+  Custom build, every year after   $55,000 - $119,000
+  TaxDome Pro, six seats, per year          $6,600
+
+Exhibit J argues the only version of this that pencils is one where the
+app is built as a product other tax firms can license - not as an
+internal portal for one firm. Exhibit G recommends running this coming
+season on a licensed platform in parallel, so the build is never on the
+critical path of a filing deadline.
+
+
+THE BRAND CHARACTER
+-------------------
+
+The owl is Uncle Pat. The home page now reads "Uncle Sam looks out for
+the government. Uncle Pat looks out for you." That division of labour
+is the core positioning and it runs through the site and the app.
+
+He now wears a white collar and a gold tie. The change is not
+decoration: a collar gives him shoulders and shoulders give him a job,
+which turns an owl shape into a portrait of somebody you would hand
+your documents to. The tie uses the brand gold already on the beak, so
+the accent runs on a single vertical line - beak, knot, blade.
+
+He is live in both prototypes now - the site header, the home page
+hero, the Meet Uncle Pat section, and the app's title bar and message
+threads. The "placeholder art" labels are gone, because it is no longer
+placeholder art. Item 7 is the mark sheet; item 9 is the artwork.
+
+Exhibit J of the strategy file (item 3) still holds the wider art
+direction - five poses and the illustration brief. This mark answers
+the primary pose. The other four are still to be drawn.
+
+
+THE STANDING FILE
+-----------------
+
+The flagship engagement is on the Tax Strategy section: the year-round
+package for high-income individuals and business owners - a dedicated
+advisor, four scheduled strategy sessions a year, a written strategy
+plan, a mid-year projection, unlimited questions, and every return,
+estimate and notice handled inside one annual fee. Two tracks: A for
+high-income individuals, B for business owners and entities.
+
+No price is published. It is quoted after a free 45-minute scoping call
+and a Second Look at three prior returns.
+
+
+HOW TO SEND THIS TO SOMEONE ELSE
+--------------------------------
+
+Send the whole folder, or the .zip file that sits beside it. If you are
+emailing only one file, send a PDF - some email systems strip .html
+attachments.
+
+
+A NOTE ON FONTS
+---------------
+
+Both prototypes use three web fonts (Fraunces, Poppins, JetBrains Mono)
+loaded from Google Fonts. On a computer with internet they load
+automatically. With no internet, the pages fall back to system fonts -
+layout, colours and content are unaffected, only the lettering changes
+slightly. Nothing breaks either way.
+
+
+STILL OPEN - DECISIONS ONLY YOU CAN MAKE
+----------------------------------------
+
+From the website work:
+
+  1. Which Circular 230 credential covers IRS representation, and whose
+     name signs the Form 2848. This gates the whole Audit & Resolution
+     section and The Standing File. Do not publish either until this is
+     answered - and the app's service catalogue cannot list what the
+     firm cannot perform.
+
+  2. Business return pricing. The prototype shows $750 and $1,250; the
+     live site currently shows $550 for both. Proposed, not confirmed.
+
+  3. The legal standing of Pivot Aide Tax - its own registered entity,
+     or an assumed name of Pivot Aide Consulting.
+
+From the app work (full list in Exhibit K of the build plan):
+
+  4. Is this a product or a private portal? It changes the data model
+     on day one and cannot be deferred.
+
+  5. Who is the Qualified Individual? The FTC Safeguards Rule requires
+     a named person accountable for the security programme.
+
+  6. Who builds it - an agency, a contract team, or a hire.
+
+  7. Signing vendor: DocuSign at $2.40 per identity check, or SafeSend
+     behind the app. SafeSend does not publish pricing.
+
+  8. Do you want to surcharge card payments? CPACharge supports it out
+     of the box; Stripe leaves you to build it. This decides the
+     processor.
+
+  9. App store commission - confirm in writing with Apple and Google
+     that tax preparation counts as a service consumed outside the app
+     before building in-app payment for the phone apps. A 15-30%
+     commission on preparation fees would break the model.
+
+ 10. The name. "The File Room" is a working title chosen to sit beside
+     The Standing File. It is yours to overrule.
+
+
+A NOTE ON THE FIGURES
+---------------------
+
+Tax figures on the Tax Resources section are for tax year 2026 and come
+from IRS Revenue Procedure 2025-32, IRS Notice IR-2025-111, Revenue
+Procedure 2025-19 and the 2026 standard mileage announcement. They will
+need refreshing when the IRS publishes the 2027 numbers.
+
+Every rule and price in the build plan was checked on 2 September 2026
+and is sourced in Exhibit L. Three figures rest on secondary sources
+and are flagged there rather than relied on: SafeSend's per-return
+pricing, the vulnerability-scanning cost, and the 15-20% maintenance
+rule of thumb.
+
+
+Pivot Aide Tax
+1 (571) 470-3754  -  tgeorge@pivotaide.com

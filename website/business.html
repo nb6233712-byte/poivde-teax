@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Accounting, Bookkeeping &amp; Payroll | Pivot Aide Tax</title>
+  <meta name="description" content="Monthly bookkeeping tiered by expense volume, payroll, sales tax compliance, and tax preparation. Bookkeeping clients receive 50% off their annual entity tax return.">
+  <link rel="canonical" href="https://pivotaidetax.com/business.html">
+
+    <!-- Preload Critical Self-Hosted Fonts -->
+  <link rel="preload" href="assets/fonts/fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="icon" type="image/svg+xml" href="assets/brand/uncle-pat-favicon.svg">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="shell in">
+      <a href="index.html" class="brand" aria-label="Pivot Aide Tax Home">
+        <img src="assets/brand/uncle-pat-avatar.svg" alt="Uncle Pat avatar" class="mark" width="36" height="36">
+        <span class="wm">Pivot Aide <span>Tax</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="file-taxes.html">File Taxes</a>
+        <a href="tax-strategy.html" class="hot">Tax Strategy</a>
+        <a href="audit-resolution.html">Audit &amp; Resolution</a>
+        <a href="business.html" class="active">Business</a>
+        <a href="free-help.html">Free Help</a>
+        <a href="resources.html">Resources</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="file-room.html">File Room</a>
+        <a href="meet-uncle-pat.html">Uncle Pat</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="tel" href="tel:+15714703754">1 (571) 470-3754</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <a href="index.html">Home</a>
+    <a href="file-taxes.html">File Taxes</a>
+    <a href="tax-strategy.html">Tax Strategy</a>
+    <a href="audit-resolution.html">Audit &amp; Resolution</a>
+    <a href="business.html" class="active">Business</a>
+    <a href="free-help.html">Free Help</a>
+    <a href="resources.html">Resources</a>
+    <a href="appointments.html">Appointments</a>
+    <a href="file-room.html">File Room</a>
+    <a href="meet-uncle-pat.html">Uncle Pat</a>
+  </div>
+
+  <main id="main">
+    <!-- Hero Banner -->
+    <section class="night tight">
+      <div class="shell">
+        <div class="sechead" style="margin-bottom:0">
+          <span class="eyebrow night">Layer 2 · The Recurring Book</span>
+          <h1 style="color:#fff">Monthly bookkeeping tiered by volume.<br>Never billed by the hour.</h1>
+          <p class="lede">
+            Clean monthly financials that make tax season a formality rather than an emergency. Subscribed businesses receive their annual corporate return at half price.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The 50% Return Discount Hook -->
+    <section class="tight" style="background:var(--surface-2);border-bottom:1px solid var(--line)">
+      <div class="shell">
+        <div class="bridge" style="background:var(--surface);border-color:var(--gold);box-shadow:0 6px 24px rgba(234,228,47,.12)">
+          <div>
+            <span class="eyebrow" style="color:var(--gold-dp)">The Conversion Advantage</span>
+            <h3 style="margin-top:6px">Entity Tax Returns Are 50% Off With Bookkeeping</h3>
+            <p>
+              When your books are reconciled by Pivot Aide every month, year-end tax prep is fast and clean. We pass that efficiency directly back to you: your Form 1120-S or 1065 return is discounted 50% ($375 for Business, $625 for Business Pro).
+            </p>
+          </div>
+          <div>
+            <button class="btn btn-g" onclick="openBookingModal('business')">Start a Bookkeeping Plan</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Monthly Bookkeeping Packages -->
+    <section>
+      <div class="shell">
+        <div class="sechead">
+          <span class="eyebrow">Monthly Bookkeeping</span>
+          <h2>Fixed monthly pricing based on your monthly expense volume</h2>
+          <p class="lede">
+            No surprise hourly invoices. Complete reconciliation of operating accounts, credit cards, merchant processors, and monthly financial reports delivered by the 15th.
+          </p>
+        </div>
+
+        <div class="pkgs">
+          <div class="pkg">
+            <div class="nm">Ledger</div>
+            <div class="for">Under $25K monthly expenses · Up to 2 accounts</div>
+            <div class="fig"><sup>$</sup>350<span style="font-size:.9rem;font-weight:400;color:var(--ink-3)">/mo</span></div>
+            <ul>
+              <li>Reconciliation of up to 2 accounts</li>
+              <li>Monthly Balance Sheet &amp; P&amp;L statement</li>
+              <li>Receipt &amp; expense classification</li>
+              <li>Year-end 1099 compliance review</li>
+              <li><b>Entity return at 50% discount ($375)</b></li>
+            </ul>
+            <button class="btn btn-o" onclick="openBookingModal('business')">Select Ledger</button>
+          </div>
+
+          <div class="pkg flag">
+            <span class="badge">Most Popular</span>
+            <div class="nm">Ledger Plus</div>
+            <div class="for">Under $75K monthly expenses · Up to 5 accounts</div>
+            <div class="fig"><sup>$</sup>650<span style="font-size:.9rem;font-weight:400;color:var(--ink-3)">/mo</span></div>
+            <ul>
+              <li>Reconciliation of up to 5 accounts</li>
+              <li>Full monthly close &amp; comparative reporting</li>
+              <li>Accounts Payable &amp; Receivable tracking</li>
+              <li>Quarterly estimate projections included</li>
+              <li><b>Entity return at 50% discount ($375)</b></li>
+            </ul>
+            <button class="btn btn-p" onclick="openBookingModal('business')">Select Ledger Plus</button>
+          </div>
+
+          <div class="pkg">
+            <div class="nm">Controller</div>
+            <div class="for">Over $75K monthly expenses · Unlimited accounts</div>
+            <div class="fig"><sup>$</sup>1,200<span style="font-size:.9rem;font-weight:400;color:var(--ink-3)">/mo</span></div>
+            <ul>
+              <li>Unlimited bank &amp; merchant accounts</li>
+              <li>Class &amp; department tracking</li>
+              <li>13-week rolling cash flow forecast</li>
+              <li>Monthly strategic video review call</li>
+              <li><b>Entity return at 50% discount ($625)</b></li>
+            </ul>
+            <button class="btn btn-o" onclick="openBookingModal('business')">Select Controller</button>
+          </div>
+
+          <div class="pkg">
+            <div class="nm">Catch-Up Books</div>
+            <div class="for">Unfiled or disorganized prior periods</div>
+            <div class="fig"><sup>$</sup>400<span style="font-size:.9rem;font-weight:400;color:var(--ink-3)">/mo</span></div>
+            <ul>
+              <li>Priced per month cleaned (3-month minimum)</li>
+              <li>Bank statement transaction reconstruction</li>
+              <li>Correction of prior classification errors</li>
+              <li>Rebuilt general ledger &amp; asset registers</li>
+              <li>Prepares books for tax filing or lending</li>
+            </ul>
+            <button class="btn btn-o" onclick="openBookingModal('business')">Request Catch-Up</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compliance Operations Table -->
+    <section style="background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+      <div class="shell">
+        <div class="sechead">
+          <span class="eyebrow">Operational Compliance</span>
+          <h2>Payroll, sales tax &amp; quarterly compliance</h2>
+          <p class="lede">Add seamless operational handling so no agency deadline is ever missed.</p>
+        </div>
+
+        <div class="twrap">
+          <table class="ptab">
+            <caption>Operational Add-Ons</caption>
+            <tbody>
+              <tr>
+                <td class="n">Full-Service Payroll</td>
+                <td class="d">Direct deposit payroll processing, federal &amp; state tax filings, automated tax impounds, new-hire reporting, and year-end W-2 and 1099 filings. (+$50 per additional state).</td>
+                <td class="p">$125 / mo<small>+$12 per employee</small></td>
+              </tr>
+              <tr>
+                <td class="n">Sales &amp; Use Tax</td>
+                <td class="d">Per state. Economic nexus threshold monitoring, state marketplace facilitator reconciliation, monthly/quarterly return filings, and remittance calendar tracking.</td>
+                <td class="p">$150 / mo<small>Per registered state</small></td>
+              </tr>
+              <tr>
+                <td class="n">Quarterly Estimates</td>
+                <td class="d">Four quarterly recalculated vouchers based on real year-to-date profit. Tracks statutory safe-harbor limits and ends the April tax surprise.</td>
+                <td class="p">$600 / yr<small>4 recalculations + vouchers</small></td>
+              </tr>
+              <tr>
+                <td class="n">Tax Planning Retainer</td>
+                <td class="d">For businesses with their own in-house bookkeeper: mid-year tax projection, entity structure check, 1 quarterly strategy session, and unlimited notice review.</td>
+                <td class="p">$250 / mo<small>Ongoing advisory</small></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- S-Corp Savings Calculator Widget -->
+    <section>
+      <div class="shell">
+        <div id="business-scorp-calc"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="shell">
+      <div class="cols">
+        <div>
+          <div class="brand" style="margin-bottom:14px">
+            <img src="assets/brand/uncle-pat-avatar.svg" alt="Uncle Pat icon" width="32" height="32" style="filter:brightness(1.2)">
+            <span class="wm">Pivot Aide Tax</span>
+          </div>
+          <p class="small">Income tax is all we do. Year-round strategy, filing, compliance, and IRS representation for individuals and small businesses in all fifty states.</p>
+          <p class="small" style="margin-top:14px">
+            <strong>1 (571) 470-3754</strong><br>
+            tgeorge@pivotaide.com<br>
+            6475 New Hampshire Ave, Hyattsville, MD 20783
+          </p>
+        </div>
+
+        <div>
+          <h4>File &amp; Strategy</h4>
+          <ul>
+            <li><a href="file-taxes.html">Individual Returns (1040)</a></li>
+            <li><a href="file-taxes.html">Business Returns (1065 / 1120-S)</a></li>
+            <li><a href="file-taxes.html">QuickPrepare ($200)</a></li>
+            <li><a href="tax-strategy.html">The Standing File</a></li>
+            <li><a href="tax-strategy.html">S-Corp Election Package</a></li>
+            <li><a href="business.html">Monthly Bookkeeping</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Audit &amp; Resolution</h4>
+          <ul>
+            <li><a href="audit-resolution.html">IRS Notice Response ($450)</a></li>
+            <li><a href="audit-resolution.html">Examination Representation</a></li>
+            <li><a href="audit-resolution.html">Collections &amp; Installments</a></li>
+            <li><a href="audit-resolution.html">Unfiled Back Taxes</a></li>
+            <li><a href="audit-resolution.html">50-State Tax Desk</a></li>
+            <li><a href="audit-resolution.html">Audit Shield Protection</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Free Tools &amp; Portal</h4>
+          <ul>
+            <li><a href="free-help.html">Second Look Review (Free)</a></li>
+            <li><a href="free-help.html">Interactive Notice Triage</a></li>
+            <li><a href="business.html">S-Corp Savings Calculator</a></li>
+            <li><a href="resources.html">2026 Tax Figures</a></li>
+            <li><a href="appointments.html">Schedule an Appointment</a></li>
+            <li><a href="file-room.html">Client File Room Access</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="fine">
+        Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this site is a guarantee of any particular outcome; resolution results depend on individual financial circumstances and on agency determination.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/scorp-calculator.js"></script>
+  <script src="js/booking.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initSCorpCalculator('business-scorp-calc');
+    });
+  </script>
+</body>
+</html>

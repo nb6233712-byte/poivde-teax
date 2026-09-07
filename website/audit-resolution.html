@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audit &amp; Resolution — Calm, Defensible IRS &amp; State Representation | Pivot Aide Tax</title>
+  <meta name="description" content="Received an IRS or state tax letter? We read it, verify whether the agency is right, and resolve it quietly. Four tiers: notice responses, audit representation, back taxes, and collections relief.">
+  <link rel="canonical" href="https://pivotaidetax.com/audit-resolution.html">
+
+    <!-- Preload Critical Self-Hosted Fonts -->
+  <link rel="preload" href="assets/fonts/fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="icon" type="image/svg+xml" href="assets/brand/uncle-pat-favicon.svg">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="shell in">
+      <a href="index.html" class="brand" aria-label="Pivot Aide Tax Home">
+        <img src="assets/brand/uncle-pat-avatar.svg" alt="Uncle Pat avatar" class="mark" width="36" height="36">
+        <span class="wm">Pivot Aide <span>Tax</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Main Navigation">
+        <a href="index.html">Home</a>
+        <a href="file-taxes.html">File Taxes</a>
+        <a href="tax-strategy.html" class="hot">Tax Strategy</a>
+        <a href="audit-resolution.html" class="active">Audit &amp; Resolution</a>
+        <a href="business.html">Business</a>
+        <a href="free-help.html">Free Help</a>
+        <a href="resources.html">Resources</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="file-room.html">File Room</a>
+        <a href="meet-uncle-pat.html">Uncle Pat</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="tel" href="tel:+15714703754">1 (571) 470-3754</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <a href="index.html">Home</a>
+    <a href="file-taxes.html">File Taxes</a>
+    <a href="tax-strategy.html">Tax Strategy</a>
+    <a href="audit-resolution.html" class="active">Audit &amp; Resolution</a>
+    <a href="business.html">Business</a>
+    <a href="free-help.html">Free Help</a>
+    <a href="resources.html">Resources</a>
+    <a href="appointments.html">Appointments</a>
+    <a href="file-room.html">File Room</a>
+    <a href="meet-uncle-pat.html">Uncle Pat</a>
+  </div>
+
+  <main id="main">
+    <!-- Night Hero Banner -->
+    <section class="night">
+      <div class="shell">
+        <div class="sechead">
+          <span class="eyebrow night">Uncle Pat’s Division · All 50 States</span>
+          <h1 style="color:#fff">That letter has a deadline on it.<br>Send it over. We&rsquo;ll read it today.</h1>
+          <p class="lede">
+            Most letters from the IRS or state departments of revenue are wrong about something. We check whether the agency is actually right, draft the defensible response, and stand between you and the examiner.
+          </p>
+          <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn btn-g" onclick="openBookingModal('triage')">Upload Notice for 2-Day Triage ($0)</button>
+            <a class="btn btn-w" href="#resolution-tiers">View Resolution Tiers &darr;</a>
+          </div>
+        </div>
+
+        <div class="patsays" style="margin-top:28px">
+          <img src="assets/brand/uncle-pat-avatar.svg" alt="Uncle Pat icon" width="64" height="64">
+          <div>
+            <q>Uncle Sam isn’t the enemy. He’s just very organized. So are we.</q>
+            <div class="who">Uncle Pat on Audit Defense</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Notice Triage Widget -->
+    <section style="background:var(--night-2);border-top:1px solid var(--night-line);border-bottom:1px solid var(--night-line)">
+      <div class="shell">
+        <div class="sechead" style="margin-bottom:16px">
+          <span class="eyebrow night">Self-Service Notice Check</span>
+          <h2 style="color:#fff">What kind of letter did you receive?</h2>
+          <p class="lede">
+            Select your notice type to get an immediate plain-English assessment and understand your deadline.
+          </p>
+        </div>
+        <div id="notice-triage-container"></div>
+      </div>
+    </section>
+
+    <!-- The 4 Resolution Tiers -->
+    <section class="night" id="resolution-tiers">
+      <div class="shell">
+        <div class="sechead">
+          <span class="eyebrow night">The Four Tiers</span>
+          <h2 style="color:#fff">Clear scopes, fixed rates, no surprises</h2>
+          <p class="lede">
+            Every tier has a defined boundary. We handle communications directly with the agency under Form 2848 Power of Attorney so you never have to speak with an auditor.
+          </p>
+        </div>
+
+        <div class="tiers">
+          <div class="tier">
+            <span class="k">01</span>
+            <div>
+              <h3 style="color:#fff;font-size:1.24rem">Notice Response</h3>
+              <p>
+                For CP2000, CP14, CP501–504, LT11, and state assessment letters. We read the notice, verify if the agency is factually or legally correct, draft and file a substantiated response, and track it until closure. Most inquiries resolve right here.
+              </p>
+              <div class="small" style="color:var(--night-ink-3);margin-top:8px">
+                Response time: We read your letter within two business days.
+              </div>
+            </div>
+            <div class="pz">
+              $450
+              <i>Per notice · Fixed fee</i>
+            </div>
+          </div>
+
+          <div class="tier">
+            <span class="k">02</span>
+            <div>
+              <h3 style="color:#fff;font-size:1.24rem">Examination Representation</h3>
+              <p>
+                Correspondence, office, or field examination defense under IRS Form 2848 Power of Attorney. We handle all meetings and communications with the examiner; you do not attend. Includes document production, information document request (IDR) responses, written legal position memos, and administrative appeals if required.
+              </p>
+              <div class="small" style="color:var(--night-ink-3);margin-top:8px">
+                Covers individual 1040, Schedule C, 1065, or 1120-S examinations.
+              </div>
+            </div>
+            <div class="pz">
+              From $2,500
+              <i>Quoted after case review</i>
+            </div>
+          </div>
+
+          <div class="tier">
+            <span class="k">03</span>
+            <div>
+              <h3 style="color:#fff;font-size:1.24rem">Collections &amp; Relief</h3>
+              <p>
+                For balances owed, federal tax liens, bank levies, or wage garnishments. We begin with a complete transcript analysis, secure an immediate collection hold, and establish the most advantageous statutory resolution: Installment Agreement, Currently Not Collectible (CNC) status, First-Time Penalty Abatement, or an Offer in Compromise (OIC) where qualification is met.
+              </p>
+              <div class="small" style="color:var(--night-ink-3);margin-top:8px">
+                No false promises. We tell you exactly what you qualify for before taking a fee.
+              </div>
+            </div>
+            <div class="pz">
+              From $1,500
+              <i>Based on balance &amp; complexity</i>
+            </div>
+          </div>
+
+          <div class="tier">
+            <span class="k">04</span>
+            <div>
+              <h3 style="color:#fff;font-size:1.24rem">Back Years &amp; Non-Filers</h3>
+              <p>
+                Three to ten unfiled tax years. We pull IRS wage-and-income transcripts, reverse punitive Substitute for Return (SFR) assessments with actual deductible expenses, reconstruct clean accounting records, and restore you to full statutory compliance so you can borrow, bid, or sleep peacefully again.
+              </p>
+              <div class="small" style="color:var(--night-ink-3);margin-top:8px">
+                Restore compliance without judgment. We have seen this hundreds of times.
+              </div>
+            </div>
+            <div class="pz">
+              $350 / yr
+              <i>+ $500 record reconstruction</i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Shield Callout -->
+        <div class="bridge" style="background:var(--night-2);border-color:var(--gold);margin-top:42px">
+          <div>
+            <span class="eyebrow night">Annual Defense Protection</span>
+            <h3 style="color:#fff;margin-top:4px">Audit Shield · $75 / Year</h3>
+            <p style="color:var(--night-ink-2)">
+              When you file your return with Pivot Aide Tax, add Audit Shield for $75. If that return is ever questioned or examined by the IRS or state authorities, Tier 1 notice response and Tier 2 examination defense are included at no additional fee.
+            </p>
+          </div>
+          <div>
+            <span style="font-family:var(--f-mono);font-size:1.4rem;font-weight:600;color:var(--gold);display:block;margin-bottom:8px">$75 / return</span>
+            <button class="btn btn-g" onclick="openBookingModal('audit-shield')">Add Audit Shield</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- State Desk -->
+    <section>
+      <div class="shell">
+        <div class="sechead">
+          <span class="eyebrow">The 50-State Resolution Desk</span>
+          <h2>We represent taxpayers in all fifty state revenue departments</h2>
+          <p class="lede">
+            Most national tax-relief mills are federal-only and abandon you when state authorities take action. Pivot Aide represents clients before every state tax department, with our deepest administrative experience right here in the DMV.
+          </p>
+        </div>
+
+        <div class="grid g3">
+          <div class="card">
+            <span class="tag"><b>Maryland</b></span>
+            <h3>Comptroller of Maryland</h3>
+            <p>Pass-Through Entity (PTE) tax reconciliations, sales and use tax assessments, multi-state apportionment, and hold-harmless filings.</p>
+          </div>
+          <div class="card">
+            <span class="tag"><b>Virginia</b></span>
+            <h3>Virginia Dept. of Taxation</h3>
+            <p>Accelerated sales tax issues, worker classification audits (1099 vs W-2), corporate income tax adjustments, and administrative appeals.</p>
+          </div>
+          <div class="card">
+            <span class="tag"><b>Washington DC</b></span>
+            <h3>DC Office of Tax &amp; Revenue</h3>
+            <p>Unincorporated Business Franchise Tax (Form D-30), combined reporting assessments, and DC sales tax nexus inquiries.</p>
+          </div>
+        </div>
+
+        <!-- Mandatory Regulatory Guardrail Callout -->
+        <div class="callout" style="margin-top:36px;border-left-color:var(--blue)">
+          <span class="h">Statutory Notice on Representation &amp; Outcomes</span>
+          <p>
+            Representation before the Internal Revenue Service is restricted under Circular 230 to Attorneys, Certified Public Accountants, and Enrolled Agents. Outcomes depend on each taxpayer’s specific financial circumstances and on the agency’s official determination. Pivot Aide Tax does not guarantee specific dollar or percentage debt reductions.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="shell">
+      <div class="cols">
+        <div>
+          <div class="brand" style="margin-bottom:14px">
+            <img src="assets/brand/uncle-pat-avatar.svg" alt="Uncle Pat icon" width="32" height="32" style="filter:brightness(1.2)">
+            <span class="wm">Pivot Aide Tax</span>
+          </div>
+          <p class="small">Income tax is all we do. Year-round strategy, filing, compliance, and IRS representation for individuals and small businesses in all fifty states.</p>
+          <p class="small" style="margin-top:14px">
+            <strong>1 (571) 470-3754</strong><br>
+            tgeorge@pivotaide.com<br>
+            6475 New Hampshire Ave, Hyattsville, MD 20783
+          </p>
+        </div>
+
+        <div>
+          <h4>File &amp; Strategy</h4>
+          <ul>
+            <li><a href="file-taxes.html">Individual Returns (1040)</a></li>
+            <li><a href="file-taxes.html">Business Returns (1065 / 1120-S)</a></li>
+            <li><a href="file-taxes.html">QuickPrepare ($200)</a></li>
+            <li><a href="tax-strategy.html">The Standing File</a></li>
+            <li><a href="tax-strategy.html">S-Corp Election Package</a></li>
+            <li><a href="business.html">Monthly Bookkeeping</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Audit &amp; Resolution</h4>
+          <ul>
+            <li><a href="audit-resolution.html">IRS Notice Response ($450)</a></li>
+            <li><a href="audit-resolution.html">Examination Representation</a></li>
+            <li><a href="audit-resolution.html">Collections &amp; Installments</a></li>
+            <li><a href="audit-resolution.html">Unfiled Back Taxes</a></li>
+            <li><a href="audit-resolution.html">50-State Tax Desk</a></li>
+            <li><a href="audit-resolution.html">Audit Shield Protection</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Free Tools &amp; Portal</h4>
+          <ul>
+            <li><a href="free-help.html">Second Look Review (Free)</a></li>
+            <li><a href="free-help.html">Interactive Notice Triage</a></li>
+            <li><a href="business.html">S-Corp Savings Calculator</a></li>
+            <li><a href="resources.html">2026 Tax Figures</a></li>
+            <li><a href="appointments.html">Schedule an Appointment</a></li>
+            <li><a href="file-room.html">Client File Room Access</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="fine">
+        Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this site is a guarantee of any particular outcome; resolution results depend on individual financial circumstances and on agency determination.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/notice-triage.js"></script>
+  <script src="js/booking.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNoticeTriage('notice-triage-container');
+    });
+  </script>
+</body>
+</html>
