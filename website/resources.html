@@ -22,6 +22,14 @@
 </head>
 <body>
 
+    <!-- Prototype Section Bar -->
+  <div class="protobar">
+    <div class="shell in">
+      <span class="sec-indicator">SECTION 07 OF 11 &middot; TAX RESOURCES</span>
+      <span class="proto-tag">PIVOTAIDETAX.COM &mdash; PROTOTYPE, NOT THE LIVE SITE</span>
+    </div>
+  </div>
+
   <!-- Top Navigation -->
   <header class="topbar">
     <div class="shell in">
@@ -30,21 +38,29 @@
         <span class="wm">Pivot Aide <span>Tax</span></span>
       </a>
 
-      <nav class="main-nav" aria-label="Main Navigation">
+            <nav class="main-nav" aria-label="Main Navigation">
         <a href="index.html">Home</a>
         <a href="file-taxes.html">File Taxes</a>
-        <a href="tax-strategy.html" class="hot">Tax Strategy</a>
-        <a href="audit-resolution.html">Audit &amp; Resolution</a>
+        <a href="tax-strategy.html" class=" hot">Tax Strategy</a>
+        <div class="nav-item has-dropdown">
+          <a href="resources.html" class="nav-link dropdown-trigger active" aria-haspopup="true" aria-expanded="false">
+            Resources
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="new-law.html" class="dropdown-item">New Law</a>
+            <a href="free-help.html" class="dropdown-item">Free Help</a>
+            <a href="audit-resolution.html" class="dropdown-item">Audit &amp; Resolution</a>
+            <a href="meet-uncle-pat.html" class="dropdown-item">Uncle Pat</a>
+          </div>
+        </div>
         <a href="business.html">Business</a>
-        <a href="free-help.html">Free Help</a>
-        <a href="resources.html" class="active">Resources</a>
         <a href="appointments.html">Appointments</a>
-        <a href="file-room.html">File Room</a>
-        <a href="meet-uncle-pat.html">Uncle Pat</a>
       </nav>
 
       <div class="nav-actions">
         <a class="tel" href="tel:+15714703754">1 (571) 470-3754</a>
+        <a href="file-room.html" class="btn btn-login" aria-label="Client Portal Login">Login / Sign up</a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
@@ -52,249 +68,415 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+    <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobile-drawer">
     <a href="index.html">Home</a>
     <a href="file-taxes.html">File Taxes</a>
-    <a href="tax-strategy.html">Tax Strategy</a>
-    <a href="audit-resolution.html">Audit &amp; Resolution</a>
+    <a href="tax-strategy.html" class=" hot">Tax Strategy</a>
+    <div class="mobile-dropdown-group">
+      <div class="mobile-group-header">
+        <a href="resources.html" style="padding:0" class="active">Resources</a>
+      </div>
+      <div class="mobile-sublinks">
+        <a href="new-law.html">&mdash; New Law</a>
+        <a href="free-help.html">&mdash; Free Help</a>
+        <a href="audit-resolution.html">&mdash; Audit &amp; Resolution</a>
+        <a href="meet-uncle-pat.html">&mdash; Uncle Pat</a>
+      </div>
+    </div>
     <a href="business.html">Business</a>
-    <a href="free-help.html">Free Help</a>
-    <a href="resources.html" class="active">Resources</a>
     <a href="appointments.html">Appointments</a>
-    <a href="file-room.html">File Room</a>
-    <a href="meet-uncle-pat.html">Uncle Pat</a>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--line-2)">
+      <a href="file-room.html" class="btn btn-login" style="width:100%;text-align:center;justify-content:center">Login / Sign up</a>
+    </div>
+    <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line-2)">
+      <a href="tel:+15714703754" style="font-family:var(--f-mono);font-size:.85rem;color:var(--blue)">Tel: 1 (571) 470-3754</a>
+    </div>
   </div>
 
   <main id="main">
-    <!-- Header Banner -->
-    <section class="night tight">
-      <div class="shell">
-        <div class="sechead" style="margin-bottom:0">
-          <span class="eyebrow night">Statutory Reference</span>
-          <h1 style="color:#fff">2026 Reference Figures &amp; Tax Calendar</h1>
-          <p class="lede">
-            Official statutory figures for tax year 2026, sourced from IRS Revenue Procedure 2025-32, Notice IR-2025-111, and the 2026 standard mileage announcements.
-          </p>
-        </div>
+<section class="tight"><div class="shell">
+    <div class="sechead" style="margin-bottom:20px">
+      <span class="eyebrow">Tax resources</span>
+      <h2>The things people call us to ask.</h2>
+      <p class="lede">Deadlines, the numbers that actually changed this year, what to bring, and
+      plain-English answers to the questions that come up every week. Free to use, whether or not
+      you file with us.</p>
+      <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-p" href="Pivot Aide Tax - Tax Resources.pdf" target="_blank">Download 2026 Tax Figures &amp; Deadlines (PDF) &darr;</a>
+        <a class="btn btn-o" href="appointments.html">Book a consultation</a>
       </div>
-    </section>
+    </div>
+  </div></section>
 
-    <!-- Reference Figures Tables -->
-    <section>
-      <div class="shell">
-        <div class="figcols">
-          <!-- Column 1 -->
-          <div>
-            <table class="figs">
-              <caption>Standard Deductions (Tax Year 2026)</caption>
-              <tbody>
-                <tr>
-                  <th>Single<small>Unmarried filers</small></th>
-                  <td>$15,000<small>+$1,600 if 65 or older</small></td>
-                </tr>
-                <tr>
-                  <th>Married Filing Jointly<small>Or qualifying surviving spouse</small></th>
-                  <td>$30,000<small>+$1,600 each if 65 or older</small></td>
-                </tr>
-                <tr>
-                  <th>Head of Household<small>Unmarried with qualifying dependent</small></th>
-                  <td>$22,500<small>+$2,000 if 65 or older</small></td>
-                </tr>
-                <tr>
-                  <th>Married Filing Separately<small>When spouses file separately</small></th>
-                  <td>$15,000<small>Itemizing election binds spouse</small></td>
-                </tr>
-              </tbody>
-            </table>
+  <!-- Image Band: 2026 Tax Reference Desk -->
+  <div class="imgband slim gold-tint" style="--img:url('Pics/AdobeStock_480131145.jpeg')">
+    <div class="imgband-inner" style="padding:48px 24px;text-align:center">
+      <p style="font-family:var(--f-mono);font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin:0 0 10px">Tax Year 2026 Reference Desk</p>
+      <h2 style="color:#fff;margin:0;font-size:clamp(1.4rem,2.8vw,2.2rem)">The numbers that matter this year.<br><em style="color:var(--gold);font-style:normal">Updated whenever the IRS issues new guidance.</em></h2>
+    </div>
+  </div>
 
-            <table class="figs" style="margin-top:42px">
-              <caption>Retirement Limits (Tax Year 2026)</caption>
-              <tbody>
-                <tr>
-                  <th>401(k), 403(b), 457 Limit<small>Elective employee deferral</small></th>
-                  <td>$23,500<small>+$7,500 catch-up age 50–59</small></td>
-                </tr>
-                <tr>
-                  <th>SECURE 2.0 Super Catch-Up<small>Participants aged 60 through 63</small></th>
-                  <td>$11,250<small>Higher catch-up limit</small></td>
-                </tr>
-                <tr>
-                  <th>Traditional &amp; Roth IRA<small>Subject to MAGI phaseouts</small></th>
-                  <td>$7,000<small>+$1,000 catch-up age 50+</small></td>
-                </tr>
-                <tr>
-                  <th>SEP-IRA / Solo 401(k) Max<small>Employer contribution ceiling</small></th>
-                  <td>$70,000<small>Or 25% of net compensation</small></td>
-                </tr>
-                <tr>
-                  <th>Health Savings Account (HSA)<small>Self-only coverage</small></th>
-                  <td>$4,300<small>+$1,000 catch-up age 55+</small></td>
-                </tr>
-                <tr>
-                  <th>HSA Family Coverage<small>High-deductible family plan</small></th>
-                  <td>$8,550<small>Triple tax-advantaged</small></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Column 2 -->
-          <div>
-            <table class="figs">
-              <caption>Mileage &amp; Payroll Thresholds (2026)</caption>
-              <tbody>
-                <tr>
-                  <th>Standard Business Mileage<small>Per business mile driven</small></th>
-                  <td>67.0¢<small>Log or GPS tracking required</small></td>
-                </tr>
-                <tr>
-                  <th>Medical &amp; Moving Mileage<small>Moving restricted to active military</small></th>
-                  <td>21.0¢<small>Per allowable mile</small></td>
-                </tr>
-                <tr>
-                  <th>Charitable Mileage<small>Statutory rate set by law</small></th>
-                  <td>14.0¢<small>Fixed under IRC § 170(i)</small></td>
-                </tr>
-                <tr>
-                  <th>Social Security Wage Base<small>OASDI 6.2% tax cap</small></th>
-                  <td>$176,100<small>Medicare 1.45% is uncapped</small></td>
-                </tr>
-                <tr>
-                  <th>Annual Gift Tax Exclusion<small>Per recipient, no gift return required</small></th>
-                  <td>$19,000<small>$38,000 for married couples</small></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <table class="figs" style="margin-top:42px">
-              <caption>Small Business Depreciation</caption>
-              <tbody>
-                <tr>
-                  <th>Section 179 Expensing Limit<small>Full write-off of qualifying equipment</small></th>
-                  <td>$1,250,000<small>Phase-out starts at $3,130,000</small></td>
-                </tr>
-                <tr>
-                  <th>Bonus Depreciation Rate<small>Phase-down schedule under TCJA</small></th>
-                  <td>40%<small>Applied after §179 limit</small></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+  <!-- ---------- CALENDAR ---------- -->
+  <section class="night tight" style="padding-top:0"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">What&rsquo;s next</span>
+      <h2>The dates that are actually coming.</h2>
+      <p class="lede">Not a generic calendar starting in January — the deadlines ahead of you from
+      today. Anything marked in gold is inside the next ninety days.</p>
+    </div>
+    <div class="dates">
+      <div class="d soon">
+        <div class="dt">15 Sep 2026<i>Tuesday</i></div>
+        <div class="dw">
+          <h3>Q3 estimated tax &middot; extended partnership and S-corp returns</h3>
+          <p>Third-quarter estimate for the 2026 tax year, and the final deadline for 1065 and
+          1120-S returns that were extended in March.</p>
         </div>
+        <div class="who">Self-employed<br>Partnerships<br>S-corps</div>
       </div>
-    </section>
-
-    <!-- Key Deadlines -->
-    <section class="night">
-      <div class="shell">
-        <div class="sechead">
-          <span class="eyebrow night">Statutory Tax Calendar</span>
-          <h2 style="color:#fff">Key federal filing deadlines</h2>
+      <div class="d soon">
+        <div class="dt">15 Oct 2026<i>Thursday</i></div>
+        <div class="dw">
+          <h3>Extended individual returns</h3>
+          <p>Last day for 2025 Form 1040 returns filed on extension. There is no further extension —
+          after this, late-filing penalties start accruing.</p>
         </div>
-
-        <div class="dates">
-          <div class="d soon">
-            <span class="dt">January 15<i>Estimated Tax</i></span>
-            <div class="dw">
-              <h3 style="color:#fff">Q4 Estimated Tax Payment Due</h3>
-              <p>Fourth quarterly voucher due for individuals, sole proprietorships, and LLC owners avoiding underpayment penalties.</p>
-            </div>
-            <span class="who">Individuals &amp; Sole Props</span>
-          </div>
-
-          <div class="d">
-            <span class="dt">January 31<i>Information Returns</i></span>
-            <div class="dw">
-              <h3 style="color:#fff">W-2 &amp; 1099-NEC Filing Deadline</h3>
-              <p>Employers and businesses must submit Form W-2 to the Social Security Administration and 1099-NEC to contractors and the IRS.</p>
-            </div>
-            <span class="who">All Business Employers</span>
-          </div>
-
-          <div class="d soon">
-            <span class="dt">March 15<i>Pass-Through Entities</i></span>
-            <div class="dw">
-              <h3 style="color:#fff">Partnership (1065) &amp; S-Corp (1120-S) Returns</h3>
-              <p>Mandatory deadline to file entity returns or submit Form 7004 extension. Schedule K-1s must be furnished to all partners and shareholders.</p>
-            </div>
-            <span class="who">S-Corps &amp; Partnerships</span>
-          </div>
-
-          <div class="d soon">
-            <span class="dt">April 15<i>Filing Day</i></span>
-            <div class="dw">
-              <h3 style="color:#fff">Individual 1040 &amp; C-Corporation 1120 Returns</h3>
-              <p>Filing deadline or Form 4868 extension deadline. All taxes owed must be remitted by today regardless of extensions. Q1 estimated tax due.</p>
-            </div>
-            <span class="who">All Taxpayers</span>
-          </div>
-
-          <div class="d">
-            <span class="dt">June 15<i>Quarterly Tax</i></span>
-            <div class="dw">
-              <h3 style="color:#fff">Q2 Estimated Tax Payment Due</h3>
-              <p>Second quarter voucher for income earned March 1 through May 31.</p>
-            </div>
-            <span class="who">Self-Employed &amp; High Earners</span>
-          </div>
-
-          <div class="d">
-            <span class="dt">September 15<i>Extended Pass-Throughs</i></span>
-            <div class="dw">
-              <h3 style="color:#fff">Extended 1065 &amp; 1120-S Final Deadline</h3>
-              <p>Final extended filing deadline for partnerships and S-Corporations. Q3 estimated tax payment due.</p>
-            </div>
-            <span class="who">Entities on Extension</span>
-          </div>
-
-          <div class="d">
-            <span class="dt">October 15<i>Extended Individuals</i></span>
-            <div class="dw">
-              <h3 style="color:#fff">Extended Individual Form 1040 Final Deadline</h3>
-              <p>Final day to submit individual federal and state tax returns filed under an April extension.</p>
-            </div>
-            <span class="who">Individuals on Extension</span>
-          </div>
-        </div>
+        <div class="who">Individuals<br>Sole proprietors</div>
       </div>
-    </section>
-
-    <!-- Official IRS Tools Links -->
-    <section>
-      <div class="shell">
-        <div class="sechead">
-          <span class="eyebrow">Official Government Portals</span>
-          <h2>Direct IRS and state agency links</h2>
+      <div class="d soon">
+        <div class="dt">Nov – Dec 2026<i>Planning window</i></div>
+        <div class="dw">
+          <h3>Year-end moves</h3>
+          <p>Retirement funding, equipment purchases, income and expense timing, charitable gifts,
+          bonuses and distributions. Almost every lever closes at midnight on 31 December.</p>
         </div>
-
-        <div class="res">
-          <a href="https://www.irs.gov/refunds" target="_blank" rel="noopener">
-            <span class="t">IRS Where’s My Refund?</span>
-            <span class="u">irs.gov/refunds</span>
-            <p>Track your federal tax refund status 24 hours after e-filing acceptance.</p>
-          </a>
-          <a href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">
-            <span class="t">IRS Get Transcript Online</span>
-            <span class="u">irs.gov/individuals/get-transcript</span>
-            <p>Download official Wage &amp; Income transcripts and tax account records.</p>
-          </a>
-          <a href="https://www.irs.gov/payments/direct-pay" target="_blank" rel="noopener">
-            <span class="t">IRS Direct Pay</span>
-            <span class="u">irs.gov/payments/direct-pay</span>
-            <p>Pay federal taxes directly from your checking or savings account with zero fees.</p>
-          </a>
-          <a href="https://www.marylandtaxes.gov/" target="_blank" rel="noopener">
-            <span class="t">Comptroller of Maryland</span>
-            <span class="u">marylandtaxes.gov</span>
-            <p>Maryland state individual, corporate, and sales tax filings and portals.</p>
-          </a>
-        </div>
+        <div class="who">Everyone with<br>something to decide</div>
       </div>
-    </section>
+      <div class="d">
+        <div class="dt">31 Dec 2026<i>Thursday</i></div>
+        <div class="dw">
+          <h3>The 2026 tax year closes</h3>
+          <p>Last day for most deductible actions. IRA contributions are the notable exception —
+          those run to the filing deadline.</p>
+        </div>
+        <div class="who">Everyone</div>
+      </div>
+      <div class="d">
+        <div class="dt">15 Jan 2027<i>Friday</i></div>
+        <div class="dw">
+          <h3>Q4 estimated tax</h3>
+          <p>Final 2026 estimate. Paying it on time is often what keeps the underpayment penalty
+          off the return.</p>
+        </div>
+        <div class="who">Self-employed<br>Investors</div>
+      </div>
+      <div class="d">
+        <div class="dt">1 Feb 2027<i>Monday</i></div>
+        <div class="dw">
+          <h3>W-2 and 1099 furnishing deadline</h3>
+          <p>Employers and payers must get W-2s and most 1099s to recipients and to the agencies.
+          The statutory date is 31 January, which falls on a Sunday, so it moves to the next
+          business day. If you pay contractors, this is your deadline, not theirs.</p>
+        </div>
+        <div class="who">Employers<br>Anyone issuing 1099s</div>
+      </div>
+      <div class="d">
+        <div class="dt">15 Mar 2027<i>Monday</i></div>
+        <div class="dw">
+          <h3>Partnership and S-corp returns</h3>
+          <p>Forms 1065 and 1120-S, or the extension to 15 September. K-1s flow from here, so a
+          late entity return holds up every owner&rsquo;s personal return.</p>
+        </div>
+        <div class="who">Partnerships<br>S-corps</div>
+      </div>
+      <div class="d">
+        <div class="dt">15 Apr 2027<i>Thursday</i></div>
+        <div class="dw">
+          <h3>Individual and C-corp returns &middot; Q1 estimate &middot; IRA deadline</h3>
+          <p>Form 1040 and Form 1120, or an extension. Also the first 2027 estimate, and the last
+          day to make a 2026 IRA or HSA contribution.</p>
+        </div>
+        <div class="who">Individuals<br>C-corps</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:26px">
+      <span class="h">On extensions</span>
+      <p>An extension gives you more time to <b>file</b>, never more time to <b>pay</b>. If you
+      expect to owe, the payment is still due on the original date — otherwise interest and the
+      failure-to-pay penalty run from that day, extension or not. We estimate the payment and file
+      the extension together.</p>
+    </div>
+  </div></section>
+
+  <!-- ---------- THE NUMBERS ---------- -->
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Tax year 2026</span>
+      <h2>The numbers that matter this year.</h2>
+      <p class="lede">Figures for the 2026 tax year — the year you are living in now, and the one
+      your planning decisions still affect. Sourced from the IRS; we update this page when the
+      agency does.</p>
+    </div>
+
+    <div class="figcols">
+      <div>
+        <table class="figs">
+          <caption>Standard deduction</caption>
+          <tbody>
+            <tr><th>Single or married filing separately</th><td>$16,100</td></tr>
+            <tr><th>Married filing jointly</th><td>$32,200</td></tr>
+            <tr><th>Head of household</th><td>$24,150</td></tr>
+            <tr><th>Additional deduction, age 65+ <small>Temporary, 2025–2028. Phases out above $75,000 MAGI ($150,000 joint).</small></th><td>$6,000<small>per eligible person</small></td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Marginal rates · taxable income</caption>
+          <tbody>
+            <tr><th>10% <small>Single / married filing jointly</small></th><td>to $12,400<small>to $24,800</small></td></tr>
+            <tr><th>12%</th><td>over $12,400<small>over $24,800</small></td></tr>
+            <tr><th>22%</th><td>over $50,400<small>over $100,800</small></td></tr>
+            <tr><th>24%</th><td>over $105,700<small>over $211,400</small></td></tr>
+            <tr><th>32%</th><td>over $201,775<small>over $403,550</small></td></tr>
+            <tr><th>35%</th><td>over $256,225<small>over $512,450</small></td></tr>
+            <tr><th>37%</th><td>over $640,600<small>over $768,700</small></td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Health &amp; benefits</caption>
+          <tbody>
+            <tr><th>HSA contribution — self-only</th><td>$4,400</td></tr>
+            <tr><th>HSA contribution — family</th><td>$8,750</td></tr>
+            <tr><th>HSA catch-up, age 55+</th><td>$1,000</td></tr>
+            <tr><th>HDHP minimum deductible <small>Self-only / family</small></th><td>$1,700<small>$3,400</small></td></tr>
+            <tr><th>HDHP out-of-pocket maximum <small>Self-only / family</small></th><td>$8,500<small>$17,000</small></td></tr>
+            <tr><th>Health FSA salary reduction</th><td>$3,400</td></tr>
+            <tr><th>Qualified transportation benefit</th><td>$340<small>per month</small></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <table class="figs">
+          <caption>Retirement contributions</caption>
+          <tbody>
+            <tr><th>401(k), 403(b), 457, TSP deferral</th><td>$24,500</td></tr>
+            <tr><th>Catch-up, age 50+</th><td>$8,000</td></tr>
+            <tr><th>Higher catch-up, ages 60–63</th><td>$11,250</td></tr>
+            <tr><th>IRA contribution</th><td>$7,500</td></tr>
+            <tr><th>IRA catch-up, age 50+</th><td>$1,100</td></tr>
+            <tr><th>SIMPLE plan deferral <small>Higher limit for applicable plans: $18,100</small></th><td>$17,000</td></tr>
+            <tr><th>SIMPLE catch-up, 50+ / 60–63</th><td>$4,000<small>$5,250</small></td></tr>
+            <tr><th>Roth IRA phase-out <small>Single or head of household / joint</small></th><td>$153k–$168k<small>$242k–$252k</small></td></tr>
+            <tr><th>Traditional IRA deductibility <small>If covered by a workplace plan. Single / joint.</small></th><td>$81k–$91k<small>$129k–$149k</small></td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Business &amp; mileage</caption>
+          <tbody>
+            <tr><th>Standard mileage — business</th><td>72.5&cent;<small>per mile</small></td></tr>
+            <tr><th>Standard mileage — medical or moving</th><td>20.5&cent;<small>per mile</small></td></tr>
+            <tr><th>Standard mileage — charitable</th><td>14&cent;<small>per mile</small></td></tr>
+            <tr><th>State and local tax cap <small>Phases down above roughly $505,000 MAGI, floor $10,000.</small></th><td>$40,400</td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Temporary deductions · 2025 – 2028</caption>
+          <tbody>
+            <tr><th>Qualified tips <small>Phases out above $150,000 ($300,000 joint).</small></th><td>up to $25,000</td></tr>
+            <tr><th>Qualified overtime <small>$25,000 joint. Same phase-out.</small></th><td>up to $12,500</td></tr>
+            <tr><th>Car loan interest <small>Loans originated after 31 Dec 2024. Phases out above $100,000 ($200,000 joint).</small></th><td>up to $10,000</td></tr>
+          </tbody>
+        </table>
+
+        <table class="figs">
+          <caption>Transfers &amp; AMT</caption>
+          <tbody>
+            <tr><th>Annual gift tax exclusion</th><td>$19,000<small>per recipient</small></td></tr>
+            <tr><th>Estate tax basic exclusion</th><td>$15,000,000</td></tr>
+            <tr><th>AMT exemption <small>Unmarried / married filing jointly</small></th><td>$90,100<small>$140,200</small></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:26px">Figures are for tax year 2026 and come from IRS
+    Revenue Procedure 2025-32, IRS Notice IR-2025-111, Revenue Procedure 2025-19 and the 2026
+    standard mileage rate announcement. Reference only — your situation decides which of these
+    apply, and several phase out with income.</p>
+  </div></section>
+
+  <!-- ---------- EXPLAINERS ---------- -->
+  <section class="night tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">Plain English</span>
+      <h2>Six things worth understanding.</h2>
+      <p class="lede">Written the way we would explain them on the phone, because that is where
+      most of these questions actually get asked.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag">Notices</span>
+        <h3>A CP2000 is not a bill</h3>
+        <p>It is a <em>proposed</em> change — the IRS matched a form it received against your return
+        and found a gap. You normally have 30 days to agree or disagree. A surprising share are
+        wrong, or right about the income and wrong about the basis. Never pay one before someone
+        reads it.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Estimates</span>
+        <h3>Why you owe every April</h3>
+        <p>Nothing withholds tax from self-employment, investment or rental income. The fix is
+        quarterly estimates. Pay the lesser of 90% of this year&rsquo;s tax or 100% of last
+        year&rsquo;s — 110% if last year&rsquo;s AGI topped $150,000 — and the underpayment penalty
+        goes away.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Entity</span>
+        <h3>When an S-corp starts to pay</h3>
+        <p>The saving is on self-employment tax, and it only exists once profit comfortably exceeds
+        a reasonable salary for your role. Below that, the payroll and filing costs eat it. The
+        salary is not optional and not a number you pick — it has to be defensible.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Records</span>
+        <h3>How long to keep things</h3>
+        <p>Three years is the general rule. Six if you omitted more than 25% of your gross income.
+        Employment tax records, four. Property records until three years after you sell it. If you
+        never filed, or filed fraudulently, there is no limit at all.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Multi-state</span>
+        <h3>Where you actually owe</h3>
+        <p>Your resident state taxes everything; other states tax what you earned there, and your
+        home state usually credits you for it. Remote work, a rental elsewhere, or a mid-year move
+        each create a return most people miss — and states are getting better at noticing.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Extensions</span>
+        <h3>An extension buys time to file</h3>
+        <p>Not time to pay. File one and you avoid the failure-to-file penalty, which is ten times
+        heavier than the failure-to-pay penalty. But interest and the smaller penalty still run from
+        the original date on anything unpaid.</p>
+      </div>
+    </div>
+    <div class="patsays" style="margin-top:26px;border-left-color:var(--gold)">
+      <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+      <div>
+        <q>None of this is complicated. It&rsquo;s just unfamiliar, and it arrives when you&rsquo;re busy.</q>
+        <div class="who">Uncle Pat</div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- CHECKLISTS ---------- -->
+  <section><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Before you file</span>
+      <h2>What to have ready.</h2>
+      <p class="lede">The portal gives you a checklist built for your situation. This is the short
+      version, so you can start gathering before you book anything.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="eyebrow dim" style="margin-bottom:12px">Everyone</div>
+        <ul class="ticks">
+          <li>Last year&rsquo;s filed return</li>
+          <li>Photo ID and Social Security numbers for everyone on the return</li>
+          <li>W-2s, and 1099s of every letter — NEC, MISC, INT, DIV, B, R, G, K</li>
+          <li>1095-A if you had marketplace health coverage</li>
+          <li>1098 for mortgage interest, 1098-T for tuition, 1098-E for student loan interest</li>
+          <li>Bank routing and account number for the refund or payment</li>
+          <li>Any IRS or state letters received since your last filing</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow dim" style="margin-bottom:12px">Self-employed and business owners</div>
+        <ul class="ticks">
+          <li>Profit and loss and balance sheet, or the bookkeeping file</li>
+          <li>Bank and credit card statements for every business account</li>
+          <li>Mileage log, or total business and total miles for the year</li>
+          <li>Home office square footage and total home square footage</li>
+          <li>Asset purchases over $2,500 with dates and amounts</li>
+          <li>Payroll reports and copies of 1099s you issued</li>
+          <li>K-1s from any partnership or S-corp you hold</li>
+          <li>Estimated tax payments made, with dates</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- OFFICIAL TOOLS ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Official tools</span>
+      <h2>Straight to the source.</h2>
+      <p class="lede">Everything here is a government site. We link to them rather than reproducing
+      them, because these are the versions that stay current — and because nobody should take a tax
+      figure from a marketing page without being able to check it.</p>
+    </div>
+    <div class="res">
+      <a href="https://www.irs.gov/refunds" target="_blank" rel="noopener">
+        <span class="t">Where&rsquo;s My Refund</span>
+        <p>Refund status, updated daily. Available about 24 hours after an e-filed return is accepted.</p>
+        <span class="u">irs.gov/refunds</span>
+      </a>
+      <a href="https://www.irs.gov/payments/online-account" target="_blank" rel="noopener">
+        <span class="t">IRS Online Account</span>
+        <p>Your balance, payment history, notices and transcripts in one place. Worth setting up before you need it.</p>
+        <span class="u">irs.gov/payments/online-account</span>
+      </a>
+      <a href="https://www.irs.gov/individuals/get-transcript" target="_blank" rel="noopener">
+        <span class="t">Get Transcript</span>
+        <p>Wage and income transcripts — what the IRS was actually told about you. The first thing we pull on any back-year matter.</p>
+        <span class="u">irs.gov/individuals/get-transcript</span>
+      </a>
+      <a href="https://www.irs.gov/payments/direct-pay" target="_blank" rel="noopener">
+        <span class="t">IRS Direct Pay</span>
+        <p>Pay a balance or an estimate straight from a bank account, no fee. Keep the confirmation number.</p>
+        <span class="u">irs.gov/payments/direct-pay</span>
+      </a>
+      <a href="https://www.irs.gov/individuals/tax-withholding-estimator" target="_blank" rel="noopener">
+        <span class="t">Withholding Estimator</span>
+        <p>Check whether your W-4 is set right. Or let us do it — the Withholding Checkup is free.</p>
+        <span class="u">irs.gov/individuals/tax-withholding-estimator</span>
+      </a>
+      <a href="https://www.irs.gov/identity-theft-fraud-scams/get-an-identity-protection-pin" target="_blank" rel="noopener">
+        <span class="t">Identity Protection PIN</span>
+        <p>A six-digit code that stops anyone else filing a return under your Social Security number.</p>
+        <span class="u">irs.gov/identity-theft-fraud-scams</span>
+      </a>
+      <a href="https://www.marylandtaxes.gov" target="_blank" rel="noopener">
+        <span class="t">Comptroller of Maryland</span>
+        <p>Maryland returns, payments, notices and business tax accounts.</p>
+        <span class="u">marylandtaxes.gov</span>
+      </a>
+      <a href="https://www.tax.virginia.gov" target="_blank" rel="noopener">
+        <span class="t">Virginia Department of Taxation</span>
+        <p>Virginia individual and business filing, payments and correspondence.</p>
+        <span class="u">tax.virginia.gov</span>
+      </a>
+    </div>
+    <p class="small" style="margin-top:20px">Filing in another state? We work all fifty — ask and
+    we&rsquo;ll point you at the right agency, or just handle it.</p>
+
+    <div class="callout" style="margin-top:26px">
+      <span class="h">What this page is and isn&rsquo;t</span>
+      <p>General information, current as of September 2026, not advice about your situation. Tax
+      figures change every year and most of them phase out with income. Before you act on anything
+      here, let us look at your actual numbers — the consultation is free.</p>
+    </div>
+  </div></section>
+</div>
+
+<!-- ============================================================ APPOINTMENTS -->
+<div class="view" 
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="shell">
       <div class="cols">
@@ -311,45 +493,43 @@
           </p>
         </div>
 
-        <div>
+                <div>
           <h4>File &amp; Strategy</h4>
           <ul>
             <li><a href="file-taxes.html">Individual Returns (1040)</a></li>
             <li><a href="file-taxes.html">Business Returns (1065 / 1120-S)</a></li>
-            <li><a href="file-taxes.html">QuickPrepare ($200)</a></li>
             <li><a href="tax-strategy.html">The Standing File</a></li>
-            <li><a href="tax-strategy.html">S-Corp Election Package</a></li>
-            <li><a href="business.html">Monthly Bookkeeping</a></li>
+            <li><a href="business.html">Business Tax &amp; Bookkeeping</a></li>
+            <li><a href="appointments.html">Appointments</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Audit &amp; Resolution</h4>
+          <h4>Resources &amp; Resolution</h4>
           <ul>
-            <li><a href="audit-resolution.html">IRS Notice Response ($450)</a></li>
-            <li><a href="audit-resolution.html">Examination Representation</a></li>
-            <li><a href="audit-resolution.html">Collections &amp; Installments</a></li>
-            <li><a href="audit-resolution.html">Unfiled Back Taxes</a></li>
-            <li><a href="audit-resolution.html">50-State Tax Desk</a></li>
-            <li><a href="audit-resolution.html">Audit Shield Protection</a></li>
+            <li><a href="resources.html">Tax Resources &amp; Deadlines</a></li>
+            <li><a href="new-law.html">The New Tax Law (OBBBA)</a></li>
+            <li><a href="free-help.html">Free Help &amp; Second Look</a></li>
+            <li><a href="audit-resolution.html">Audit &amp; Resolution</a></li>
+            <li><a href="meet-uncle-pat.html">Meet Uncle Pat</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Free Tools &amp; Portal</h4>
+          <h4>Policies &amp; Legal</h4>
           <ul>
-            <li><a href="free-help.html">Second Look Review (Free)</a></li>
-            <li><a href="free-help.html">Interactive Notice Triage</a></li>
-            <li><a href="business.html">S-Corp Savings Calculator</a></li>
-            <li><a href="resources.html">2026 Tax Figures</a></li>
-            <li><a href="appointments.html">Schedule an Appointment</a></li>
-            <li><a href="file-room.html">Client File Room Access</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="payment-policy.html">Payment Policy</a></li>
+            <li><a href="security-policy.html">Security Policy</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+            <li><a href="service-expectations.html">Service Expectations</a></li>
+            <li><a href="file-room.html">Client Portal Login</a></li>
           </ul>
         </div>
       </div>
 
       <p class="fine">
-        Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this site is a guarantee of any particular outcome; resolution results depend on individual financial circumstances and on agency determination.
+        Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this site is a guarantee of any particular outcome; resolution results depend on individual financial circumstances and on agency determination. &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="payment-policy.html">Payment Policy</a> &middot; <a href="security-policy.html">Security</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; <a href="service-expectations.html">Service Expectations</a>
       </p>
     </div>
   </footer>

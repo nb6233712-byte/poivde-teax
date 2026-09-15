@@ -22,6 +22,14 @@
 </head>
 <body>
 
+  <!-- Prototype Section Bar -->
+  <div class="protobar">
+    <div class="shell in">
+      <span class="sec-indicator">SECTION 09 OF 11 &middot; APPOINTMENTS</span>
+      <span class="proto-tag">PIVOTAIDETAX.COM &mdash; PROTOTYPE, NOT THE LIVE SITE</span>
+    </div>
+  </div>
+
   <!-- Top Navigation -->
   <header class="topbar">
     <div class="shell in">
@@ -30,21 +38,29 @@
         <span class="wm">Pivot Aide <span>Tax</span></span>
       </a>
 
-      <nav class="main-nav" aria-label="Main Navigation">
+            <nav class="main-nav" aria-label="Main Navigation">
         <a href="index.html">Home</a>
         <a href="file-taxes.html">File Taxes</a>
-        <a href="tax-strategy.html" class="hot">Tax Strategy</a>
-        <a href="audit-resolution.html">Audit &amp; Resolution</a>
+        <a href="tax-strategy.html" class=" hot">Tax Strategy</a>
+        <div class="nav-item has-dropdown">
+          <a href="resources.html" class="nav-link dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            Resources
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="new-law.html" class="dropdown-item">New Law</a>
+            <a href="free-help.html" class="dropdown-item">Free Help</a>
+            <a href="audit-resolution.html" class="dropdown-item">Audit &amp; Resolution</a>
+            <a href="meet-uncle-pat.html" class="dropdown-item">Uncle Pat</a>
+          </div>
+        </div>
         <a href="business.html">Business</a>
-        <a href="free-help.html">Free Help</a>
-        <a href="resources.html">Resources</a>
         <a href="appointments.html" class="active">Appointments</a>
-        <a href="file-room.html">File Room</a>
-        <a href="meet-uncle-pat.html">Uncle Pat</a>
       </nav>
 
       <div class="nav-actions">
         <a class="tel" href="tel:+15714703754">1 (571) 470-3754</a>
+        <a href="file-room.html" class="btn btn-login" aria-label="Client Portal Login">Login / Sign up</a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
@@ -52,18 +68,30 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+    <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobile-drawer">
     <a href="index.html">Home</a>
     <a href="file-taxes.html">File Taxes</a>
-    <a href="tax-strategy.html">Tax Strategy</a>
-    <a href="audit-resolution.html">Audit &amp; Resolution</a>
+    <a href="tax-strategy.html" class=" hot">Tax Strategy</a>
+    <div class="mobile-dropdown-group">
+      <div class="mobile-group-header">
+        <a href="resources.html" style="padding:0">Resources</a>
+      </div>
+      <div class="mobile-sublinks">
+        <a href="new-law.html">&mdash; New Law</a>
+        <a href="free-help.html">&mdash; Free Help</a>
+        <a href="audit-resolution.html">&mdash; Audit &amp; Resolution</a>
+        <a href="meet-uncle-pat.html">&mdash; Uncle Pat</a>
+      </div>
+    </div>
     <a href="business.html">Business</a>
-    <a href="free-help.html">Free Help</a>
-    <a href="resources.html">Resources</a>
     <a href="appointments.html" class="active">Appointments</a>
-    <a href="file-room.html">File Room</a>
-    <a href="meet-uncle-pat.html">Uncle Pat</a>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--line-2)">
+      <a href="file-room.html" class="btn btn-login" style="width:100%;text-align:center;justify-content:center">Login / Sign up</a>
+    </div>
+    <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line-2)">
+      <a href="tel:+15714703754" style="font-family:var(--f-mono);font-size:.85rem;color:var(--blue)">Tel: 1 (571) 470-3754</a>
+    </div>
   </div>
 
   <main id="main">
@@ -125,6 +153,12 @@
     </section>
 
     <!-- In-Page Direct Booking Container -->
+    <div class="imgband slim blue-tint" style="--img:url('Pics/AdobeStock_487242751.jpeg')">
+      <div class="imgband-inner" style="padding:40px 24px;text-align:center">
+        <p style="font-family:var(--f-mono);font-size:0.76rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin:0 0 8px">No sales calls &middot; No commissioned reps</p>
+        <h2 style="color:#fff;margin:0;font-size:clamp(1.3rem,2.6vw,2rem)">You speak with a tax practitioner.<br><em style="color:var(--gold);font-style:normal">Not someone who reads from a script.</em></h2>
+      </div>
+    </div>
     <section style="background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
       <div class="shell">
         <div class="split">
@@ -210,45 +244,43 @@
           </p>
         </div>
 
-        <div>
+                <div>
           <h4>File &amp; Strategy</h4>
           <ul>
             <li><a href="file-taxes.html">Individual Returns (1040)</a></li>
             <li><a href="file-taxes.html">Business Returns (1065 / 1120-S)</a></li>
-            <li><a href="file-taxes.html">QuickPrepare ($200)</a></li>
             <li><a href="tax-strategy.html">The Standing File</a></li>
-            <li><a href="tax-strategy.html">S-Corp Election Package</a></li>
-            <li><a href="business.html">Monthly Bookkeeping</a></li>
+            <li><a href="business.html">Business Tax &amp; Bookkeeping</a></li>
+            <li><a href="appointments.html">Appointments</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Audit &amp; Resolution</h4>
+          <h4>Resources &amp; Resolution</h4>
           <ul>
-            <li><a href="audit-resolution.html">IRS Notice Response ($450)</a></li>
-            <li><a href="audit-resolution.html">Examination Representation</a></li>
-            <li><a href="audit-resolution.html">Collections &amp; Installments</a></li>
-            <li><a href="audit-resolution.html">Unfiled Back Taxes</a></li>
-            <li><a href="audit-resolution.html">50-State Tax Desk</a></li>
-            <li><a href="audit-resolution.html">Audit Shield Protection</a></li>
+            <li><a href="resources.html">Tax Resources &amp; Deadlines</a></li>
+            <li><a href="new-law.html">The New Tax Law (OBBBA)</a></li>
+            <li><a href="free-help.html">Free Help &amp; Second Look</a></li>
+            <li><a href="audit-resolution.html">Audit &amp; Resolution</a></li>
+            <li><a href="meet-uncle-pat.html">Meet Uncle Pat</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Free Tools &amp; Portal</h4>
+          <h4>Policies &amp; Legal</h4>
           <ul>
-            <li><a href="free-help.html">Second Look Review (Free)</a></li>
-            <li><a href="free-help.html">Interactive Notice Triage</a></li>
-            <li><a href="business.html">S-Corp Savings Calculator</a></li>
-            <li><a href="resources.html">2026 Tax Figures</a></li>
-            <li><a href="appointments.html">Schedule an Appointment</a></li>
-            <li><a href="file-room.html">Client File Room Access</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="payment-policy.html">Payment Policy</a></li>
+            <li><a href="security-policy.html">Security Policy</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+            <li><a href="service-expectations.html">Service Expectations</a></li>
+            <li><a href="file-room.html">Client Portal Login</a></li>
           </ul>
         </div>
       </div>
 
       <p class="fine">
-        Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this site is a guarantee of any particular outcome; resolution results depend on individual financial circumstances and on agency determination.
+        Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this site is a guarantee of any particular outcome; resolution results depend on individual financial circumstances and on agency determination. &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="payment-policy.html">Payment Policy</a> &middot; <a href="security-policy.html">Security</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; <a href="service-expectations.html">Service Expectations</a>
       </p>
     </div>
   </footer>

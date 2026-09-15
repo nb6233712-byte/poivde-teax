@@ -22,6 +22,14 @@
 </head>
 <body>
 
+    <!-- Prototype Section Bar -->
+  <div class="protobar">
+    <div class="shell in">
+      <span class="sec-indicator">SECTION 03 OF 11 &middot; TAX STRATEGY &mdash; THE STANDING FILE</span>
+      <span class="proto-tag">PIVOTAIDETAX.COM &mdash; PROTOTYPE, NOT THE LIVE SITE</span>
+    </div>
+  </div>
+
   <!-- Top Navigation -->
   <header class="topbar">
     <div class="shell in">
@@ -30,21 +38,29 @@
         <span class="wm">Pivot Aide <span>Tax</span></span>
       </a>
 
-      <nav class="main-nav" aria-label="Main Navigation">
+            <nav class="main-nav" aria-label="Main Navigation">
         <a href="index.html">Home</a>
         <a href="file-taxes.html">File Taxes</a>
-        <a href="tax-strategy.html" class="active hot">Tax Strategy</a>
-        <a href="audit-resolution.html">Audit &amp; Resolution</a>
+        <a href="tax-strategy.html" class=" hot active">Tax Strategy</a>
+        <div class="nav-item has-dropdown">
+          <a href="resources.html" class="nav-link dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            Resources
+            <svg class="dropdown-chevron" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="new-law.html" class="dropdown-item">New Law</a>
+            <a href="free-help.html" class="dropdown-item">Free Help</a>
+            <a href="audit-resolution.html" class="dropdown-item">Audit &amp; Resolution</a>
+            <a href="meet-uncle-pat.html" class="dropdown-item">Uncle Pat</a>
+          </div>
+        </div>
         <a href="business.html">Business</a>
-        <a href="free-help.html">Free Help</a>
-        <a href="resources.html">Resources</a>
         <a href="appointments.html">Appointments</a>
-        <a href="file-room.html">File Room</a>
-        <a href="meet-uncle-pat.html">Uncle Pat</a>
       </nav>
 
       <div class="nav-actions">
         <a class="tel" href="tel:+15714703754">1 (571) 470-3754</a>
+        <a href="file-room.html" class="btn btn-login" aria-label="Client Portal Login">Login / Sign up</a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
@@ -52,98 +68,568 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+    <!-- Mobile Drawer -->
   <div class="mobile-drawer" id="mobile-drawer">
     <a href="index.html">Home</a>
     <a href="file-taxes.html">File Taxes</a>
-    <a href="tax-strategy.html" class="active">Tax Strategy</a>
-    <a href="audit-resolution.html">Audit &amp; Resolution</a>
+    <a href="tax-strategy.html" class=" hot active">Tax Strategy</a>
+    <div class="mobile-dropdown-group">
+      <div class="mobile-group-header">
+        <a href="resources.html" style="padding:0">Resources</a>
+      </div>
+      <div class="mobile-sublinks">
+        <a href="new-law.html">&mdash; New Law</a>
+        <a href="free-help.html">&mdash; Free Help</a>
+        <a href="audit-resolution.html">&mdash; Audit &amp; Resolution</a>
+        <a href="meet-uncle-pat.html">&mdash; Uncle Pat</a>
+      </div>
+    </div>
     <a href="business.html">Business</a>
-    <a href="free-help.html">Free Help</a>
-    <a href="resources.html">Resources</a>
     <a href="appointments.html">Appointments</a>
-    <a href="file-room.html">File Room</a>
-    <a href="meet-uncle-pat.html">Uncle Pat</a>
+    <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--line-2)">
+      <a href="file-room.html" class="btn btn-login" style="width:100%;text-align:center;justify-content:center">Login / Sign up</a>
+    </div>
+    <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line-2)">
+      <a href="tel:+15714703754" style="font-family:var(--f-mono);font-size:.85rem;color:var(--blue)">Tel: 1 (571) 470-3754</a>
+    </div>
   </div>
 
   <main id="main">
-    <!-- Hero Banner -->
-    <section class="night">
-      <div class="shell">
-        <div class="sechead">
-          <span class="eyebrow night">Layer 3 · Flagship Engagement</span>
-          <h1 style="color:#fff">Stop filing tax history.<br>Start shaping the outcome.</h1>
-          <p class="lede">
-            By December 31st, 95% of tax-saving opportunities are legally closed. True tax strategy is an active 12-month collaboration that adjusts entity structures, optimizes owner distributions, and tracks tax law changes before they bite.
-          </p>
-          <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
-            <button class="btn btn-g" onclick="openBookingModal('scoping')">Book a 45-Minute Scoping Call</button>
-            <a class="btn btn-w" href="#standing-file">Explore The Standing File &darr;</a>
+<div class="night">
+    <section><div class="shell">
+      <div class="split wide" style="align-items:center">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <span class="eyebrow night">Tax strategy &middot; by engagement</span>
+          <h2 style="font-size:clamp(2.2rem,4.8vw,3.5rem);font-weight:300;line-height:1.05">The Standing&nbsp;File</h2>
+          <p class="lede" style="font-size:1.16rem">Most firms open your file in February and close
+          it in April. This one never closes.</p>
+          <p class="lede">A year-round tax strategy engagement for high-income individuals and for
+          business owners — a named advisor who knows your situation, quarterly counsel, every
+          return and every notice handled, and someone to call <em>before</em> you do the thing,
+          not after.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px">
+            <a class="btn btn-g" href="appointments.html">Request a scoping call</a>
+            <a class="btn btn-w" href="Pivot Aide Tax - Tax Strategy.pdf" target="_blank">Download Strategy PDF &darr;</a>
+            <a class="btn btn-w" href="tel:+15714703754">1 (571) 470-3754</a>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <svg viewBox="0 0 200 220" style="width:200px" role="img" aria-label="Uncle Pat"><use href="#pat"></use></svg>
+        </div>
+      </div>
+    </div></section>
+  </div>
+
+  <!-- ---------- CASE STUDY ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Case study &middot; illustrative</span>
+      <h2>From a $500,000 salary to a<br>$126,000 tax-savings strategy.</h2>
+      <p class="lede">Here is what strategic tax planning can look like. The client was earning
+      $500,000 in W-2 income. On paper, an incredible income. Then came the taxes.</p>
+    </div>
+
+    <div class="split wide">
+      <div>
+        <table class="figs">
+          <caption>Before &middot; the year as it stood</caption>
+          <tbody>
+            <tr><th>Gross income</th><td>$500,000</td></tr>
+            <tr><th>Federal income tax</th><td>~$141,253</td></tr>
+            <tr><th>State income tax</th><td>~$25,000</td></tr>
+            <tr><th>Social Security</th><td>~$10,114</td></tr>
+            <tr><th>Medicare</th><td>~$9,950</td></tr>
+            <tr><th><b>Estimated total taxes</b></th><td>~$187,000</td></tr>
+            <tr><th><b>Estimated take-home</b></th><td>~$313,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="callout">
+          <span class="h">The number that starts the conversation</span>
+          <p>Nearly <b>37% of gross income</b> was going to taxes before there was any chance to
+          spend or invest it.</p>
+        </div>
+        <div class="patsays" style="margin-top:20px">
+          <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+          <div>
+            <q>The question was never &ldquo;how do we make less money?&rdquo; It was
+            &ldquo;how do we legally keep more of what we&rsquo;re already earning?&rdquo;</q>
+            <div class="who">Uncle Pat</div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div></section>
 
-    <!-- The Standing File -->
-    <section id="standing-file">
-      <div class="shell">
-        <div class="sechead">
-          <span class="eyebrow">The Flagship Retainer</span>
-          <h2>The Standing File</h2>
-          <p class="lede">
-            Everything your financial life requires inside one comprehensive, annual retainer. A named senior advisor, four quarterly strategy sessions, mid-year projections, and every return and notice handled under one fee.
-          </p>
-        </div>
+  <section class="night"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">The strategy</span>
+      <h2>Combine the tax planning with<br>an asset worth owning.</h2>
+      <p class="lede">Rather than accept the bill, we looked for a move that did two jobs at once.
+      It centred on the purchase of a <b style="color:#fff">$995,000 short-term rental
+      property</b> &mdash; but buying it was only the beginning. What mattered was how it was
+      structured and depreciated.</p>
+    </div>
 
-        <div class="filecards">
-          <div class="filecard">
-            <div class="fh">
-              <span>Track A</span>
-              <b>High-Income Individuals</b>
-            </div>
-            <div class="fb">
-              <p>For W-2 executives, physicians, partners, equity holders, and multi-state real estate investors seeking aggressive, legal wealth preservation.</p>
-              <ul class="ticks tight">
-                <li><b>Dedicated Senior Advisor</b> assigned to your file year-round</li>
-                <li><b>Four Scheduled Strategy Sessions</b> (Jan, May, Sep, Nov)</li>
-                <li><b>Annual Written Strategy Plan</b> with quantified tax projections</li>
-                <li><b>Mid-Year Projection &amp; Safe-Harbor Tuning</b> in August</li>
-                <li><b>All Federal &amp; Multi-State Returns</b> (Form 1040, Sch A/B/D/E)</li>
-                <li><b>Stock Option &amp; Equity Comp Planning</b> (RSUs, ISOs, ESPP)</li>
-                <li><b>Unlimited Questions &amp; Notice Review</b> throughout the year</li>
-              </ul>
-              <div class="small" style="margin-top:auto;padding-top:14px;border-top:1px solid var(--line-2)">
-                Quoted after a free 45-min scoping call and Second Look review of three prior returns.
-              </div>
-              <button class="btn btn-p" onclick="openBookingModal('scoping')">Request Scoping Call &rarr;</button>
-            </div>
-          </div>
+    <div class="steps s3">
+      <div><span class="k">1</span>
+        <h3>Cost segregation</h3>
+        <p>A cost segregation study was performed. Instead of depreciating substantially all of the
+        building over the traditional 27.5-year residential period, the study identified qualifying
+        components that could be depreciated over shorter recovery periods &mdash; approximately
+        <b>$248,352</b> of accelerated and bonus depreciation.</p>
+      </div>
+      <div><span class="k">2</span>
+        <h3>The seven-day test</h3>
+        <p>Rental losses are ordinarily passive, and passive losses cannot offset wages. But the
+        average guest stay was seven days or less, which can take the activity outside the
+        definition of a rental activity for purposes of IRC&nbsp;&sect;469.</p>
+      </div>
+      <div><span class="k">3</span>
+        <h3>Material participation</h3>
+        <p>The client self-managed the property and participated in its operations. Where the
+        short-term-rental and material-participation requirements are both satisfied, the losses may
+        be treated as nonpassive &mdash; and nonpassive losses can offset W-2 income.</p>
+      </div>
+    </div>
 
-          <div class="filecard">
-            <div class="fh">
-              <span>Track B</span>
-              <b>Business Owners &amp; Entities</b>
-            </div>
-            <div class="fb">
-              <p>For founders, agency owners, medical practices, and contractors who want their corporate and personal tax positions completely synchronized.</p>
-              <ul class="ticks tight">
-                <li><b>All Services from Track A</b> applied to business &amp; personal</li>
-                <li><b>Both Entity &amp; Personal Returns</b> (1120-S / 1065 + 1040)</li>
-                <li><b>Reasonable Compensation Analysis</b> &amp; formal benchmark memo</li>
-                <li><b>Owner Salary vs. Distribution Optimization</b> to minimize FICA</li>
-                <li><b>Accountable Plan Setup</b> for tax-free expense reimbursements</li>
-                <li><b>Year-End Equipment &amp; Section 179</b> depreciation timing</li>
-                <li><b>Representation Included</b> if any return we prepare is queried</li>
-              </ul>
-              <div class="small" style="margin-top:auto;padding-top:14px;border-top:1px solid var(--line-2)">
-                Quoted after scoping. Scaled to entity complexity, K-1s, and transaction volume.
-              </div>
-              <button class="btn btn-p" onclick="openBookingModal('scoping')">Request Scoping Call &rarr;</button>
-            </div>
-          </div>
+    <div class="callout" style="margin-top:26px;background:rgba(255,255,255,.055);border-left-color:var(--gold)">
+      <span class="h" style="color:var(--gold)">Why both halves were necessary</span>
+      <p style="color:var(--night-ink-2)">Generating a large deduction was only half the work.
+      A deduction that cannot reach the income it was meant to offset is worth nothing. Combined
+      with other eligible depreciation and deductions on the property, estimated first-year
+      deductions reached approximately <b style="color:#fff">$340,676</b> &mdash; and the
+      &sect;469 analysis is what allowed them to land against a salary.</p>
+    </div>
+  </div></section>
+
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">The numbers</span>
+      <h2>What happened to the exposure.</h2>
+    </div>
+
+    <div class="ba">
+      <div>
+        <span class="k">Before the strategy</span>
+        <div class="v">$500,000</div>
+        <p>Gross W-2 income, exposed to federal and state income tax before other deductions.</p>
+      </div>
+      <div class="after">
+        <span class="k">After the strategy</span>
+        <div class="v">$159,324</div>
+        <p>Remaining income before other applicable adjustments, after illustrative short-term
+        rental deductions of $340,676.</p>
+      </div>
+    </div>
+
+    <div class="kpi">
+      <div>
+        <span class="k">Estimated tax savings</span>
+        <div class="v">$126,050</div>
+        <p>On the assumptions used in this case.</p>
+      </div>
+      <div>
+        <span class="k">Projected annual cash flow</span>
+        <div class="v">$72,000</div>
+        <p>From the property itself, separately from the tax result.</p>
+      </div>
+      <div class="tot">
+        <span class="k">Combined first-year impact</span>
+        <div class="v">$198,050</div>
+        <p>And the client still owns the underlying real estate.</p>
+      </div>
+    </div>
+
+    <div class="split wide" style="margin-top:34px">
+      <div>
+        <h3 style="font-size:1.3rem;font-weight:400">The asset is the part that keeps working.</h3>
+        <p class="lede" style="margin-top:12px">Instead of writing a larger cheque to the
+        government, the client used a legitimate planning strategy built around acquiring an
+        income-producing asset. That asset can go on to:</p>
+      </div>
+      <div>
+        <ul class="ticks">
+          <li>Generate cash flow</li>
+          <li>Build equity</li>
+          <li>Appreciate over time</li>
+          <li>Create future tax-planning opportunities</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- Photo break: professional consultation -->
+  <div class="img-split img-right night-side">
+    <div class="img-col">
+      <img src="Pics/People Sitting at Table.jpg" alt="Tax strategy consultation meeting" loading="lazy">
+    </div>
+    <div class="text-col night" style="background:var(--night);color:var(--night-ink)">
+      <span class="eyebrow night" style="margin-bottom:14px">Included in The Standing File</span>
+      <h2 style="color:#fff;margin-bottom:16px">Every decision,<br>made before it costs you.</h2>
+      <p style="color:var(--night-ink-2);max-width:46ch;line-height:1.7;margin-bottom:16px">Quarterly sessions. A named advisor. Mid-year projections in writing. Year-end planning while the window is still open. This is what year-round strategy looks like in practice.</p>
+      <ul class="ticks" style="margin:0 0 24px">
+        <li>Named advisor, same person every session</li>
+        <li>Quarterly strategy call &mdash; on the calendar</li>
+        <li>Mid-year projection with a written figure</li>
+        <li>Year-end window worked in November</li>
+      </ul>
+      <a class="btn btn-g" href="appointments.html" style="align-self:flex-start">Request a scoping call</a>
+    </div>
+  </div>
+
+  <section class="night tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">What we do differently</span>
+      <h2>Anyone can tell you what you owe<br>after the year is over.</h2>
+      <p class="lede">Our job is to help you understand what you can do <em>before</em> it is. That
+      means looking past the return, at income, investments, business, real estate, deductions, tax
+      exposure and long-term wealth strategy as one connected picture.</p>
+    </div>
+
+    <div class="grid g3">
+      <div class="card"><h3>Real estate</h3>
+        <p>Short-term rental strategies, cost segregation, bonus depreciation, material
+        participation, and real estate tax planning.</p></div>
+      <div class="card"><h3>Business and entity</h3>
+        <p>Entity structure, owner compensation, and the retirement strategies that follow from
+        both.</p></div>
+      <div class="card"><h3>Timing</h3>
+        <p>Year-end planning and multi-year projections, so a decision is priced before the
+        transaction happens rather than after.</p></div>
+    </div>
+
+    <div class="wait">
+      <p>The objective isn&rsquo;t to chase deductions. It&rsquo;s to make better decisions with
+      the tax already counted.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-g" href="appointments.html">Schedule a tax strategy consultation</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="tight"><div class="shell">
+    <div class="split wide">
+      <div>
+        <h3 style="font-size:1.42rem;font-weight:400">You earned the money.<br>Now let&rsquo;s talk
+        about how much you keep.</h3>
+        <p class="lede" style="margin-top:14px">If you are earning $250,000, $500,000, a million or
+        more, tax preparation alone may not be enough. We help high-income professionals,
+        executives, entrepreneurs and investors find legitimate opportunities to reduce exposure
+        while building long-term wealth.</p>
+        <p class="lede" style="margin-top:12px"><b>See the bigger picture before you file.</b></p>
+      </div>
+      <div>
+        <div class="callout" style="border-left-color:var(--ink-3)">
+          <span class="h" style="color:var(--ink-2)">Important</span>
+          <p style="font-size:.83rem;line-height:1.6">This case study is provided for illustrative
+          and educational purposes. Figures are based on specific assumptions and should not be
+          interpreted as guaranteed results. Actual tax savings depend on filing status, state of
+          residence, income, property allocation, financing, cost-segregation results, basis,
+          at-risk limitations, material participation, property operations, applicable tax law and
+          other individual circumstances. Depreciation may also have future tax consequences,
+          including depreciation recapture. Consult a qualified tax professional regarding your
+          individual circumstances.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div></section>
+
+  <!-- ---------- THREE PILLARS ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">What the engagement is</span>
+      <h2>Three things you are actually buying.</h2>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <span class="tag">01</span>
+        <h3>A dedicated tax advisor</h3>
+        <p>One named person, not a queue and not whoever is free. They hold your file, they know
+        what you did last year and why, and their number is in your phone. You will not explain your
+        situation from scratch again.</p>
+      </div>
+      <div class="card">
+        <span class="tag">02</span>
+        <h3>Counsel across the whole year</h3>
+        <p>A quarterly session on the calendar, a written strategy plan, a mid-year projection, and
+        a year-end review — plus unlimited questions in between. The point is to reach every
+        decision before it hardens into a filing.</p>
+      </div>
+      <div class="card">
+        <span class="tag">03</span>
+        <h3>Everything filed and handled</h3>
+        <p>Your returns, your estimates, your notices. Included, not billed. When an envelope
+        arrives from the IRS or a state, you forward it and stop thinking about it — that is the
+        service.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- TWO TRACKS ---------- -->
+  <section class="tight" style="padding-top:0"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Two tracks</span>
+      <h2>Built for the two situations that need it.</h2>
+      <p class="lede">Same spine — named advisor, quarterly counsel, everything filed. What changes
+      is the work underneath, because a high W-2 and equity package is a different animal from an
+      operating business.</p>
+    </div>
+    <div class="filecards">
+      <div class="filecard">
+        <div class="fh"><span>Track A</span><b>High-income individuals</b></div>
+        <div class="fb">
+          <p>Large W-2 or professional income, equity compensation, investment and rental portfolios,
+          a liquidity event on the horizon.</p>
+          <ul class="ticks tight">
+            <li>Equity compensation — RSU vesting, ISO and NSO exercise timing, 83(b) decisions</li>
+            <li>Capital gains planning, loss harvesting and holding-period management</li>
+            <li>Alternative minimum tax exposure modelled before it lands</li>
+            <li>Net investment income tax and the additional Medicare tax</li>
+            <li>Charitable strategy — bunching, donor-advised funds, appreciated stock</li>
+            <li>Backdoor and mega-backdoor Roth mechanics, done correctly</li>
+            <li>Rental and real estate positions, including passive loss rules</li>
+            <li>State residency and part-year planning for moves and second homes</li>
+            <li>Annual gift exclusion use and coordination with your estate attorney</li>
+          </ul>
+        </div>
+      </div>
+      <div class="filecard">
+        <div class="fh"><span>Track B</span><b>Business owners &amp; entities</b></div>
+        <div class="fb">
+          <p>An operating company, or several. Partnerships, S-corps and C-corps, single-state or
+          spread across the country.</p>
+          <ul class="ticks tight">
+            <li>Entity structure and elections, reviewed every year rather than once</li>
+            <li>Owner compensation, distributions and basis tracking</li>
+            <li>Accountable plan, home office, vehicle and reimbursement policy</li>
+            <li>Retirement plan design — Solo 401(k), SEP, SIMPLE, cash balance</li>
+            <li>Qualified business income treatment and how to protect it</li>
+            <li>Depreciation strategy, bonus versus §179, cost segregation coordination</li>
+            <li>Multi-state nexus, apportionment and registration monitoring</li>
+            <li>R&amp;D credit qualification and study coordination</li>
+            <li>Succession, basis and exit planning well ahead of a sale</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- WHAT'S INCLUDED ---------- -->
+  <section class="night"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">Included in the engagement</span>
+      <h2>No line items. No surprise invoices.</h2>
+      <p class="lede">Everything below is inside the annual fee. The reason is simple: a client who
+      hesitates before calling their tax advisor is a client who calls too late.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="colhead-n">Advice &amp; planning</div>
+        <ul class="ticks">
+          <li><b>Quarterly strategy sessions</b> — four a year, scheduled, with an agenda and notes</li>
+          <li><b>Written annual strategy plan</b> — quantified, with an implementation calendar</li>
+          <li><b>Mid-year projection</b> — your year run forward while it can still be changed</li>
+          <li><b>Year-end review</b> — the closing window, worked properly in November</li>
+          <li><b>Transaction support</b> — call before the purchase, the sale or the exercise</li>
+          <li><b>Unlimited questions</b> — email or phone, no clock running</li>
+          <li><b>Second Look on prior years</b> — three filed returns reviewed at onboarding</li>
+          <li><b>Coordination with your other advisors</b> — attorney, wealth manager, lender</li>
+        </ul>
+      </div>
+      <div>
+        <div class="colhead-n">Filing &amp; compliance</div>
+        <ul class="ticks">
+          <li><b>All personal returns</b> — federal and every state you touch</li>
+          <li><b>All entity returns</b> — 1065, 1120-S or 1120, on Track B</li>
+          <li><b>Quarterly estimates managed</b> — recalculated, vouchers issued, safe harbour tracked</li>
+          <li><b>Extensions</b> — filed with a payment estimate, not a guess</li>
+          <li><b>Notice handling</b> — any IRS or state letter, answered, at no separate fee</li>
+          <li><b>Examination representation</b> — on returns we prepared</li>
+          <li><b>Amendments</b> — where they are worth filing</li>
+          <li><b>Document vault</b> — permanent, and yours whether or not you stay</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout w-note" style="margin-top:26px">
+      <span class="h">One boundary, stated plainly</span>
+      <p>Representation before the IRS is provided only by practitioners authorised under Circular
+      230, and outcomes in any examination or collection matter depend on your circumstances and on
+      the agency&rsquo;s determination. Nothing in this engagement is a guarantee of a particular
+      tax result — what it guarantees is that someone competent is looking, all year.</p>
+    </div>
+  </div></section>
+
+  <!-- ---------- PREMIUM SUPPORT ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Premium support</span>
+      <h2>What &ldquo;dedicated&rdquo; actually means here.</h2>
+      <p class="lede">Most firms use the word. These are the commitments behind it, and they are in
+      the engagement letter, not just on this page.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card">
+        <span class="tag">Response</span>
+        <h3>One business day</h3>
+        <p>Every question gets a substantive answer within one business day — not an acknowledgement,
+        an answer. If it needs research, you get the timeline that day.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Access</span>
+        <h3>Direct line, no gate</h3>
+        <p>Your advisor&rsquo;s direct number and email. No ticket queue, no general inbox, no
+        re-explaining your situation to whoever picks up.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Urgency</span>
+        <h3>Deadline triage same day</h3>
+        <p>Anything with a date on it — a notice, a closing, an exercise window — is read and
+        answered the day it arrives.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Continuity</span>
+        <h3>A second who knows you</h3>
+        <p>A named backup advisor reads your file too, so holidays, illness and filing season never
+        leave you starting over.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- THE YEAR ---------- -->
+  <section class="night tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow night">How the year runs</span>
+      <h2>Four quarters, four conversations.</h2>
+      <p class="lede">The engagement has a rhythm, and it is the opposite of the usual one — the
+      heavy thinking happens in the quiet months and April is mostly paperwork.</p>
+    </div>
+    <div class="cal night-cal">
+      <div>
+        <span class="mo">Q1 &middot; Jan – Apr</span>
+        <h3>Filing</h3>
+        <p class="say">Returns prepared and filed. If the other three quarters were done properly,
+        nothing here is news.</p>
+        <ul>
+          <li>All returns, federal and state</li>
+          <li>K-1s chased on your behalf</li>
+          <li>Q1 estimate set</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">Q2 &middot; May – Jul</span>
+        <h3>Structure</h3>
+        <p class="say">The quiet quarter, and the one that moves the number most. Everything
+        structural is cheapest to change now.</p>
+        <ul>
+          <li>Entity and election review</li>
+          <li>Compensation reset</li>
+          <li>Retirement plan design</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">Q3 &middot; Aug – Oct</span>
+        <h3>Projection</h3>
+        <p class="say">Your year run forward to a written figure, with the levers still available
+        listed against it.</p>
+        <ul>
+          <li>Mid-year projection issued</li>
+          <li>Estimates re-cut</li>
+          <li>Equipment and gains timing</li>
+        </ul>
+      </div>
+      <div>
+        <span class="mo">Q4 &middot; Nov – Dec</span>
+        <h3>Execution</h3>
+        <p class="say">The closing window. Everything agreed in Q3 gets done before the year shuts,
+        with a checklist and a deadline each.</p>
+        <ul>
+          <li>Contributions funded</li>
+          <li>Income and expense timing</li>
+          <li>Distributions and bonuses set</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- FIT ---------- -->
+  <section class="tight"><div class="shell">
+    <div class="sechead">
+      <span class="eyebrow">Fit</span>
+      <h2>Worth being honest about.</h2>
+      <p class="lede">This is a significant annual commitment and it is not right for everyone. We
+      would rather tell you that on the first call than in the second year.</p>
+    </div>
+    <div class="split">
+      <div>
+        <div class="colhead blue">It earns its fee when</div>
+        <ul class="ticks">
+          <li>Your income is high enough that timing and structure move real money</li>
+          <li>You own a business, or several, and the entity questions are live</li>
+          <li>Equity compensation, real estate or investments make the year complicated</li>
+          <li>You operate or earn in more than one state</li>
+          <li>A sale, a purchase or a liquidity event is somewhere on the horizon</li>
+          <li>You have been surprised by a tax bill more than once</li>
+        </ul>
+      </div>
+      <div>
+        <div class="colhead lime">It does not, yet, when</div>
+        <ul class="ticks lime">
+          <li>A straightforward return is genuinely all you need — take a filing package</li>
+          <li>The business is new and not yet profitable — start with books and estimates</li>
+          <li>You want a return prepared and no conversation. That is a fair thing to want.</li>
+          <li>The main problem is a balance owed or unfiled years — start with Audit &amp; Resolution</li>
+        </ul>
+        <p class="small" style="margin-top:14px">If any of these is you, we will say so and point you
+        at the right thing. It costs us a sale and saves you a year.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ---------- PRICING & CTA ---------- -->
+  <section class="night"><div class="shell">
+    <div class="split wide" style="align-items:center">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span class="eyebrow night">Fee</span>
+        <h2>Scoped, not listed.</h2>
+        <p class="lede">The Standing File is an annual engagement, quoted after a scoping call,
+        because the work genuinely differs — a two-state consultant and a six-entity group are not
+        the same year. What we can promise is that the number is fixed for the term, agreed in
+        writing before anything starts, and does not move because you called too often.</p>
+        <ul class="ticks" style="max-width:60ch">
+          <li>Annual engagement, billed monthly or annually — your choice</li>
+          <li>Fixed for the term. No hourly billing, no per-question charges</li>
+          <li>Scope, deliverables and dates set out in a written engagement letter</li>
+          <li>Includes the returns, so compare it against what you pay today in total</li>
+        </ul>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+          <a class="btn btn-g" href="appointments.html">Request a scoping call</a>
+          <a class="btn btn-w" href="tel:+15714703754">Call 1 (571) 470-3754</a>
+        </div>
+      </div>
+      <div class="filecard dark-fc">
+        <div class="fh"><span>How it starts</span><b>Four steps</b></div>
+        <div class="fb">
+          <ul class="ticks tight">
+            <li><b>1 &middot; Scoping call</b> — 45 minutes, no charge. Your situation, honestly assessed.</li>
+            <li><b>2 &middot; Second Look</b> — we read your last three returns before quoting anything.</li>
+            <li><b>3 &middot; Written proposal</b> — scope, deliverables, named advisor and a fixed fee.</li>
+            <li><b>4 &middot; Onboarding</b> — file built, calendar set, first strategy session booked.</li>
+          </ul>
+          <p class="small" style="margin-top:14px">Nothing is billed until step three is signed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="patsays" style="margin-top:30px;border-left-color:var(--gold)">
+      <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+      <div>
+        <q>Call me before you sign it. Afterwards I&rsquo;m just a witness.</q>
+        <div class="who">Uncle Pat</div>
+      </div>
+    </div>
+  </div></section>
+</div>
 
     <!-- Interactive S-Corp Calculator -->
     <section style="background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
@@ -151,79 +637,8 @@
         <div id="scorp-calc-container"></div>
       </div>
     </section>
-
-    <!-- Standalone Advanced Advisory Services -->
-    <section>
-      <div class="shell">
-        <div class="sechead">
-          <span class="eyebrow">Project-Based Advisory</span>
-          <h2>Targeted Advisory &amp; Entity Structuring</h2>
-          <p class="lede">
-            Available as standalone strategic engagements for businesses not yet enrolled in The Standing File. Sold off an in-depth conversation, never an arbitrary price table.
-          </p>
-        </div>
-
-        <div class="grid g3">
-          <div class="card">
-            <span class="tag"><b>Structure</b> · $1,500</span>
-            <h3>S-Corp Election Package</h3>
-            <p>Late or timely Form 2553 filing, reasonable compensation benchmark memo, payroll setup assistance, and adopted accountable plan.</p>
-            <div class="meta">ROI typically positive above $70K profit</div>
-          </div>
-
-          <div class="card">
-            <span class="tag"><b>Compensation</b> · $1,200</span>
-            <h3>Owner Comp Design</h3>
-            <p>Defensible salary vs. distribution split, basis tracking, shareholder loan documentation, and health insurance deduction compliance.</p>
-            <div class="meta">Audit-proofs shareholder distributions</div>
-          </div>
-
-          <div class="card">
-            <span class="tag"><b>Architecture</b> · From $3,500</span>
-            <h3>Entity Restructuring</h3>
-            <p>Holding company creation, operating LLC isolation, intellectual property licensing design, and related-party transaction defense.</p>
-            <div class="meta">Asset protection &amp; tax optimization</div>
-          </div>
-
-          <div class="card">
-            <span class="tag"><b>Retirement</b> · $1,500</span>
-            <h3>Retirement Plan Design</h3>
-            <p>Solo 401(k), SEP-IRA, or Defined Benefit Cash Balance Plan modeling for high earners looking to shield $100K+ from current tax.</p>
-            <div class="meta">Massive deductions for high net income</div>
-          </div>
-
-          <div class="card">
-            <span class="tag"><b>Multi-State</b> · $2,000</span>
-            <h3>State Nexus Review</h3>
-            <p>Economic and physical nexus analysis across all 50 states, apportionment planning, voluntary disclosure agreements, and compliance unwind.</p>
-            <div class="meta">Protects against retroactive state audits</div>
-          </div>
-
-          <div class="card">
-            <span class="tag"><b>Readiness</b> · $2,500</span>
-            <h3>Exam Readiness Review</h3>
-            <p>Pre-examination forensic review of positions, substantiation, and records before the IRS or state ever issues an inquiry.</p>
-            <div class="meta">Find vulnerabilities before examiners do</div>
-          </div>
-        </div>
-
-        <div class="wait" style="background:var(--night);padding:32px;border-radius:var(--r-md);margin-top:42px">
-          <div>
-            <h3 style="color:#fff;font-size:1.4rem">Ready to quantify your potential tax savings?</h3>
-            <p style="font-size:.9rem;color:var(--night-ink-2);margin-top:6px">
-              Start with a free Second Look review of your last three tax returns, or schedule a scoping call.
-            </p>
-          </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <button class="btn btn-g" onclick="openBookingModal('scoping')">Schedule Scoping Call</button>
-            <button class="btn btn-w" onclick="openBookingModal('second-look')">Request Second Look</button>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="shell">
       <div class="cols">
@@ -240,45 +655,43 @@
           </p>
         </div>
 
-        <div>
+                <div>
           <h4>File &amp; Strategy</h4>
           <ul>
             <li><a href="file-taxes.html">Individual Returns (1040)</a></li>
             <li><a href="file-taxes.html">Business Returns (1065 / 1120-S)</a></li>
-            <li><a href="file-taxes.html">QuickPrepare ($200)</a></li>
             <li><a href="tax-strategy.html">The Standing File</a></li>
-            <li><a href="tax-strategy.html">S-Corp Election Package</a></li>
-            <li><a href="business.html">Monthly Bookkeeping</a></li>
+            <li><a href="business.html">Business Tax &amp; Bookkeeping</a></li>
+            <li><a href="appointments.html">Appointments</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Audit &amp; Resolution</h4>
+          <h4>Resources &amp; Resolution</h4>
           <ul>
-            <li><a href="audit-resolution.html">IRS Notice Response ($450)</a></li>
-            <li><a href="audit-resolution.html">Examination Representation</a></li>
-            <li><a href="audit-resolution.html">Collections &amp; Installments</a></li>
-            <li><a href="audit-resolution.html">Unfiled Back Taxes</a></li>
-            <li><a href="audit-resolution.html">50-State Tax Desk</a></li>
-            <li><a href="audit-resolution.html">Audit Shield Protection</a></li>
+            <li><a href="resources.html">Tax Resources &amp; Deadlines</a></li>
+            <li><a href="new-law.html">The New Tax Law (OBBBA)</a></li>
+            <li><a href="free-help.html">Free Help &amp; Second Look</a></li>
+            <li><a href="audit-resolution.html">Audit &amp; Resolution</a></li>
+            <li><a href="meet-uncle-pat.html">Meet Uncle Pat</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Free Tools &amp; Portal</h4>
+          <h4>Policies &amp; Legal</h4>
           <ul>
-            <li><a href="free-help.html">Second Look Review (Free)</a></li>
-            <li><a href="free-help.html">Interactive Notice Triage</a></li>
-            <li><a href="business.html">S-Corp Savings Calculator</a></li>
-            <li><a href="resources.html">2026 Tax Figures</a></li>
-            <li><a href="appointments.html">Schedule an Appointment</a></li>
-            <li><a href="file-room.html">Client File Room Access</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="payment-policy.html">Payment Policy</a></li>
+            <li><a href="security-policy.html">Security Policy</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+            <li><a href="service-expectations.html">Service Expectations</a></li>
+            <li><a href="file-room.html">Client Portal Login</a></li>
           </ul>
         </div>
       </div>
 
       <p class="fine">
-        Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this site is a guarantee of any particular outcome; resolution results depend on individual financial circumstances and on agency determination.
+        Prices shown are for the scopes described and are confirmed in writing before work begins. Representation before the Internal Revenue Service is provided only by practitioners authorised under Circular 230. Nothing on this site is a guarantee of any particular outcome; resolution results depend on individual financial circumstances and on agency determination. &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="payment-policy.html">Payment Policy</a> &middot; <a href="security-policy.html">Security</a> &middot; <a href="disclaimer.html">Disclaimer</a> &middot; <a href="service-expectations.html">Service Expectations</a>
       </p>
     </div>
   </footer>

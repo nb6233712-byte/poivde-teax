@@ -13,3 +13,5 @@ desktop.ini
 .idea/
 *.suo
 *.user
+# Scratch files
+scratch/
