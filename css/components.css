@@ -1543,24 +1543,20 @@ ul.ticks.lime li:before {
 
 .legal-toc-list {
   display: flex;
-  gap: 8px;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  gap: 6px 8px;
   padding: 10px 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.legal-toc-list::-webkit-scrollbar {
-  display: none;
+  align-items: center;
 }
 
 .legal-toc-link {
   font-family: var(--f-body);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 500;
   color: var(--ink-2);
   text-decoration: none;
-  padding: 6px 13px;
-  border-radius: 16px;
+  padding: 5px 12px;
+  border-radius: 14px;
   background: var(--surface-2);
   border: 1px solid var(--line-2);
   white-space: nowrap;
@@ -1570,7 +1566,41 @@ ul.ticks.lime li:before {
 .legal-toc-link:hover {
   background: var(--blue-light);
   color: var(--blue);
-  border-color: rgba(1, 159, 255, 0.3);
+  border-color: rgba(1, 159, 255, 0.35);
+}
+
+.legal-toc-link:focus,
+.legal-toc-link:active,
+.legal-toc-link.active {
+  background: var(--blue-light);
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.legal-content [id] {
+  scroll-margin-top: 130px;
+}
+
+@media (max-width: 640px) {
+  .legal-toc-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-2) transparent;
+  }
+  .legal-toc-list::-webkit-scrollbar {
+    display: block;
+    height: 3px;
+  }
+  .legal-toc-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .legal-toc-list::-webkit-scrollbar-thumb {
+    background: var(--line-2);
+    border-radius: 3px;
+  }
 }
 
 .legal-card {
