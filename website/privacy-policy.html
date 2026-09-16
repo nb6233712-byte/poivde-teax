@@ -6,7 +6,14 @@
   <title>Privacy Policy — Pivot Aide Tax</title>
   <meta name="description" content="Pivot Aide Tax Privacy Policy explaining how we collect, use, disclose, and safeguard your tax and financial information.">
 
-  <link rel="stylesheet" href="css/tokens.css">
+  <!-- Preload Critical Self-Hosted Fonts -->
+  <link rel="preload" href="assets/fonts/fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
@@ -81,221 +88,298 @@
 
   <main id="main">
     <!-- Legal Hero Header -->
-    <section class="night tight">
+    <section class="night tight legal-page-header">
       <div class="shell">
-        <div class="sechead">
-          <span class="eyebrow night">Legal · Privacy & Data Protection</span>
-          <h1 style="color:#ffffff">Privacy Policy</h1>
-          <p class="lede" style="color:var(--night-ink-2)">Effective Date: January 15, 2026</p>
+        <div class="sechead" style="margin-bottom:0">
+          <span class="eyebrow night">Legal &middot; Privacy &amp; Data Protection</span>
+          <h1 style="color:#ffffff; margin-bottom: 8px;">Privacy Policy</h1>
+          <p class="lede" style="color:var(--night-ink-2); max-width:68ch; margin-bottom:16px;">
+            How Pivot Aide Tax collects, uses, discloses, and protects information across our website, client portal, and professional services.
+          </p>
+          <div class="legal-badge-row">
+            <span class="legal-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Effective Date: Jan 15th , 2026
+            </span>
+            <span class="legal-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              Last Updated: Jan 15th , 2026
+            </span>
+            <span class="legal-badge gold">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              GLBA &amp; Circular 230 Safeguards
+            </span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Legal Document Content -->
-    <section>
-      <div class="shell" style="max-width: 860px;">
-        <div class="legal-content">
-          <div
-        class="legal-content">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Who We Are</h2>
-        <p style="margin-bottom: 12px;">
-          Pivot Aide Tax (“Pivot Aide Tax,” “we,” “us,” or “our”) provides tax preparation, tax advisory, bookkeeping,
-          and related business services.
-        </p>
-        <ul style="list-style: none; margin-bottom: 24px; padding-left: 0; font-size: 0.9rem; color: #475569;">
-          <li><strong>Address:</strong> 6475 New Hampshire Ave, Hyattsville, MD 20783</li>
-          <li><strong>Email:</strong> corporate@pivotaide.com</li>
-          <li><strong>Website:</strong> www.pivotaidetax.com</li>
-          <li><strong>Phone:</strong> (571)-470-3754</li>
-        </ul>
-        <p style="margin-bottom: 32px;">
-          This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our
-          website, use our client portal, complete forms, upload documents, purchase services via Stripe, or communicate
-          with us (collectively, the “Services”).
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Scope</h2>
-        <p style="margin-bottom: 32px;">
-          This policy applies to personal information processed by Pivot Aide Tax in connection with our Services. It
-          does not cover third-party websites, platforms, or services that we do not control (including Stripe and any
-          secure portal providers), which have their own privacy policies.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Information We
-          Collect</h2>
-        <p style="margin-bottom: 16px;">We may collect the following categories:</p>
-
-        <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">1. Information you
-          provide to us</h3>
-        <ul style="margin-bottom: 20px; padding-left: 20px;">
-          <li style="margin-bottom: 6px;"><strong>Contact details:</strong> name, email, phone number, mailing address.
-          </li>
-          <li style="margin-bottom: 6px;"><strong>Identity verification details:</strong> date of birth,
-            government-issued ID (where required), and other information used to verify your identity.</li>
-          <li style="margin-bottom: 6px;"><strong>Tax and financial information (“Tax Information”):</strong> Social
-            Security number/ITIN, employer information, income documents (W-2, 1099), bank details on tax forms,
-            dependents, deductions, credits, prior-year returns, entity ownership, payroll details, and other financial
-            data you provide for services.</li>
-          <li style="margin-bottom: 6px;"><strong>Business information:</strong> legal entity details, EIN, ownership,
-            accounting records (if you request bookkeeping services).</li>
-          <li style="margin-bottom: 6px;"><strong>Communications:</strong> messages you send to us by email, phone,
-            chat, or forms.</li>
-        </ul>
-
-        <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">2. Information
-          collected automatically</h3>
-        <ul style="margin-bottom: 20px; padding-left: 20px;">
-          <li style="margin-bottom: 6px;"><strong>Device and usage data:</strong> IP address, browser type, pages
-            viewed, time spent, referring/exit pages, and diagnostic data.</li>
-          <li style="margin-bottom: 6px;"><strong>Cookies and similar technologies:</strong> used for analytics,
-            performance, security, and basic functionality.</li>
-        </ul>
-
-        <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">3. Payment
-          information</h3>
-        <p style="margin-bottom: 32px;">
-          Payments are processed through Stripe. We generally receive payment confirmations and limited transaction
-          details (e.g., amount, date, last four digits, billing address if provided), but we do not store full card
-          numbers on our servers.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">How We Use
-          Information</h2>
-        <p style="margin-bottom: 12px;">We use information to:</p>
-        <ul style="margin-bottom: 32px; padding-left: 20px;">
-          <li style="margin-bottom: 6px;">Provide, administer, and improve our Services.</li>
-          <li style="margin-bottom: 6px;">Prepare and file tax returns and related forms as authorized by you.</li>
-          <li style="margin-bottom: 6px;">Verify identity and prevent fraud.</li>
-          <li style="margin-bottom: 6px;">Communicate with you about your engagement, documents, deadlines, and
-            questions.</li>
-          <li style="margin-bottom: 6px;">Process payments, invoices, refunds, and chargebacks.</li>
-          <li style="margin-bottom: 6px;">Maintain records required by law, professional standards, and operational
-            needs.</li>
-          <li style="margin-bottom: 6px;">Comply with legal obligations and enforce our agreements.</li>
-          <li style="margin-bottom: 6px;">Analyze site usage and maintain website security and performance.</li>
-        </ul>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Legal Bases for
-          Processing (Where Applicable)</h2>
-        <p style="margin-bottom: 12px;">We process information as needed to:</p>
-        <ul style="margin-bottom: 32px; padding-left: 20px;">
-          <li style="margin-bottom: 6px;">Perform a contract (provide requested Services).</li>
-          <li style="margin-bottom: 6px;">Meet legal and regulatory obligations.</li>
-          <li style="margin-bottom: 6px;">Pursue legitimate business interests (security, quality improvement, fraud
-            prevention).</li>
-          <li style="margin-bottom: 6px;">Act on your consent (where required).</li>
-        </ul>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">How We Share
-          Information</h2>
-        <p style="margin-bottom: 12px;">We may share information with:</p>
-        <ul style="margin-bottom: 24px; padding-left: 20px;">
-          <li style="margin-bottom: 6px;">Service providers that support our operations (secure portal providers, cloud
-            hosting, e-signature, scheduling, communications, analytics).</li>
-          <li style="margin-bottom: 6px;">Payment processor: Stripe, to process payments.</li>
-          <li style="margin-bottom: 6px;">Tax software and e-filing partners as needed to prepare and file returns.</li>
-          <li style="margin-bottom: 6px;">Government authorities (IRS, state/local tax agencies) to file returns and
-            respond to official requests as required/authorized.</li>
-          <li style="margin-bottom: 6px;">Professional advisors (attorneys, auditors, insurers) as needed.</li>
-          <li style="margin-bottom: 6px;">Law enforcement or regulators if required by law, subpoena, or to protect
-            rights/safety.</li>
-        </ul>
-        <p style="margin-bottom: 32px; font-weight: 600; color: var(--text-dark);">
-          We do not sell your personal information in the ordinary course of business.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Cookies and
-          Analytics</h2>
-        <p style="margin-bottom: 32px;">
-          We may use cookies and analytics tools to understand website usage and improve performance. You can adjust
-          cookie settings in your browser; however, disabling cookies may affect site functionality.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Data Retention
-        </h2>
-        <p style="margin-bottom: 32px;">
-          We retain information as needed to provide Services, maintain business records, comply with legal/professional
-          obligations, resolve disputes, and enforce agreements. Retention periods vary by record type. Upon request and
-          where legally permissible, we may delete or anonymize certain information.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Security Measures
-        </h2>
-        <p style="margin-bottom: 32px;">
-          We implement administrative, technical, and physical safeguards designed to protect information. No method of
-          transmission or storage is 100% secure; we cannot guarantee absolute security.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Your Rights and
-          Choices</h2>
-        <p style="margin-bottom: 12px;">Depending on your location, you may have rights to:</p>
-        <ul style="margin-bottom: 20px; padding-left: 20px;">
-          <li style="margin-bottom: 6px;">Request access to your personal information.</li>
-          <li style="margin-bottom: 6px;">Request correction of inaccurate information.</li>
-          <li style="margin-bottom: 6px;">Request deletion (subject to legal/professional retention requirements).</li>
-          <li style="margin-bottom: 6px;">Opt out of certain communications (marketing messages).</li>
-        </ul>
-        <p style="margin-bottom: 32px;">
-          To exercise rights, email <a href="mailto:corporate@pivotaide.com"
-            style="color: var(--accent-blue); font-weight: 700;">corporate@pivotaide.com</a>.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Children’s
-          Privacy</h2>
-        <p style="margin-bottom: 32px;">
-          Our Services are not directed to children under 13, and we do not knowingly collect information from children
-          under 13.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">International
-          Visitors</h2>
-        <p style="margin-bottom: 32px;">
-          If you access our Services from outside the U.S., your information may be processed and stored in the U.S.
-          where data protection laws may differ.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Changes to This
-          Policy</h2>
-        <p style="margin-bottom: 32px;">
-          We may update this Privacy Policy from time to time. Updates will be posted with a new “Last Updated” date.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 12px;">Contact Us</h2>
-        <p>
-          Questions or requests: <a href="mailto:info@pivotaide.com"
-            style="color: var(--accent-blue); font-weight: 700;">info@pivotaide.com</a> | 6475 New Hampshire Ave,
-          Hyattsville, MD 20783 | (571)-470-3754
-        </p>
-
+    <!-- Table of Contents Navigation Bar -->
+    <nav class="legal-toc-bar" aria-label="Table of Contents">
+      <div class="shell">
+        <div class="legal-toc-list">
+          <a href="#who-we-are" class="legal-toc-link">Who We Are</a>
+          <a href="#scope" class="legal-toc-link">Scope</a>
+          <a href="#information-we-collect" class="legal-toc-link">Information We Collect</a>
+          <a href="#how-we-use-information" class="legal-toc-link">How We Use Info</a>
+          <a href="#legal-bases" class="legal-toc-link">Legal Bases</a>
+          <a href="#how-we-share-information" class="legal-toc-link">Sharing &amp; Sale</a>
+          <a href="#cookies-and-analytics" class="legal-toc-link">Cookies</a>
+          <a href="#data-retention" class="legal-toc-link">Retention</a>
+          <a href="#security-measures" class="legal-toc-link">Security</a>
+          <a href="#your-rights-and-choices" class="legal-toc-link">Your Rights</a>
+          <a href="#contact-us" class="legal-toc-link">Contact</a>
+        </div>
       </div>
-    </div>
+    </nav>
+
+    <!-- Legal Document Content -->
+    <section style="padding: 12px 0 48px; background: var(--ground);">
+      <div class="shell" style="max-width: 920px;">
+        <div class="legal-card legal-content">
+
+          <!-- Who We Are -->
+          <div id="who-we-are">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-top:0; margin-bottom: 12px;">Who We Are</h2>
+            <p style="margin-bottom: 16px;">
+              Pivot Aide Tax (&ldquo;Pivot Aide Tax,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) provides tax preparation, tax advisory, bookkeeping, and related business services.
+            </p>
+
+            <div class="legal-contact-grid">
+              <div class="legal-contact-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div>
+                  <div class="meta-label">Office Address</div>
+                  <div class="meta-val">6475 New Hampshire Ave, Hyattsville, MD 20783</div>
+                </div>
+              </div>
+              <div class="legal-contact-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <div>
+                  <div class="meta-label">Corporate Email</div>
+                  <div class="meta-val"><a href="mailto:corporate@pivotaide.com" style="color: var(--blue); font-weight: 600; text-decoration: none;">corporate@pivotaide.com</a></div>
+                </div>
+              </div>
+              <div class="legal-contact-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <div>
+                  <div class="meta-label">Official Website</div>
+                  <div class="meta-val"><a href="https://www.pivotaidetax.com" style="color: var(--blue); font-weight: 600; text-decoration: none;">www.pivotaidetax.com</a></div>
+                </div>
+              </div>
+              <div class="legal-contact-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <div>
+                  <div class="meta-label">Direct Phone</div>
+                  <div class="meta-val"><a href="tel:+15714703754" style="color: var(--blue); font-weight: 600; text-decoration: none;">(571)-470-3754</a></div>
+                </div>
+              </div>
+            </div>
+
+            <p style="margin-bottom: 24px;">
+              This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our website, use our client portal, complete forms, upload documents, purchase services via Stripe, or communicate with us (collectively, the &ldquo;Services&rdquo;).
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- Scope -->
+          <div id="scope">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Scope</h2>
+            <p style="margin-bottom: 24px;">
+              This policy applies to personal information processed by Pivot Aide Tax in connection with our Services. It does not cover third-party websites, platforms, or services that we do not control (including Stripe and any secure portal providers), which have their own privacy policies.
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- Information We Collect -->
+          <div id="information-we-collect">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Information We Collect</h2>
+            <p style="margin-bottom: 18px;">We may collect the following categories:</p>
+
+            <!-- Sub 1 -->
+            <div class="legal-category-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px;">Information you provide to us</h3>
+              <ul style="margin-bottom: 0; padding-left: 20px; line-height: 1.7;">
+                <li style="margin-bottom: 6px;"><strong>Contact details:</strong> name, email, phone number, mailing address.</li>
+                <li style="margin-bottom: 6px;"><strong>Identity verification details:</strong> date of birth, government-issued ID (where required), and other information used to verify your identity.</li>
+                <li style="margin-bottom: 6px;"><strong>Tax and financial information (&ldquo;Tax Information&rdquo;):</strong> Social Security number/ITIN, employer information, income documents (W-2, 1099), bank details on tax forms, dependents, deductions, credits, prior-year returns, entity ownership, payroll details, and other financial data you provide for services.</li>
+                <li style="margin-bottom: 6px;"><strong>Business information:</strong> legal entity details, EIN, ownership, accounting records (if you request bookkeeping services).</li>
+                <li style="margin-bottom: 0;"><strong>Communications:</strong> messages you send to us by email, phone, chat, or forms.</li>
+              </ul>
+            </div>
+
+            <!-- Sub 2 -->
+            <div class="legal-category-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px;">Information collected automatically</h3>
+              <ul style="margin-bottom: 0; padding-left: 20px; line-height: 1.7;">
+                <li style="margin-bottom: 6px;"><strong>Device and usage data:</strong> IP address, browser type, pages viewed, time spent, referring/exit pages, and diagnostic data.</li>
+                <li style="margin-bottom: 0;"><strong>Cookies and similar technologies:</strong> used for analytics, performance, security, and basic functionality.</li>
+              </ul>
+            </div>
+
+            <!-- Sub 3 -->
+            <div class="legal-category-card">
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 10px;">Payment information</h3>
+              <p style="margin-bottom: 0;">
+                Payments are processed through Stripe. We generally receive payment confirmations and limited transaction details (e.g., amount, date, last four digits, billing address if provided), but we do not store full card numbers on our servers.
+              </p>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- How We Use Information -->
+          <div id="how-we-use-information">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">How We Use Information</h2>
+            <p style="margin-bottom: 14px;">We use information to:</p>
+            <ul style="margin-bottom: 24px; padding-left: 20px; line-height: 1.7;">
+              <li style="margin-bottom: 6px;">Provide, administer, and improve our Services.</li>
+              <li style="margin-bottom: 6px;">Prepare and file tax returns and related forms as authorized by you.</li>
+              <li style="margin-bottom: 6px;">Verify identity and prevent fraud.</li>
+              <li style="margin-bottom: 6px;">Communicate with you about your engagement, documents, deadlines, and questions.</li>
+              <li style="margin-bottom: 6px;">Process payments, invoices, refunds, and chargebacks.</li>
+              <li style="margin-bottom: 6px;">Maintain records required by law, professional standards, and operational needs.</li>
+              <li style="margin-bottom: 6px;">Comply with legal obligations and enforce our agreements.</li>
+              <li style="margin-bottom: 6px;">Analyze site usage and maintain website security and performance.</li>
+            </ul>
+          </div>
+
+          <hr>
+
+          <!-- Legal Bases for Processing -->
+          <div id="legal-bases">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Legal Bases for Processing (Where Applicable)</h2>
+            <p style="margin-bottom: 14px;">We process information as needed to:</p>
+            <ul style="margin-bottom: 24px; padding-left: 20px; line-height: 1.7;">
+              <li style="margin-bottom: 6px;">Perform a contract (provide requested Services).</li>
+              <li style="margin-bottom: 6px;">Meet legal and regulatory obligations.</li>
+              <li style="margin-bottom: 6px;">Pursue legitimate business interests (security, quality improvement, fraud prevention).</li>
+              <li style="margin-bottom: 6px;">Act on your consent (where required).</li>
+            </ul>
+          </div>
+
+          <hr>
+
+          <!-- How We Share Information -->
+          <div id="how-we-share-information">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">How We Share Information</h2>
+            <p style="margin-bottom: 14px;">We may share information with:</p>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.7;">
+              <li style="margin-bottom: 6px;">Service providers that support our operations (secure portal providers, cloud hosting, e-signature, scheduling, communications, analytics).</li>
+              <li style="margin-bottom: 6px;">Payment processor: Stripe, to process payments.</li>
+              <li style="margin-bottom: 6px;">Tax software and e-filing partners as needed to prepare and file returns.</li>
+              <li style="margin-bottom: 6px;">Government authorities (IRS, state/local tax agencies) to file returns and respond to official requests as required/authorized.</li>
+              <li style="margin-bottom: 6px;">Professional advisors (attorneys, auditors, insurers) as needed.</li>
+              <li style="margin-bottom: 6px;">Law enforcement or regulators if required by law, subpoena, or to protect rights/safety.</li>
+            </ul>
+
+            <!-- Prominent No-Sale Commitment Callout -->
+            <div class="legal-callout-shield">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              <p>We do not sell your personal information in the ordinary course of business.</p>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Cookies and Analytics -->
+          <div id="cookies-and-analytics">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Cookies and Analytics</h2>
+            <p style="margin-bottom: 24px;">
+              We may use cookies and analytics tools to understand website usage and improve performance. You can adjust cookie settings in your browser; however, disabling cookies may affect site functionality.
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- Data Retention -->
+          <div id="data-retention">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Data Retention</h2>
+            <p style="margin-bottom: 24px;">
+              We retain information as needed to provide Services, maintain business records, comply with legal/professional obligations, resolve disputes, and enforce agreements. Retention periods vary by record type. Upon request and where legally permissible, we may delete or anonymize certain information.
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- Security Measures -->
+          <div id="security-measures">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Security Measures</h2>
+            <p style="margin-bottom: 24px;">
+              We implement administrative, technical, and physical safeguards designed to protect information (see our Information Security Policy summary below). No method of transmission or storage is 100% secure; we cannot guarantee absolute security.
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- Your Rights and Choices -->
+          <div id="your-rights-and-choices">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Your Rights and Choices</h2>
+            <p style="margin-bottom: 14px;">Depending on your location, you may have rights to:</p>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.7;">
+              <li style="margin-bottom: 6px;">Request access to your personal information.</li>
+              <li style="margin-bottom: 6px;">Request correction of inaccurate information.</li>
+              <li style="margin-bottom: 6px;">Request deletion (subject to legal/professional retention requirements).</li>
+              <li style="margin-bottom: 6px;">Opt out of certain communications (marketing messages).</li>
+            </ul>
+            <p style="margin-bottom: 24px;">
+              To exercise rights, email <a href="mailto:corporate@pivotaide.com" style="color: var(--blue); font-weight: 600;">corporate@pivotaide.com</a>.
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- Children's Privacy -->
+          <div id="childrens-privacy">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Children&rsquo;s Privacy</h2>
+            <p style="margin-bottom: 24px;">
+              Our Services are not directed to children under 13, and we do not knowingly collect information from children under 13.
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- International Visitors -->
+          <div id="international-visitors">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">International Visitors</h2>
+            <p style="margin-bottom: 24px;">
+              If you access our Services from outside the U.S., your information may be processed and stored in the U.S. where data protection laws may differ.
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- Changes to This Policy -->
+          <div id="changes-to-this-policy">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Changes to This Policy</h2>
+            <p style="margin-bottom: 24px;">
+              We may update this Privacy Policy from time to time. Updates will be posted with a new &ldquo;Last Updated&rdquo; date.
+            </p>
+          </div>
+
+          <hr>
+
+          <!-- Contact Us Banner -->
+          <div id="contact-us">
+            <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px;">Contact Us</h2>
+            <p style="margin-bottom: 16px; line-height: 1.7;">
+              Questions or requests: <a href="mailto:info@pivotaide.com" style="color: var(--blue); font-weight: 600;">info@pivotaide.com</a> &middot; 6475 New Hampshire Ave, Hyattsville, MD 20783 &middot; <a href="tel:+15714703754" style="color: var(--blue); font-weight: 600;">(571)-470-3754</a>
+            </p>
+
+            <div class="legal-contact-banner">
+              <div>
+                <h3>Need Assistance With Your Account?</h3>
+                <p>Reach our tax practice team directly for questions regarding privacy, security, or tax filings.</p>
+              </div>
+              <div class="banner-btns">
+                <a href="tel:+15714703754" class="btn" style="background:#FFFFFF; color:var(--night); font-weight:600; font-size:0.84rem; padding:8px 18px;">Call (571) 470-3754</a>
+                <a href="mailto:info@pivotaide.com" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4); color:#FFFFFF; font-size:0.84rem; padding:8px 18px;">Email Firm</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

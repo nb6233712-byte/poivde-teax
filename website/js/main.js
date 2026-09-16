@@ -14,15 +14,27 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() {
   const toggleBtn = document.getElementById('nav-toggle');
   const drawer = document.getElementById('mobile-drawer');
+  const topbar = document.querySelector('.topbar');
+
+  function updateDrawerTop() {
+    if (drawer && topbar) {
+      const rect = topbar.getBoundingClientRect();
+      drawer.style.top = `${Math.max(0, rect.bottom)}px`;
+    }
+  }
 
   if (toggleBtn && drawer) {
     toggleBtn.addEventListener('click', () => {
+      updateDrawerTop();
       const isOpen = drawer.classList.toggle('open');
       toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       toggleBtn.innerHTML = isOpen
         ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>`
         : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`;
     });
+
+    window.addEventListener('resize', updateDrawerTop);
+    window.addEventListener('scroll', updateDrawerTop, { passive: true });
 
     // Close on link click inside drawer
     drawer.querySelectorAll('a').forEach(link => {
@@ -43,6 +55,14 @@ function initNavigation() {
       link.setAttribute('aria-current', 'page');
     }
   });
+
+  // Ensure dropdown parent trigger is active if currently viewing a resource subpage
+  const resourceSubpages = ['resources.html', 'new-law.html', 'free-help.html', 'audit-resolution.html', 'meet-uncle-pat.html'];
+  if (resourceSubpages.includes(currentPath)) {
+    document.querySelectorAll('.nav-item.has-dropdown .dropdown-trigger').forEach(trigger => {
+      trigger.classList.add('active');
+    });
+  }
 }
 
 function initHeaderScroll() {

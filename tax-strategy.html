@@ -114,7 +114,7 @@
           </div>
         </div>
         <div style="text-align:center">
-          <svg viewBox="0 0 200 220" style="width:200px" role="img" aria-label="Uncle Pat"><use href="#pat"></use></svg>
+          <img src="assets/brand/uncle-pat-colour.svg" alt="Uncle Pat" width="200" height="220" style="max-width:100%;height:auto">
         </div>
       </div>
     </div></section>
@@ -151,7 +151,7 @@
           spend or invest it.</p>
         </div>
         <div class="patsays" style="margin-top:20px">
-          <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+          <img src="assets/brand/uncle-pat-avatar.svg" alt="Uncle Pat" width="64" height="64">
           <div>
             <q>The question was never &ldquo;how do we make less money?&rdquo; It was
             &ldquo;how do we legally keep more of what we&rsquo;re already earning?&rdquo;</q>
@@ -260,22 +260,25 @@
     </div>
   </div></section>
 
-  <!-- Photo break: professional consultation -->
+  <!-- Photo Split: Strategic Advisory Roundtable -->
   <div class="img-split img-right night-side">
     <div class="img-col">
-      <img src="Pics/People Sitting at Table.jpg" alt="Tax strategy consultation meeting" loading="lazy">
+      <img src="Pics/People Sitting at Table.jpg" alt="Pivot Aide advisors in strategic roundtable planning session" loading="lazy">
     </div>
-    <div class="text-col night" style="background:var(--night);color:var(--night-ink)">
-      <span class="eyebrow night" style="margin-bottom:14px">Included in The Standing File</span>
-      <h2 style="color:#fff;margin-bottom:16px">Every decision,<br>made before it costs you.</h2>
-      <p style="color:var(--night-ink-2);max-width:46ch;line-height:1.7;margin-bottom:16px">Quarterly sessions. A named advisor. Mid-year projections in writing. Year-end planning while the window is still open. This is what year-round strategy looks like in practice.</p>
-      <ul class="ticks" style="margin:0 0 24px">
-        <li>Named advisor, same person every session</li>
-        <li>Quarterly strategy call &mdash; on the calendar</li>
-        <li>Mid-year projection with a written figure</li>
-        <li>Year-end window worked in November</li>
+    <div class="text-col">
+      <span class="eyebrow night" style="margin-bottom:14px">Proactive Advisory</span>
+      <h2 style="color:#fff;margin-bottom:16px">The Standing File isn&rsquo;t a folder.<br>It&rsquo;s a proactive conversation.</h2>
+      <p style="color:var(--night-ink-2);max-width:48ch;line-height:1.7;margin-bottom:20px">
+        Most firms wait until tax season to discover what you did last year. We meet quarterly so that entity selections, asset timing, and deduction structures are locked in <em>before</em> the tax year closes.
+      </p>
+      <ul class="ticks" style="margin-bottom:24px">
+        <li>Quarterly tax forecasting &amp; safe harbor checks</li>
+        <li>Real estate, equipment &amp; retirement election modeling</li>
+        <li>Direct access to your dedicated strategist all year</li>
       </ul>
-      <a class="btn btn-g" href="appointments.html" style="align-self:flex-start">Request a scoping call</a>
+      <div>
+        <a class="btn btn-g" href="appointments.html" style="align-self:flex-start">Request a scoping call</a>
+      </div>
     </div>
   </div>
 
@@ -553,6 +556,14 @@
     </div>
   </div></section>
 
+  <!-- Image Band: Strategic Precision & Execution -->
+  <div class="imgband slim gold-tint" style="--img:url('Pics/AdobeStock_480131145.jpeg')">
+    <div class="imgband-inner" style="padding:48px 24px;text-align:center">
+      <p style="font-family:var(--f-mono);font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin:0 0 10px">Precision Modeling &middot; Year-Round Advisory</p>
+      <h2 style="color:#fff;margin:0;font-size:clamp(1.4rem,2.8vw,2.2rem)">Decisions made in July change the number in April.<br><em style="color:var(--gold);font-style:normal">Every scenario modeled before anything is signed.</em></h2>
+    </div>
+  </div>
+
   <!-- ---------- FIT ---------- -->
   <section class="tight"><div class="shell">
     <div class="sechead">
@@ -622,7 +633,7 @@
       </div>
     </div>
     <div class="patsays" style="margin-top:30px;border-left-color:var(--gold)">
-      <svg viewBox="0 0 200 220" aria-hidden="true"><use href="#pat"></use></svg>
+      <img src="assets/brand/uncle-pat-avatar.svg" alt="Uncle Pat" width="64" height="64">
       <div>
         <q>Call me before you sign it. Afterwards I&rsquo;m just a witness.</q>
         <div class="who">Uncle Pat</div>
@@ -631,12 +642,6 @@
   </div></section>
 </div>
 
-    <!-- Interactive S-Corp Calculator -->
-    <section style="background:var(--surface-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-      <div class="shell">
-        <div id="scorp-calc-container"></div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -697,12 +702,6 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script src="js/scorp-calculator.js"></script>
   <script src="js/booking.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      initSCorpCalculator('scorp-calc-container');
-    });
-  </script>
 </body>
 </html>

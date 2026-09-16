@@ -1043,7 +1043,7 @@
     chatContainer.innerHTML = state.messages.map(m => {
       const isMe = m.sender === 'client';
       const isPat = m.sender === 'uncle_pat';
-      let avatarContent = isMe ? 'MW' : isPat ? `<svg viewBox="0 0 200 220"><use href="#pat-av"></use></svg>` : 'DR';
+      let avatarContent = isMe ? 'MW' : isPat ? `<img src="assets/brand/uncle-pat-avatar.svg" alt="Uncle Pat" style="width:100%;height:100%;border-radius:50%;object-fit:cover">` : 'DR';
 
       return `
         <div class="chat-message-bubble ${isMe ? 'me' : ''} ${isPat ? 'pat' : ''}">

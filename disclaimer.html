@@ -4,9 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Disclaimer — Pivot Aide Tax</title>
-  <meta name="description" content="Pivot Aide Tax Disclaimer regarding informational materials, tax outcomes, third-party reliance, and tax authority decisions.">
+  <meta name="description" content="Pivot Aide Tax Disclaimer covering general informational scope, lack of outcome guarantees, client responsibilities, and legal representation boundaries.">
 
-  <link rel="stylesheet" href="css/tokens.css">
+  <!-- Preload Critical Self-Hosted Fonts -->
+  <link rel="preload" href="assets/fonts/fraunces-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
@@ -81,63 +88,117 @@
 
   <main id="main">
     <!-- Legal Hero Header -->
-    <section class="night tight">
+    <section class="night tight legal-page-header">
       <div class="shell">
-        <div class="sechead">
-          <span class="eyebrow night">Legal · Disclaimer & Disclosures</span>
-          <h1 style="color:#ffffff">Disclaimer</h1>
-          <p class="lede" style="color:var(--night-ink-2)">Effective Date: January 15, 2026</p>
+        <div class="sechead" style="margin-bottom:0">
+          <span class="eyebrow night">Legal &middot; Professional Terms &amp; Scope</span>
+          <h1 style="color:#ffffff; margin-bottom: 8px;">Disclaimer</h1>
+          <p class="lede" style="color:var(--night-ink-2); max-width:68ch; margin-bottom:16px;">
+            General informational scope, client responsibilities, and formal engagement boundaries for Pivot Aide Tax.
+          </p>
+          <div class="legal-badge-row">
+            <span class="legal-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Effective Date: Jan 15th, 2026
+            </span>
+            <span class="legal-badge gold">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Informational Notice
+            </span>
+            <span class="legal-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Formal Engagement Required
+            </span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Legal Document Content -->
-    <section>
-      <div class="shell" style="max-width: 860px;">
-        <div class="legal-content">
-          <div
-        class="legal-content">
-
-        <p style="margin-bottom: 32px; font-size: 1.05rem; color: #1e293b; font-weight: 600;">
-          The information provided on this website and in communications from Pivot Aide Tax is for general
-          informational purposes only and is not tax, legal, or financial advice for your specific situation unless a
-          formal engagement has been accepted.
-        </p>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <ul style="margin-bottom: 32px; padding-left: 20px; display: flex; flex-direction: column; gap: 16px;">
-          <li>
-            <strong>No guarantee of outcomes:</strong> Refund amounts, tax liabilities, processing times, acceptance by
-            tax authorities, or audit outcomes cannot be guaranteed.
-          </li>
-          <li>
-            <strong>Client responsibility:</strong> You are responsible for providing complete and accurate information
-            and for reviewing your return before filing.
-          </li>
-          <li>
-            <strong>Third-party reliance:</strong> We may rely on documents and information you provide; we are not
-            responsible for inaccuracies in source documents.
-          </li>
-          <li>
-            <strong>Tax authority decisions:</strong> IRS/state determinations, notices, penalties, and interest are
-            outside our control.
-          </li>
-          <li>
-            <strong>Not a law firm:</strong> Pivot Aide Tax does not provide legal representation. If you need legal
-            advice, consult an attorney.
-          </li>
-        </ul>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 32px 0;">
-
-        <p style="margin-bottom: 0;">
-          If you have questions, contact <a href="mailto:Corporate@pivotaide.com"
-            style="color: var(--accent-blue); font-weight: 700;">Corporate@pivotaide.com</a>.
-        </p>
-
+    <!-- Table of Contents Navigation Bar -->
+    <nav class="legal-toc-bar" aria-label="Table of Contents">
+      <div class="shell">
+        <div class="legal-toc-list">
+          <a href="#general-information" class="legal-toc-link">General Information</a>
+          <a href="#no-guarantee" class="legal-toc-link">No Guarantee of Outcomes</a>
+          <a href="#client-responsibility" class="legal-toc-link">Client Responsibility</a>
+          <a href="#third-party-reliance" class="legal-toc-link">Third-Party Reliance</a>
+          <a href="#tax-authority-decisions" class="legal-toc-link">Tax Authority Decisions</a>
+          <a href="#not-a-law-firm" class="legal-toc-link">Not a Law Firm</a>
+          <a href="#contact-questions" class="legal-toc-link">Contact</a>
+        </div>
       </div>
-    </div>
+    </nav>
+
+    <!-- Legal Document Content -->
+    <section style="padding: 12px 0 48px; background: var(--ground);">
+      <div class="shell" style="max-width: 920px;">
+        <div class="legal-card legal-content">
+
+          <!-- General Information Notice -->
+          <div id="general-information">
+            <div class="legal-callout-shield blue" style="margin-top:0; margin-bottom: 28px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <p>The information provided on this website and in communications from Pivot Aide Tax is for general informational purposes only and is not tax, legal, or financial advice for your specific situation unless a formal engagement has been accepted.</p>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Key Disclaimer Items -->
+          <div class="legal-disclaimer-grid" style="display:flex; flex-direction:column; gap:20px;">
+
+            <!-- No guarantee of outcomes -->
+            <div id="no-guarantee" class="legal-category-card" style="border-left: 4px solid var(--blue);">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;">No guarantee of outcomes</h3>
+              <p style="margin-bottom: 0;">Refund amounts, tax liabilities, processing times, acceptance by tax authorities, or audit outcomes cannot be guaranteed.</p>
+            </div>
+
+            <!-- Client responsibility -->
+            <div id="client-responsibility" class="legal-category-card" style="border-left: 4px solid var(--blue-dk);">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;">Client responsibility</h3>
+              <p style="margin-bottom: 0;">You are responsible for providing complete and accurate information and for reviewing your return before filing.</p>
+            </div>
+
+            <!-- Third-party reliance -->
+            <div id="third-party-reliance" class="legal-category-card">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;">Third-party reliance</h3>
+              <p style="margin-bottom: 0;">We may rely on documents and information you provide; we are not responsible for inaccuracies in source documents.</p>
+            </div>
+
+            <!-- Tax authority decisions -->
+            <div id="tax-authority-decisions" class="legal-category-card">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;">Tax authority decisions</h3>
+              <p style="margin-bottom: 0;">IRS/state determinations, notices, penalties, and interest are outside our control.</p>
+            </div>
+
+            <!-- Not a law firm -->
+            <div id="not-a-law-firm" class="legal-category-card" style="border-left: 4px solid var(--gold-dp);">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;">Not a law firm</h3>
+              <p style="margin-bottom: 0;">Pivot Aide Tax does not provide legal representation. If you need legal advice, consult an attorney.</p>
+            </div>
+
+          </div>
+
+          <hr>
+
+          <!-- Contact Questions Banner -->
+          <div id="contact-questions">
+            <p style="font-size: 1.02rem; color: var(--ink); margin-bottom: 24px; font-weight: 500;">
+              If you have questions, contact <a href="mailto:Corporate@pivotaide.com" style="color: var(--blue); font-weight: 600; text-decoration: underline;">Corporate@pivotaide.com</a>.
+            </p>
+
+            <div class="legal-contact-banner">
+              <div>
+                <h3>Need Guidance on Engagement Terms?</h3>
+                <p>Contact our corporate practice office directly for formal engagement documentation, scope confirmations, or general questions.</p>
+              </div>
+              <div class="banner-btns">
+                <a href="tel:+15714703754" class="btn" style="background:#FFFFFF; color:var(--night); font-weight:600; font-size:0.84rem; padding:8px 18px;">Call (571) 470-3754</a>
+                <a href="mailto:Corporate@pivotaide.com" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4); color:#FFFFFF; font-size:0.84rem; padding:8px 18px;">Email Corporate</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
